@@ -11,3 +11,4 @@ Repository for the game Sons of Almeida
 - **Class Name:** PascalCase
 - **Function Name:** PascalCase
 - **Variable Name:** camelCase
+
