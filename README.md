@@ -20,4 +20,4 @@ Repository for the game Sons of Almeida
 
 ### Gantt Chart
 
-https://www.canva.com/design/DAFeCDijsS0/7WPKkrS3_-0PvN27frCebQ/edit
+https://www.canva.com/design/DAFeCDijsS0/7WPKkrS3_-0PvN27frCebQ/edit?utm_content=DAFeCDijsS0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
