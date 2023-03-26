@@ -677,7 +677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2126879843}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &746773889
 SortingGroup:
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
-  rayInteractor: {fileID: 0}
+  rayInteractor: {fileID: 1185261263}
   fadeImage: {fileID: 900136569}
   fadeAnimator: {fileID: 900136571}
 --- !u!1 &1185261258
@@ -1699,7 +1699,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2126879843}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &1185261260
 SortingGroup:
@@ -3124,8 +3124,8 @@ Transform:
   - {fileID: 525980719}
   - {fileID: 107432239}
   - {fileID: 1925754492}
-  - {fileID: 746773888}
   - {fileID: 1185261259}
+  - {fileID: 746773888}
   - {fileID: 928940688}
   m_Father: {fileID: 990363610}
   m_RootOrder: 0

@@ -20,7 +20,6 @@ public class FadeManager : MonoBehaviour
     }
 
     public void OnAnimationEnd() {
-        Debug.Log("Fade In animation end");
         fadeAnimator.Play("FadeOut");
     }
 }

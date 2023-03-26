@@ -35,8 +35,11 @@ public class TeleportationManager : MonoBehaviour
     }
 
     void OnTeleport(InputAction.CallbackContext context) {
+        if (!rayInteractor.enabled) return;
         Debug.Log("Teleportus");
+        Debug.Log(context);
         fadeAnimator.Play("FadeIn");
+        // rayInteractor.enabled = false;
     }
 
 }
