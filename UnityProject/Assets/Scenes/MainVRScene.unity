@@ -1382,7 +1382,7 @@ MonoBehaviour:
   m_GravityApplicationMode: 1
   m_ForwardSource: {fileID: 525980719}
   m_LeftHandMoveAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Left Hand Move
       m_Type: 0
@@ -1395,7 +1395,7 @@ MonoBehaviour:
     m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_RightHandMoveAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Right Hand Move
       m_Type: 0
@@ -1447,6 +1447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810741257a5cdc74c9db8da7d905fea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  rayInteractor: {fileID: 0}
 --- !u!1 &1185261258
 GameObject:
   m_ObjectHideFlags: 0

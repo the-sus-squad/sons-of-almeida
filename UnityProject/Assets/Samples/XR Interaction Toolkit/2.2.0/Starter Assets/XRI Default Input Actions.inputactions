@@ -386,9 +386,9 @@
                 },
                 {
                     "name": "Teleport Mode Activate",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "a21db72c-4843-4839-b4d0-3ce8d287cb86",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -473,11 +473,33 @@
                 },
                 {
                     "name": "",
+                    "id": "0236355b-0676-4238-995c-85fd9a189748",
+                    "path": "<HID:: USB Gamepad          >/hat",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport Mode Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b8aebee7-fa03-43d4-bfb7-77a3f87452cc",
                     "path": "<XRController>{LeftHand}/gripPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
+                    "action": "Teleport Mode Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b52cf2f5-4278-4ee3-a18d-4ecf60385b4d",
+                    "path": "<Joystick>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Teleport Mode Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -500,17 +522,6 @@
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "Continuous Move",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "31f558e3-9847-489d-b676-096da5d490ce",
-                    "path": "<HID:: USB Gamepad          >/hat",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
