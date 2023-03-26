@@ -7,6 +7,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEditor;
 #endif
 
+/*
+ * Component attached to grabable objects to define what hand pose
+ * should be used when grabing the object.
+ * 
+ * The hand poses for the right and left hands should be defined by
+ * adding the right and left hand models as children of the grabable
+ * object and then assigning these poses to the corresponding variables
+ * in the inspector.
+ */
 public class GrabHandPose : MonoBehaviour
 {
     [SerializeField] private float poseTransitionDuration = 0.2f;
@@ -26,13 +35,23 @@ public class GrabHandPose : MonoBehaviour
     {
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
 
+        // Listen to the grab and stop grabbing events
         grabInteractable.selectEntered.AddListener(SetupPose);
         grabInteractable.selectExited.AddListener(UnsetPose);
 
+        // Deactivate both pose hands
         rightHandPose.gameObject.SetActive(false);
         leftHandPose.gameObject.SetActive(false);
     }
 
+    /*
+     * Called when an interactor starts grabbing the object
+     * 
+     * 1) Stores the hand data from the interacting hand in a local variable
+     * 2) Disables the animator of the hand
+     * 3) Sets this component variables to the appropriate hand data values
+     * 4) Starts a coroutine to change the values of the interactor hand over time
+     */
     private void SetupPose(BaseInteractionEventArgs arg) 
     {
         if (arg.interactorObject is XRDirectInteractor) 
@@ -62,10 +81,20 @@ public class GrabHandPose : MonoBehaviour
         }
     }
 
+    // Setup the variables of this components using h1 as the
+    // starting pose and h2 as the final pose
     private void SetHandDataValues(HandData h1, HandData h2) 
     {
-        startingHandPosition = new Vector3(h1.root.localPosition.x / h1.root.localScale.x, h1.root.localPosition.y / h1.root.localScale.y, h1.root.localPosition.z / h1.root.localScale.z);
-        finalHandPosition = new Vector3(h2.root.localPosition.x / h2.root.localScale.x, h2.root.localPosition.y / h2.root.localScale.y, h2.root.localPosition.z / h2.root.localScale.z);
+        startingHandPosition = new Vector3(
+            h1.root.localPosition.x / h1.root.localScale.x, 
+            h1.root.localPosition.y / h1.root.localScale.y, 
+            h1.root.localPosition.z / h1.root.localScale.z
+        );
+        finalHandPosition = new Vector3(
+            h2.root.localPosition.x / h2.root.localScale.x, 
+            h2.root.localPosition.y / h2.root.localScale.y, 
+            h2.root.localPosition.z / h2.root.localScale.z
+        );
 
         startingHandRotation = h1.root.localRotation;
         finalHandRotation = h2.root.localRotation;
@@ -80,16 +109,7 @@ public class GrabHandPose : MonoBehaviour
         }
     }
 
-    private void SetHandData(HandData h, Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation) 
-    {
-        h.root.localPosition = newPosition;
-        h.root.localRotation = newRotation;
-
-        for(int i = 0; i < newBonesRotation.Length; i++) {
-            h.fingerBones[i].localRotation = newBonesRotation[i];
-        }
-    }
-
+    // Corroutine that changes the values of the interactor hand over time
     private IEnumerator SetHandDataRoutine(HandData h, Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation, Vector3 startingPosition, Quaternion startingRotation, Quaternion[] startingBonesRotation) 
     {
         float timer = 0.0f;
