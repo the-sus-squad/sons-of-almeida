@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -72,9 +73,13 @@ public class GrabHandPose : MonoBehaviour
         }
     }
 
+    // Called when an interactor drops the object
     private void UnsetPose(BaseInteractionEventArgs arg) {
         if(arg.interactorObject is XRDirectInteractor) {
             HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
+            // WARN: There might be a bug here because I'm enabling the animator before 
+            //       running the coroutine but it's hard to notice on my computer so I'll
+            //       wait to test on the VR
             handData.animator.enabled = true;
 
             StartCoroutine(SetHandDataRoutine(handData, startingHandPosition, startingHandRotation, startingFingerRotations, finalHandPosition, finalHandRotation, finalFingerRotations));
@@ -85,6 +90,9 @@ public class GrabHandPose : MonoBehaviour
     // starting pose and h2 as the final pose
     private void SetHandDataValues(HandData h1, HandData h2) 
     {
+        // Divide the localPosition by the scale because the scale
+        // of the parent affects the position of the child
+        // Ref: https://docs.unity3d.com/ScriptReference/Transform-localPosition.html
         startingHandPosition = new Vector3(
             h1.root.localPosition.x / h1.root.localScale.x, 
             h1.root.localPosition.y / h1.root.localScale.y, 
@@ -110,7 +118,11 @@ public class GrabHandPose : MonoBehaviour
     }
 
     // Corroutine that changes the values of the interactor hand over time
-    private IEnumerator SetHandDataRoutine(HandData h, Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation, Vector3 startingPosition, Quaternion startingRotation, Quaternion[] startingBonesRotation) 
+    private IEnumerator SetHandDataRoutine(
+        HandData h, 
+        Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation, 
+        Vector3 startingPosition, Quaternion startingRotation, Quaternion[] startingBonesRotation
+    ) 
     {
         float timer = 0.0f;
 
@@ -130,6 +142,10 @@ public class GrabHandPose : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+
+        // WARN: Possible bug because the lerp won't always reach 100%
+        //       If this becomes a problem maybe add some code here that sets
+        //       all the hand data to their final values
     }
 
 #if UNITY_EDITOR
