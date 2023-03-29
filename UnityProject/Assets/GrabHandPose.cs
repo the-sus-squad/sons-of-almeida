@@ -14,21 +14,15 @@ using UnityEditor;
  * should be used when grabing the object.
  * 
  * The hand poses for the right and left hands should be defined by
- * adding the right and left hand models as children of the grabable
+ * adding a Grab Point to the list of grab points of this object,
+ * adding the right and left hand models as children of that grab point
  * object and then assigning these poses to the corresponding variables
  * in the inspector.
- * 
- * TODO: Maybe instead of moving and rotating hand I should move and rotate the object
  */
 public class GrabHandPose : MonoBehaviour
 {
     [SerializeField] private float poseTransitionDuration = 0.2f;
     [SerializeField] private GrabPoint[] grabPoints;
-
-    private Vector3 startingHandPosition;
-    private Vector3 finalHandPosition;
-    private Quaternion startingHandRotation;
-    private Quaternion finalHandRotation;
 
     private Quaternion[] startingFingerRotations;
     private Quaternion[] finalFingerRotations;
@@ -43,58 +37,95 @@ public class GrabHandPose : MonoBehaviour
         grabInteractable.selectExited.AddListener(UnsetPose);
     }
 
-    /*
-     * Called when an interactor starts grabbing the object
-     * 
-     * 1) Stores the hand data from the interacting hand in a local variable
-     * 2) Disables the animator of the hand
-     * 3) Sets this component variables to the appropriate hand data values
-     * 4) Starts a coroutine to change the values of the interactor hand over time
-     */
+    // Called when an interactor starts grabbing the object
     private void SetupPose(BaseInteractionEventArgs arg) 
     {
         if (arg.interactorObject is XRDirectInteractor) 
         {
             XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
-            HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
-            handData.animator.enabled = false;
+            HandData startingHand = arg.interactorObject.transform.GetComponentInChildren<HandData>();
+            startingHand.animator.enabled = false;
 
-            GrabPoint grabPoint = GetClosestGrabPoint(handData.root.position);
-
-            if (handData.handType == HandData.HandModelType.Right) 
+            GrabPoint grabPoint = GetClosestGrabPoint(startingHand.root.position);
+            
+            HandData handPose = grabPoint.leftHandPose;
+            if (startingHand.handType == HandData.HandModelType.Right) 
             {
-                //SetHandDataValues(handData, grabPoint.rightHandPose);
-                RotateFingers(handData, grabPoint.rightHandPose);
-                ApplyHandAttachOffset(interactor, grabPoint.rightHandPose, handData);
-            }
-            else 
-            {
-                SetHandDataValues(handData, grabPoint.leftHandPose);
+                handPose = grabPoint.rightHandPose;
             }
 
-            //StartCoroutine(SetHandDataRoutine(handData, finalHandPosition, finalHandRotation, finalFingerRotations, startingHandPosition, startingHandRotation, startingFingerRotations));
+            SaveFingerRotations(startingHand, handPose);
+            ApplyHandAttachOffset(interactor, handPose, startingHand);
+            StartCoroutine(RotateFingers(startingHand, startingFingerRotations, finalFingerRotations));
         }
     }
 
-    private void RotateFingers(HandData handStart, HandData handFinal)
+    // Cache the starting and ending rotations of the finger for later use
+    private void SaveFingerRotations(HandData startingHand, HandData finalHand)
     {
-        for (int i = 0; i < handStart.fingerBones.Length; i++)
+        startingFingerRotations = new Quaternion[startingHand.fingerBones.Length];
+        finalFingerRotations = new Quaternion[startingHand.fingerBones.Length];
+        for (int i = 0; i < startingHand.fingerBones.Length; i++)
         {
-            handStart.fingerBones[i].localRotation = handFinal.fingerBones[i].localRotation;
+            startingFingerRotations[i] = startingHand.fingerBones[i].localRotation;
+            finalFingerRotations[i] = finalHand.fingerBones[i].localRotation;
         }
     }
 
+    // Offset the Attach Transform of the interactor to fit the object we're grabbing
     private void ApplyHandAttachOffset(XRDirectInteractor interactor, HandData pose, HandData hand)
     {
-        Vector3 finalPosition = -1.0f * (pose.root.localPosition / 10.0f) + hand.root.localPosition;
-        Quaternion finalRotation = Quaternion.Inverse(pose.root.localRotation * Quaternion.Euler(0, 0, 90));
+        // Divide the localPosition by the scale because the scale
+        // of the parent affects the position of the child
+        // Ref: https://docs.unity3d.com/ScriptReference/Transform-localPosition.html
+        Vector3 posePosition = new Vector3(
+            pose.root.localPosition.x / pose.root.localScale.x,
+            pose.root.localPosition.y / pose.root.localScale.y,
+            pose.root.localPosition.z / pose.root.localScale.z
+        );
+        // The attach position will be the inverse of the pose position, 
+        // but I have to add the localPosition of the hand because the hand
+        // has an offset
+        Vector3 finalAttachPosition = (-1.0f * posePosition) + hand.root.localPosition;
+        
+        // I add 90 or -90 to the localRotation to nullify the hands starting with a rotation
+        // of 90 or -90 degrees
+        Quaternion finalAttachRotation = Quaternion.Inverse(pose.root.localRotation * Quaternion.Euler(0, 0, 90));
+        if (pose.handType == HandData.HandModelType.Left)
+            finalAttachRotation = Quaternion.Inverse(pose.root.localRotation * Quaternion.Euler(0, 0, -90));
 
-        Vector3 direction = finalPosition - hand.root.localPosition;
-        direction = Quaternion.Euler(finalRotation.eulerAngles) * direction;
-        finalPosition = direction + hand.root.localPosition;
+        finalAttachPosition = RotatePointAroundPivot(finalAttachPosition, hand.root.localPosition, finalAttachRotation.eulerAngles);
 
-        interactor.attachTransform.localPosition = finalPosition;
-        interactor.attachTransform.localRotation = finalRotation;
+        interactor.attachTransform.localPosition = finalAttachPosition;
+        interactor.attachTransform.localRotation = finalAttachRotation;
+    }
+
+    private Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles)
+    {
+        Vector3 direction = point - pivot;
+        direction = Quaternion.Euler(angles) * direction;
+        return direction + pivot;
+    }
+
+    // Rotate the fingers over time
+    private IEnumerator RotateFingers(HandData handData, Quaternion[] startingFingerRotations, Quaternion[] finalFingerRotations)
+    {
+        float timer = 0.0f;
+
+        while (timer < poseTransitionDuration)
+        {
+            for (int i = 0; i < handData.fingerBones.Length; i++)
+            {
+                handData.fingerBones[i].localRotation = Quaternion.Lerp(startingFingerRotations[i], finalFingerRotations[i], timer / poseTransitionDuration);
+            }
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // WARN: Possible bug because the lerp won't always reach 100%
+        //       If this becomes a problem maybe add some code here that sets
+        //       all the hand data to their final values
     }
 
     private GrabPoint GetClosestGrabPoint(Vector3 handWorldPosition)
@@ -124,70 +155,8 @@ public class GrabHandPose : MonoBehaviour
             //       wait to test on the VR
             handData.animator.enabled = true;
 
-            StartCoroutine(SetHandDataRoutine(handData, startingHandPosition, startingHandRotation, startingFingerRotations, finalHandPosition, finalHandRotation, finalFingerRotations));
+            StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations));
         }
-    }
-
-    // Setup the variables of this components using h1 as the
-    // starting pose and h2 as the final pose
-    private void SetHandDataValues(HandData h1, HandData h2) 
-    {
-        // Divide the localPosition by the scale because the scale
-        // of the parent affects the position of the child
-        // Ref: https://docs.unity3d.com/ScriptReference/Transform-localPosition.html
-        startingHandPosition = new Vector3(
-            h1.root.localPosition.x / h1.root.localScale.x, 
-            h1.root.localPosition.y / h1.root.localScale.y, 
-            h1.root.localPosition.z / h1.root.localScale.z
-        );
-        finalHandPosition = new Vector3(
-            h2.root.localPosition.x / h2.root.localScale.x, 
-            h2.root.localPosition.y / h2.root.localScale.y, 
-            h2.root.localPosition.z / h2.root.localScale.z
-        );
-
-        startingHandRotation = h1.root.localRotation;
-        finalHandRotation = h2.root.localRotation;
-
-        startingFingerRotations = new Quaternion[h1.fingerBones.Length];
-        finalFingerRotations = new Quaternion[h2.fingerBones.Length];
-
-        for (int i = 0; i < h1.fingerBones.Length; i++) 
-        {
-            startingFingerRotations[i] = h1.fingerBones[i].localRotation;
-            finalFingerRotations[i] = h2.fingerBones[i].localRotation;
-        }
-    }
-
-    // Corroutine that changes the values of the interactor hand over time
-    private IEnumerator SetHandDataRoutine(
-        HandData h, 
-        Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation, 
-        Vector3 startingPosition, Quaternion startingRotation, Quaternion[] startingBonesRotation
-    ) 
-    {
-        float timer = 0.0f;
-
-        while (timer < poseTransitionDuration)
-        {
-            Vector3 p = Vector3.Lerp(startingPosition, newPosition, timer / poseTransitionDuration);
-            Quaternion r = Quaternion.Lerp(startingRotation, newRotation, timer / poseTransitionDuration);
-
-            h.root.localPosition = p;
-            h.root.localRotation = r;
-
-            for(int i = 0; i < newBonesRotation.Length; i++) 
-            {
-                h.fingerBones[i].localRotation = Quaternion.Lerp(startingBonesRotation[i], newBonesRotation[i], timer / poseTransitionDuration);
-            }
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        // WARN: Possible bug because the lerp won't always reach 100%
-        //       If this becomes a problem maybe add some code here that sets
-        //       all the hand data to their final values
     }
 
 //#if UNITY_EDITOR
