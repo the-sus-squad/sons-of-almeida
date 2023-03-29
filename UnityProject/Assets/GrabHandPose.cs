@@ -108,7 +108,7 @@ public class GrabHandPose : MonoBehaviour
     }
 
     // Rotate the fingers over time
-    private IEnumerator RotateFingers(HandData handData, Quaternion[] startingFingerRotations, Quaternion[] finalFingerRotations)
+    private IEnumerator RotateFingers(HandData handData, Quaternion[] startingFingerRotations, Quaternion[] finalFingerRotations, bool isUnsetting = false)
     {
         float timer = 0.0f;
 
@@ -116,16 +116,21 @@ public class GrabHandPose : MonoBehaviour
         {
             for (int i = 0; i < handData.fingerBones.Length; i++)
             {
-                handData.fingerBones[i].localRotation = Quaternion.Lerp(startingFingerRotations[i], finalFingerRotations[i], timer / poseTransitionDuration);
+                handData.fingerBones[i].localRotation = Quaternion.Lerp(
+                    startingFingerRotations[i], 
+                    finalFingerRotations[i], 
+                    timer / poseTransitionDuration
+                );
             }
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        // WARN: Possible bug because the lerp won't always reach 100%
-        //       If this becomes a problem maybe add some code here that sets
-        //       all the hand data to their final values
+        if (isUnsetting)
+        {
+            handData.animator.enabled = true;
+        }
     }
 
     private GrabPoint GetClosestGrabPoint(Vector3 handWorldPosition)
@@ -150,12 +155,8 @@ public class GrabHandPose : MonoBehaviour
     private void UnsetPose(BaseInteractionEventArgs arg) {
         if(arg.interactorObject is XRDirectInteractor) {
             HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
-            // WARN: There might be a bug here because I'm enabling the animator before 
-            //       running the coroutine but it's hard to notice on my computer so I'll
-            //       wait to test on the VR
-            handData.animator.enabled = true;
 
-            StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations));
+            StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
         }
     }
 
