@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 /*
  * This component is used to hold data about the hand model and it
@@ -12,7 +13,7 @@ public class HandData : MonoBehaviour
 
     // Identify which hand this component is attached to
     public HandModelType handType;
-    
+
     // Reference to the object that holds this component
     public Transform root;
 

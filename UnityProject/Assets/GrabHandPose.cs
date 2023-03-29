@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using System;
+using System.Drawing;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -16,6 +17,8 @@ using UnityEditor;
  * adding the right and left hand models as children of the grabable
  * object and then assigning these poses to the corresponding variables
  * in the inspector.
+ * 
+ * TODO: Maybe instead of moving and rotating hand I should move and rotate the object
  */
 public class GrabHandPose : MonoBehaviour
 {
@@ -52,6 +55,7 @@ public class GrabHandPose : MonoBehaviour
     {
         if (arg.interactorObject is XRDirectInteractor) 
         {
+            XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
             HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
             handData.animator.enabled = false;
 
@@ -59,15 +63,38 @@ public class GrabHandPose : MonoBehaviour
 
             if (handData.handType == HandData.HandModelType.Right) 
             {
-                SetHandDataValues(handData, grabPoint.rightHandPose);
+                //SetHandDataValues(handData, grabPoint.rightHandPose);
+                RotateFingers(handData, grabPoint.rightHandPose);
+                ApplyHandAttachOffset(interactor, grabPoint.rightHandPose, handData);
             }
             else 
             {
                 SetHandDataValues(handData, grabPoint.leftHandPose);
             }
 
-            StartCoroutine(SetHandDataRoutine(handData, finalHandPosition, finalHandRotation, finalFingerRotations, startingHandPosition, startingHandRotation, startingFingerRotations));
+            //StartCoroutine(SetHandDataRoutine(handData, finalHandPosition, finalHandRotation, finalFingerRotations, startingHandPosition, startingHandRotation, startingFingerRotations));
         }
+    }
+
+    private void RotateFingers(HandData handStart, HandData handFinal)
+    {
+        for (int i = 0; i < handStart.fingerBones.Length; i++)
+        {
+            handStart.fingerBones[i].localRotation = handFinal.fingerBones[i].localRotation;
+        }
+    }
+
+    private void ApplyHandAttachOffset(XRDirectInteractor interactor, HandData pose, HandData hand)
+    {
+        Vector3 finalPosition = -1.0f * (pose.root.localPosition / 10.0f) + hand.root.localPosition;
+        Quaternion finalRotation = Quaternion.Inverse(pose.root.localRotation * Quaternion.Euler(0, 0, 90));
+
+        Vector3 direction = finalPosition - hand.root.localPosition;
+        direction = Quaternion.Euler(finalRotation.eulerAngles) * direction;
+        finalPosition = direction + hand.root.localPosition;
+
+        interactor.attachTransform.localPosition = finalPosition;
+        interactor.attachTransform.localRotation = finalRotation;
     }
 
     private GrabPoint GetClosestGrabPoint(Vector3 handWorldPosition)
