@@ -10,7 +10,7 @@ public class FollowCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("followCamera", 5f, 1f);
+        InvokeRepeating("followCamera", 2f, 5f);
     }
 
     void followCamera()
