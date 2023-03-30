@@ -1358,7 +1358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &928940685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,6 +1665,7 @@ MonoBehaviour:
   rayInteractor: {fileID: 1185261263}
   fadeImage: {fileID: 900136569}
   fadeAnimator: {fileID: 900136571}
+  fade: {fileID: 928940684}
 --- !u!1 &1185261258
 GameObject:
   m_ObjectHideFlags: 0

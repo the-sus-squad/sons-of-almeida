@@ -16,7 +16,8 @@ public class TeleportationManager : MonoBehaviour
     // Fade Control
     [SerializeField] private Image fadeImage;
     [SerializeField] private Animator fadeAnimator;
-
+    [SerializeField] private GameObject fade;
+// 
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class TeleportationManager : MonoBehaviour
         var activate = actionAsset.FindActionMap("XRI LeftHand Locomotion").FindAction("Teleport Mode Cancel");
         activate.Enable();
         activate.performed += OnTeleport;
+
+        fade.SetActive(true);
 
     }
 
