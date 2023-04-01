@@ -5,9 +5,10 @@ using UnityEngine.InputSystem;
 
 public class AnimateHandOnInput : MonoBehaviour
 {
-    [SerializeField] private InputActionProperty pinchAnimationAction;
-    [SerializeField] private InputActionProperty gripAnimationAction;
-    [SerializeField] private Animator handAnimator;
+    public InputActionProperty pinchAnimationAction;
+    public InputActionProperty gripAnimationAction;
+
+    public Animator handAnimator;
 
     // Update is called once per frame
     void Update()
@@ -17,5 +18,6 @@ public class AnimateHandOnInput : MonoBehaviour
 
         float gripValue = gripAnimationAction.action.ReadValue<float>();
         handAnimator.SetFloat("Grip", gripValue);
+        //Debug.Log(triggerValue);
     }
 }
