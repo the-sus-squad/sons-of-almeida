@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
 
-    public GameObject camera;
+    [SerializeField] private new GameObject camera;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +19,5 @@ public class FollowCamera : MonoBehaviour
         transform.position = camera.transform.position;
         //Debug.Log(transform.forward);
         transform.position += transform.forward * 2;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
