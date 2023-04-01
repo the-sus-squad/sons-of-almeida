@@ -18,6 +18,10 @@ Repository for the game Sons of Almeida
 
 ## Docs
 
+### Game Design Document
+
+https://docs.google.com/document/d/1WZ3DDdKHLRVLF0tKMo9fRICxOOcNmAENq_X1fOyVu3k/edit#heading=h.ec4o8i60qenu
+
 ### Trello Board
 
 https://trello.com/b/Rk4Oj3Fj/sons-of-almeida
