@@ -2,6 +2,7 @@
 
 Repository for the game Sons of Almeida
 
+
 ## Naming Conventions
 
 ### Git Branch Conventions
@@ -16,7 +17,35 @@ Repository for the game Sons of Almeida
 - **Variable Name:** camelCase
 
 
+## Unity Folder Structure
+
+```bash
+Assets
++---Art
+| +---Animations
+| +---Materials
+| +---Models
+| +---Textures
++---Audio
+| +---Music
+| +---Sound
++---Code
+| +---Scripts
+| +---Shaders
++---Level
+| +---Prefabs
+| +---Scenes
++---Samples
++---Settings    
++---ThirdParty
+```
+
+
 ## Docs
+
+### Game Design Document
+
+https://docs.google.com/document/d/1WZ3DDdKHLRVLF0tKMo9fRICxOOcNmAENq_X1fOyVu3k/edit#heading=h.ec4o8i60qenu
 
 ### Trello Board
 
