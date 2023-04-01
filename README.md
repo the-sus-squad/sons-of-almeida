@@ -2,6 +2,7 @@
 
 Repository for the game Sons of Almeida
 
+
 ## Naming Conventions
 
 ### Git Branch Conventions
@@ -14,6 +15,30 @@ Repository for the game Sons of Almeida
 - **Class Name:** PascalCase
 - **Function Name:** PascalCase
 - **Variable Name:** camelCase
+
+
+## Unity Folder Structure
+
+```bash
+Assets
++---Art
+| +---Animations
+| +---Materials
+| +---Models
+| +---Textures
++---Audio
+| +---Music
+| +---Sound
++---Code
+| +---Scripts
+| +---Shaders
++---Level
+| +---Prefabs
+| +---Scenes
++---Samples
++---Settings    
++---ThirdParty
+```
 
 
 ## Docs
