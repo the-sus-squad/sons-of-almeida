@@ -5,10 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 using System;
 using System.Drawing;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 /*
  * Component attached to grabable objects to define what hand pose
  * should be used when grabing the object.
@@ -40,24 +36,22 @@ public class GrabHandPose : MonoBehaviour
     // Called when an interactor starts grabbing the object
     private void SetupPose(BaseInteractionEventArgs arg) 
     {
-        if (arg.interactorObject is XRDirectInteractor) 
-        {
-            XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
-            HandData startingHand = arg.interactorObject.transform.GetComponentInChildren<HandData>();
-            startingHand.animator.enabled = false;
+        XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
 
-            GrabPoint grabPoint = GetClosestGrabPoint(startingHand.root.position);
+        HandData startingHand = arg.interactorObject.transform.GetComponentInChildren<HandData>();
+        startingHand.animator.enabled = false;
+
+        GrabPoint grabPoint = GetClosestGrabPoint(startingHand.root.position);
             
-            HandData handPose = grabPoint.leftHandPose;
-            if (startingHand.handType == HandData.HandModelType.Right) 
-            {
-                handPose = grabPoint.rightHandPose;
-            }
-
-            SaveFingerRotations(startingHand, handPose);
-            ApplyHandAttachOffset(interactor, handPose, startingHand);
-            StartCoroutine(RotateFingers(startingHand, startingFingerRotations, finalFingerRotations));
+        HandData handPose = grabPoint.leftHandPose;
+        if (startingHand.handType == HandData.HandModelType.Right) 
+        {
+            handPose = grabPoint.rightHandPose;
         }
+
+        SaveFingerRotations(startingHand, handPose);
+        ApplyHandAttachOffset(interactor, handPose, startingHand);
+        StartCoroutine(RotateFingers(startingHand, startingFingerRotations, finalFingerRotations));
     }
 
     // Cache the starting and ending rotations of the finger for later use
@@ -153,36 +147,8 @@ public class GrabHandPose : MonoBehaviour
 
     // Called when an interactor drops the object
     private void UnsetPose(BaseInteractionEventArgs arg) {
-        if(arg.interactorObject is XRDirectInteractor) {
-            HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
+        HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
 
-            StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
-        }
+        StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
     }
-
-//#if UNITY_EDITOR
-//    [MenuItem("Tools/Mirror Selected Right Grab Pose")]
-//    public static void MirrorRightPose() 
-//    {
-//        GrabHandPose handPose = Selection.activeGameObject.GetComponent<GrabHandPose>();
-//        handPose.MirrorPose(handPose.leftHandPose, handPose.rightHandPose);
-//    }
-//#endif
-
-    //private void MirrorPose(HandData poseToMirror, HandData poseUsedToMirror) 
-    //{
-    //    Vector3 mirroredPosition = poseUsedToMirror.root.localPosition;
-    //    mirroredPosition.x *= -1;
-
-    //    Quaternion mirroredQuaternion = poseUsedToMirror.root.localRotation;
-    //    mirroredQuaternion.y *= -1;
-    //    mirroredQuaternion.z *= -1;
-
-    //    poseToMirror.root.localPosition = mirroredPosition;
-    //    poseToMirror.root.localRotation = mirroredQuaternion;
-
-    //    for(int i = 0; i < poseUsedToMirror.fingerBones.Length; i++) {
-    //        poseToMirror.fingerBones[i].localRotation = poseUsedToMirror.fingerBones[i].localRotation;
-    //    }
-    //}
 }
