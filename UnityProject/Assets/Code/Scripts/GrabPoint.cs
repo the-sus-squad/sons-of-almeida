@@ -18,4 +18,36 @@ public class GrabPoint : MonoBehaviour
         rightHandPose.transform.SetParent(transform.parent);
         leftHandPose.transform.SetParent(transform.parent);
     }
+
+    public void MirrorHandPose(HandData handToMirror)
+    {
+        HandData mirroredHand = rightHandPose;
+        if (handToMirror.handType == HandData.HandModelType.Right)
+        {
+            mirroredHand = leftHandPose;
+        }
+
+        mirroredHand.root.localPosition = new Vector3(
+            -handToMirror.root.localPosition.x,
+            handToMirror.root.localPosition.y,
+            handToMirror.root.localPosition.z
+        );
+
+        mirroredHand.root.localRotation = new Quaternion(
+            handToMirror.root.localRotation.x,
+            -handToMirror.root.localRotation.y,
+            -handToMirror.root.localRotation.z,
+            handToMirror.root.localRotation.w
+        );
+
+        for (int i = 0; i < handToMirror.fingerBones.Length; i++)
+        {
+            mirroredHand.fingerBones[i].localRotation = new Quaternion(
+                handToMirror.fingerBones[i].localRotation.x,
+                handToMirror.fingerBones[i].localRotation.y,
+                handToMirror.fingerBones[i].localRotation.z,
+                handToMirror.fingerBones[i].localRotation.w
+            );
+        }
+    }
 }

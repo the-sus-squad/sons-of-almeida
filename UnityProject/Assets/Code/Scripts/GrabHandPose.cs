@@ -79,9 +79,9 @@ public class GrabHandPose : MonoBehaviour
         // of the parent affects the position of the child
         // Ref: https://docs.unity3d.com/ScriptReference/Transform-localPosition.html
         Vector3 posePosition = new Vector3(
-            pose.root.localPosition.x / pose.root.localScale.x,
-            pose.root.localPosition.y / pose.root.localScale.y,
-            pose.root.localPosition.z / pose.root.localScale.z
+            pose.root.localPosition.x / Math.Abs(pose.root.localScale.x),
+            pose.root.localPosition.y / Math.Abs(pose.root.localScale.y),
+            pose.root.localPosition.z / Math.Abs(pose.root.localScale.z)
         );
         // The attach position will be the inverse of the pose position, 
         // but I have to add the localPosition of the hand because the hand
