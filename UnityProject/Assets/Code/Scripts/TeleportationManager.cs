@@ -35,6 +35,8 @@ public class TeleportationManager : MonoBehaviour
         hold.performed += OnTriggerPressed;
         hold.canceled += OnTriggerRelease;
 
+        // TODO maybe try to add a teleport.started function to create fade effect before teleportation had occured?
+
         defaultRayTime = rayHoldTime;
         rayInteractor.enabled = false;
 
@@ -45,7 +47,7 @@ public class TeleportationManager : MonoBehaviour
     void Update()
     {
 
-        // Process ray hold timer
+        // Process Ray hold timer
         if (isTimeRunning) {
             rayHoldTime -= Time.deltaTime;
         }
@@ -76,7 +78,7 @@ public class TeleportationManager : MonoBehaviour
     }
 
     public void OnRayEnabled() {
-        // TODO: add fade effect here.
+        // TODO: add color fade effect here.
     }
 
 }
