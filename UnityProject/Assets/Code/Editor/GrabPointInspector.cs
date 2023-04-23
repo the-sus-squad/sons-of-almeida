@@ -24,6 +24,5 @@ public class GrabPointInspector : Editor
             grabPoint.MirrorHandPose(grabPoint.rightHandPose);
         }
         GUILayout.EndHorizontal();
-
     }
 }
