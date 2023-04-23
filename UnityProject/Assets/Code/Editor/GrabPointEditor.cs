@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [CustomEditor(typeof(GrabPoint))]
-public class GrabPointInspector : Editor
+public class GrabPointEditor : Editor
 {
     public override void OnInspectorGUI()
     {
