@@ -1,15 +1,23 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(GrabPoint))]
 public class GrabPointEditor : Editor
 {
+    GrabPoint grabPoint = null;
+    List<GrabPoint> grabPoints = null;
+
+    private void OnEnable()
+    {
+        grabPoint = (GrabPoint)target;
+        grabPoints = grabPoint.transform.parent.GetComponent<GrabHandPose>().grabPoints;
+    }
+
     public override void OnInspectorGUI()
     {
         base.DrawDefaultInspector();
-
-        GrabPoint grabPoint = (GrabPoint)target;
 
         GUILayout.Space(10);
 
@@ -24,5 +32,10 @@ public class GrabPointEditor : Editor
             grabPoint.MirrorHandPose(grabPoint.rightHandPose);
         }
         GUILayout.EndHorizontal();
+    }
+
+    private void OnDestroy()
+    {
+        grabPoints.RemoveAll(item => item == null);
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using System;
 using System.Drawing;
+using UnityEditor;
+using Unity.VisualScripting;
 
 /*
  * Component attached to grabable objects to define what hand pose
@@ -18,7 +20,7 @@ using System.Drawing;
 public class GrabHandPose : MonoBehaviour
 {
     [SerializeField] private float poseTransitionDuration = 0.2f;
-    [SerializeField] private GrabPoint[] grabPoints;
+    public List<GrabPoint> grabPoints;
 
     private Quaternion[] startingFingerRotations;
     private Quaternion[] finalFingerRotations;
@@ -132,7 +134,7 @@ public class GrabHandPose : MonoBehaviour
         GrabPoint closestGrabPoint = grabPoints[0];
         float dist = (closestGrabPoint.transform.position - handWorldPosition).sqrMagnitude;
 
-        for (int i = 1; i < grabPoints.Length; i++)
+        for (int i = 1; i < grabPoints.Count; i++)
         {
             float newDist = (grabPoints[i].transform.position - handWorldPosition).sqrMagnitude;
             if (newDist < dist)
@@ -150,5 +152,25 @@ public class GrabHandPose : MonoBehaviour
         HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
 
         StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
+    }
+
+    // Function called by the "Add Grab Button" inspector button
+    public void AddGrabPoint()
+    {
+        string path = "Assets/Level/Prefabs/GrabPoint.prefab";
+        UnityEngine.Object grabPoint = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject));
+
+        if (grabPoint)
+        {
+            UnityEngine.Object clone = PrefabUtility.InstantiatePrefab(grabPoint, transform);
+            Undo.RegisterCreatedObjectUndo(clone, "Instantiated GrabPoint");
+
+            Undo.RecordObject(this, "Add GrabPoint to the list of GrabPoints");
+            grabPoints.Add(clone.GetComponent<GrabPoint>());
+        }
+        else
+        {
+            Debug.LogError("GrabPoint prefab could not be loaded at: " + path);
+        }
     }
 }
