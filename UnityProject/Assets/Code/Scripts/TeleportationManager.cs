@@ -22,7 +22,8 @@ public class TeleportationManager : MonoBehaviour
     [SerializeField] private GameObject fade;
 
     // Hold to show ray variables
-    [SerializeField] private float rayHoldTime = 1.0f;
+    [SerializeField] private float leftRayHoldTime = 1.0f;
+    [SerializeField] private float rightRayHoldTime = 1.0f;
     private float defaultRayTime;
 
     // Start is called before the first frame update
@@ -35,32 +36,47 @@ public class TeleportationManager : MonoBehaviour
 
         // TODO maybe try to add a teleport.started function to create fade effect before teleportation had occured?
 
-        defaultRayTime = rayHoldTime;
+        defaultRayTime = leftRayHoldTime;
         leftRayInteractor.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsTriggerPressed())
+        if (IsTriggerPressed(leftHandTriggerAction))
         {
-            rayHoldTime -= Time.deltaTime;
+            leftRayHoldTime -= Time.deltaTime;
         }
         else
         {
-            rayHoldTime = defaultRayTime;
+            leftRayHoldTime = defaultRayTime;
             leftRayInteractor.enabled = false;
         }
 
-        if (rayHoldTime < 0)
+        if (IsTriggerPressed(rightHandTriggerAction))
+        {
+            rightRayHoldTime -= Time.deltaTime;
+        }
+        else
+        {
+            rightRayHoldTime = defaultRayTime;
+            rightRayInteractor.enabled = false;
+        }
+
+        if (leftRayHoldTime < 0)
         {
             leftRayInteractor.enabled = true;
         }
+        
+        if (rightRayHoldTime < 0)
+        {
+            rightRayInteractor.enabled = true;
+        }
     }
 
-    private bool IsTriggerPressed()
+    private bool IsTriggerPressed(InputAction triggerAction)
     {
-        if (leftHandTriggerAction.ReadValue<float>() > 0.1f)
+        if (triggerAction.ReadValue<float>() > 0.1f)
         {
             return true;
         }
