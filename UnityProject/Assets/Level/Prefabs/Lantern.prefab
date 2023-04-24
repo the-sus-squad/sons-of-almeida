@@ -5057,7 +5057,6 @@ GameObject:
   - component: {fileID: 962000486}
   - component: {fileID: 962000485}
   - component: {fileID: 962000484}
-  - component: {fileID: 2083943632}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -5109,7 +5108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 630d79de76f5a184d9c99784b3eb6c60, type: 2}
+  - {fileID: 2100000, guid: 8f4c2eb162d477e42a22e25930145e9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5300,42 +5299,6 @@ MonoBehaviour:
   poseTransitionDuration: 0.2
   grabPoints:
   - {fileID: 5762607179406207111}
---- !u!59 &2083943632
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5657299677139571253}
-  m_ConnectedBody: {fileID: 962000483}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0.00175}
-  m_Axis: {x: 0, y: 1, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.03845215, y: 0.18877399, z: -0.000000026077032}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 1
-  m_Limits:
-    min: -110
-    max: 110
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &6259206704599004513
 GameObject:
   m_ObjectHideFlags: 0
@@ -5465,9 +5428,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 630d79de76f5a184d9c99784b3eb6c60, type: 2}
-  - {fileID: 2100000, guid: ceed7b5abd2767d4cbd88a87f28e30ee, type: 2}
-  - {fileID: 2100000, guid: 17446bcbb0a30ff4ba0caf18c8054651, type: 2}
+  - {fileID: 2100000, guid: 8f4c2eb162d477e42a22e25930145e9b, type: 2}
+  - {fileID: 2100000, guid: 70d86b15ad7bb3c4d985e46e8cc55339, type: 2}
+  - {fileID: 2100000, guid: 6b84e2e2f07ec3746a92f260ef3bdd62, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5699,6 +5662,7 @@ GameObject:
   - component: {fileID: 7104568922375960093}
   - component: {fileID: 962000483}
   - component: {fileID: 962000487}
+  - component: {fileID: 723690822}
   m_Layer: 0
   m_Name: LanternBody
   m_TagString: Untagged
@@ -5752,6 +5716,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1296078, y: 0.20893621, z: 0.12657987}
   m_Center: {x: 0.038969778, y: 0.05227542, z: -0.00021297485}
+--- !u!59 &723690822
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9027195312517504873}
+  m_ConnectedBody: {fileID: 962000481}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0.04, y: 0.185, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 1
+  m_Limits:
+    min: -50
+    max: 50
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1001 &8802986400600713577
 PrefabInstance:
   m_ObjectHideFlags: 0
