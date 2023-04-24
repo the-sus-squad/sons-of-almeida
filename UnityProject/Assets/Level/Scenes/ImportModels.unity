@@ -5203,46 +5203,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 962000483, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_Mass
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 962000483, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_AngularDrag
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 962000485, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_MovementType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 962000485, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 977066282}
-    - target: {fileID: 962000486, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_Size.z
-      value: 0.00075236603
-      objectReference: {fileID: 0}
-    - target: {fileID: 962000486, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_Center.x
-      value: 4.656635e-12
-      objectReference: {fileID: 0}
-    - target: {fileID: 962000486, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_Center.y
-      value: -0.0000024529559
-      objectReference: {fileID: 0}
-    - target: {fileID: 962000486, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_Center.z
-      value: 0.0024666283
-      objectReference: {fileID: 0}
-    - target: {fileID: 962000487, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_Size.y
-      value: 0.20893621
-      objectReference: {fileID: 0}
-    - target: {fileID: 962000487, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
-      propertyPath: m_Center.y
-      value: 0.05227542
-      objectReference: {fileID: 0}
     - target: {fileID: 4190985364761072996, guid: 5d9772dd8e23cd3468ba42f9148d54bb,
         type: 3}
       propertyPath: m_RootOrder
@@ -5305,12 +5269,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9772dd8e23cd3468ba42f9148d54bb, type: 3}
---- !u!54 &962000483 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 962000483, guid: 5d9772dd8e23cd3468ba42f9148d54bb,
-    type: 3}
-  m_PrefabInstance: {fileID: 962000479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &969765836
 GameObject:
   m_ObjectHideFlags: 0
@@ -12754,48 +12712,6 @@ Transform:
   m_Father: {fileID: 57696226}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2083943628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5657299677139571253, guid: 5d9772dd8e23cd3468ba42f9148d54bb,
-    type: 3}
-  m_PrefabInstance: {fileID: 962000479}
-  m_PrefabAsset: {fileID: 0}
---- !u!59 &2083943632
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083943628}
-  m_ConnectedBody: {fileID: 962000483}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0.00175}
-  m_Axis: {x: 0, y: 1, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 1
-  m_Limits:
-    min: -110
-    max: 110
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &2126879842
 GameObject:
   m_ObjectHideFlags: 0
