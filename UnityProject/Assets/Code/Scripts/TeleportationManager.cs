@@ -83,6 +83,11 @@ public class TeleportationManager : MonoBehaviour
         return false;
     }
 
+    public void OnTeleport()
+    {
+        fadeAnimator.Play("FadeIn");
+    }
+
     public void OnRayEnabled() {
         // TODO: add color fade effect here.
     }
