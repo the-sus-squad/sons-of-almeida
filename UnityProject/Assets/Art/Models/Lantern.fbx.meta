@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ce443c400c0f4f4ba08378168e56f2b
+guid: 1fe540fec0f5836449bcf5f43b90532b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -24,21 +24,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Rust
     second: {fileID: 2100000, guid: 8f4c2eb162d477e42a22e25930145e9b, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: rust_coarse_01_diff_4k
-    second: {fileID: 2800000, guid: ca7211ab3b5708c44a6b8e73ebe6d15d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: rust_coarse_01_nor_gl_4k
-    second: {fileID: 2800000, guid: 337e694b22734fd42a09dfb81bb69536, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: rust_coarse_01_rough_4k
-    second: {fileID: 2800000, guid: 97ab7fc6b0de26b4580d96cf096a33ce, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

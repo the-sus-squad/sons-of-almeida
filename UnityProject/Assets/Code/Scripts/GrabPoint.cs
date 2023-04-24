@@ -50,4 +50,11 @@ public class GrabPoint : MonoBehaviour
             );
         }
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawIcon(transform.position, "Hand.png", false);
+    }
+#endif
 }
