@@ -3015,7 +3015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &746773888
 Transform:
   m_ObjectHideFlags: 0
@@ -5662,11 +5662,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
-  rayInteractor: {fileID: 1185261263}
+  leftRayInteractor: {fileID: 1185261263}
+  rightRayInteractor: {fileID: 746773892}
   fadeImage: {fileID: 900136569}
   fadeAnimator: {fileID: 900136571}
   fade: {fileID: 928940684}
-  rayHoldTime: 1
+  leftRayHoldTime: 1
+  rightRayHoldTime: 1
 --- !u!1 &1010588807
 GameObject:
   m_ObjectHideFlags: 0

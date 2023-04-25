@@ -34,6 +34,9 @@ public class TeleportationManager : MonoBehaviour
         leftHandTriggerAction = actionAsset.FindActionMap("XRI LeftHand Interaction").FindAction("Activate");
         rightHandTriggerAction = actionAsset.FindActionMap("XRI RightHand Interaction").FindAction("Activate");
 
+        leftRayInteractor.selectExited.AddListener(OnTeleport);
+        rightRayInteractor.selectExited.AddListener(OnTeleport);
+
         // TODO maybe try to add a teleport.started function to create fade effect before teleportation had occured?
 
         defaultRayTime = leftRayHoldTime;
@@ -83,7 +86,7 @@ public class TeleportationManager : MonoBehaviour
         return false;
     }
 
-    public void OnTeleport()
+    private void OnTeleport(BaseInteractionEventArgs arg)
     {
         fadeAnimator.Play("FadeIn");
     }
