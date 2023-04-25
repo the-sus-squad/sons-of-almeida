@@ -12,7 +12,7 @@ public class FieldOfView : MonoBehaviour
 
     [Range(0, 360)]
     public float angle;
-    public GameObject player;
+    public GameObject targetObject;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
@@ -34,7 +34,7 @@ public class FieldOfView : MonoBehaviour
         WaitForSeconds wait = new WaitForSeconds(delay);
 
         while (true) {
-            // wtf
+            // Pause until the next frame
             yield return wait;
             Check();
             
@@ -42,10 +42,16 @@ public class FieldOfView : MonoBehaviour
     }
 
     private void Check() {
+
+        void FailCheck() {
+            canSeePlayer = false;
+            OnTargetHidden.Invoke();
+        }
+
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
         if (rangeChecks.Length != 0) {
-            Transform target = rangeChecks[0].transform; // Cursed hardcoded index, however it is because there is just one player
+            Transform target = rangeChecks[0].transform; // Cursed hardcoded index, however it is because there is just one targetObject
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2) {
@@ -56,20 +62,15 @@ public class FieldOfView : MonoBehaviour
                     OnTargetSeen.Invoke();
                 }
                 else {
-                    canSeePlayer = false;
-                    OnTargetHidden.Invoke();
-
+                    FailCheck();
                 }
             }
             else {
-                // Player not here
-                canSeePlayer = false;
-                OnTargetHidden.Invoke();
+                FailCheck();
             }
         }
         else if (canSeePlayer) {
-            canSeePlayer = false;
-            OnTargetHidden.Invoke();
+            FailCheck();
         }
 
     }

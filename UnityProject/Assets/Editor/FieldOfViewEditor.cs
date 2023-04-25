@@ -27,7 +27,7 @@ public class NewBehaviourScript : Editor
 
         if (fov.canSeePlayer) {
             Handles.color = Color.green;
-            Handles.DrawLine(fov.transform.position, fov.player.transform.position);
+            Handles.DrawLine(fov.transform.position, fov.targetObject.transform.position);
         }
 
     }
