@@ -38,6 +38,11 @@ public class EnemyNavigation : MonoBehaviour
 
     public void seeTarget(bool value) {
         seenTarget = value;
+
+        // If lost sight of target, find a new destination.
+        if (!value && RandomPoint(transform.position, searchRadius, out destination)) {
+            agent.SetDestination(destination);
+        }
     }
 
      bool RandomPoint(Vector3 center, float range, out Vector3 result, int nInteractions = 30)
