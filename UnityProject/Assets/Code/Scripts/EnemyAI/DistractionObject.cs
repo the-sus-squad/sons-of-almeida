@@ -9,7 +9,7 @@ public class DistractionObject : MonoBehaviour
 {
 
     public float soundRadius = 5f;
-    public Rigidbody rb;
+    public Rigidbody rigidBody;
     public float velocityTrashold = 0.5f;
 
     public UnityEvent<Vector3> OnSoundEmmitted;
@@ -25,7 +25,7 @@ public class DistractionObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 velocity = rb.velocity;
+        Vector3 velocity = rigidBody.velocity;
         Vector3 difference = GetAbsoluteVal(velocity - previousVelocity);
         if (difference.x > velocityTrashold || difference.y > velocityTrashold || difference.z > velocityTrashold) {
             OnSoundEmmitted.Invoke(transform.position);
