@@ -5297,12 +5297,12 @@ HingeJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9027195312517504873}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 5848268554774684815}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0.04, y: 0.185, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.000015478692, y: -1.4901161e-10, z: 0.0017122591}
   m_UseSpring: 0
   m_Spring:
     spring: 0
