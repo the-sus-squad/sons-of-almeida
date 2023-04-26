@@ -39,12 +39,12 @@ public class GrabHandPose : MonoBehaviour
     {
         XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
 
-        HandData startingHand = arg.interactorObject.transform.GetComponentInChildren<HandData>();
+        HandData startingHand = interactor.transform.GetComponentInChildren<HandData>();
         startingHand.animator.enabled = false;
         PlayGrabSound(startingHand);
 
         GrabPoint grabPoint = GetClosestGrabPoint(startingHand.root.position);
-            
+        
         HandData handPose = grabPoint.leftHandPose;
         if (startingHand.handType == HandData.HandModelType.Right) 
         {
