@@ -89,7 +89,7 @@ public class TeleportationManager : MonoBehaviour
     private void OnTeleport(BaseInteractionEventArgs arg)
     {
         fadeAnimator.Play("FadeIn");
-        GetComponent<AudioSource>().Play();
+        GetComponent<FootstepsSoundManager>().PlayFootsteps(arg.interactableObject.transform);
     }
 
     public void OnRayEnabled() {
