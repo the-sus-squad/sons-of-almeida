@@ -63,4 +63,13 @@ public class EnemyNavigation : MonoBehaviour
         return false;
     }
 
+    public void HearTarget(Vector3 position) {
+        // Check if the target is within the search radius.
+        if (Vector3.Distance(transform.position, position) < searchRadius) {
+            destination = position;
+            agent.SetDestination(destination);
+            seenTarget = false;
+        }
+    }
+
 }
