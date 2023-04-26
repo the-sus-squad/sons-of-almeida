@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 1fe540fec0f5836449bcf5f43b90532b
+guid: e81c174706a9b4e4ab084cb0e7eb5c8b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Black
-    second: {fileID: 2100000, guid: 6b84e2e2f07ec3746a92f260ef3bdd62, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Candle Wax
-    second: {fileID: 2100000, guid: 3352408c42f441243848cbff01ae5c61, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: 70d86b15ad7bb3c4d985e46e8cc55339, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
