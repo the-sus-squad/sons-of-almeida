@@ -11,8 +11,10 @@ public class TeleportationManager : MonoBehaviour
 {
     // VR Teleport
     [SerializeField] private InputActionAsset actionAsset;
-    [SerializeField] private XRRayInteractor rayInteractor;
-    private InputAction _thumbstick;
+    [SerializeField] private XRRayInteractor leftRayInteractor;
+    [SerializeField] private XRRayInteractor rightRayInteractor;
+    private InputAction leftHandTriggerAction;
+    private InputAction rightHandTriggerAction;
 
     // Fade Control
     [SerializeField] private Image fadeImage;
@@ -20,65 +22,76 @@ public class TeleportationManager : MonoBehaviour
     [SerializeField] private GameObject fade;
 
     // Hold to show ray variables
-    [SerializeField] private float rayHoldTime = 1.0f;
+    [SerializeField] private float leftRayHoldTime = 1.0f;
+    [SerializeField] private float rightRayHoldTime = 1.0f;
     private float defaultRayTime;
-    private Boolean isTimeRunning = false;
-
 
     // Start is called before the first frame update
     void Start()
     {
         fade.SetActive(true);
 
-        var hold = actionAsset.FindActionMap("XRI LeftHand Interaction").FindAction("Activate");
-        hold.Enable();
-        hold.performed += OnTriggerPressed;
-        hold.canceled += OnTriggerRelease;
+        leftHandTriggerAction = actionAsset.FindActionMap("XRI LeftHand Interaction").FindAction("Activate");
+        rightHandTriggerAction = actionAsset.FindActionMap("XRI RightHand Interaction").FindAction("Activate");
+
+        leftRayInteractor.selectExited.AddListener(OnTeleport);
+        rightRayInteractor.selectExited.AddListener(OnTeleport);
 
         // TODO maybe try to add a teleport.started function to create fade effect before teleportation had occured?
 
-        defaultRayTime = rayHoldTime;
-        rayInteractor.enabled = false;
-
-
+        defaultRayTime = leftRayHoldTime;
+        leftRayInteractor.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        // Process Ray hold timer
-        if (isTimeRunning) {
-            rayHoldTime -= Time.deltaTime;
+        if (IsTriggerPressed(leftHandTriggerAction))
+        {
+            leftRayHoldTime -= Time.deltaTime;
         }
-        else if (defaultRayTime != rayHoldTime) {
-            rayHoldTime = defaultRayTime;
+        else
+        {
+            leftRayHoldTime = defaultRayTime;
+            leftRayInteractor.enabled = false;
         }
 
-        if (rayHoldTime < 0) { 
-            Debug.Log("Time is 0!");
-            isTimeRunning = false;
-            rayInteractor.enabled = true;
+        if (IsTriggerPressed(rightHandTriggerAction))
+        {
+            rightRayHoldTime -= Time.deltaTime;
+        }
+        else
+        {
+            rightRayHoldTime = defaultRayTime;
+            rightRayInteractor.enabled = false;
+        }
+
+        if (leftRayHoldTime < 0)
+        {
+            leftRayInteractor.enabled = true;
+        }
+        
+        if (rightRayHoldTime < 0)
+        {
+            rightRayInteractor.enabled = true;
         }
     }
 
-    public void OnTeleportRelease() {
-        Debug.Log("Teleport Ended!");
-        rayInteractor.enabled = false;
+    private bool IsTriggerPressed(InputAction triggerAction)
+    {
+        if (triggerAction.ReadValue<float>() > 0.1f)
+        {
+            return true;
+        }
+        return false;
     }
 
-    public void OnTriggerPressed(InputAction.CallbackContext context) {
-        Debug.Log("Trigger pressed!");
-        isTimeRunning = true;
-    }
-
-    public void OnTriggerRelease(InputAction.CallbackContext context) {
-        Debug.Log("Trigger released!");
-        isTimeRunning = false;
+    private void OnTeleport(BaseInteractionEventArgs arg)
+    {
+        fadeAnimator.Play("FadeIn");
     }
 
     public void OnRayEnabled() {
         // TODO: add color fade effect here.
     }
-
 }
