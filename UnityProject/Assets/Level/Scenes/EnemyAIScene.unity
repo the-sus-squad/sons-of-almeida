@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3.97
   angle: 120
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1258726175}
   targetMask:
     serializedVersion: 2
     m_Bits: 1024
