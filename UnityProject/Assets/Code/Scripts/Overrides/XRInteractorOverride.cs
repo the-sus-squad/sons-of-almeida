@@ -5,21 +5,18 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRInteractorOverride : XRRayInteractor {
 
-    protected bool cancelNextTeleport = false;
+    protected bool canTeleport = true;
 
-    public void Update(){
-        if ( true ){
-            cancelNextTeleport = true;
-        }
-    }
 
     protected override void OnSelectExiting( SelectExitEventArgs args )
     {
-
-        if ( cancelNextTeleport ){
-            cancelNextTeleport = false;
-            Debug.Log("Canceling teleport");
-            args.isCanceled = true;   // only avail on the exit event
+        if ( !canTeleport ){
+            args.isCanceled = true;
         }
     }
+
+    public void SetTeleport(bool value) {
+        canTeleport = value;
+    }
+
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
 
 public class TeleportationManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class TeleportationManager : MonoBehaviour
     [SerializeField] private InputActionAsset actionAsset;
     [SerializeField] private XRRayInteractor leftRayInteractor;
     [SerializeField] private XRRayInteractor rightRayInteractor;
+    private LineRenderer leftLineRenderer;
+    private LineRenderer rightLineRenderer;
+
     private InputAction leftHandTriggerAction;
     private InputAction rightHandTriggerAction;
 
@@ -26,10 +31,21 @@ public class TeleportationManager : MonoBehaviour
     [SerializeField] private float rightRayHoldTime = 1.0f;
     private float defaultRayTime;
 
+    // Teleportation state
+    private bool teleportEnable = false;
+    public UnityEvent<bool> OnTeleportState;
+    public float teleportCooldown = 5.0f; // in seconds
+    private float teleportCooldownTime;
+
     // Start is called before the first frame update
     void Start()
     {
         fade.SetActive(true);
+        OnTeleportState.Invoke(teleportEnable);
+
+        leftLineRenderer = leftRayInteractor.GetComponent<LineRenderer>();
+        rightLineRenderer = rightRayInteractor.GetComponent<LineRenderer>();
+
 
         leftHandTriggerAction = actionAsset.FindActionMap("XRI LeftHand Interaction").FindAction("Activate");
         rightHandTriggerAction = actionAsset.FindActionMap("XRI RightHand Interaction").FindAction("Activate");
@@ -41,11 +57,15 @@ public class TeleportationManager : MonoBehaviour
 
         defaultRayTime = leftRayHoldTime;
         leftRayInteractor.enabled = false;
+        teleportCooldownTime = teleportCooldown;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        // Filter cooldowns
         if (IsTriggerPressed(leftHandTriggerAction))
         {
             leftRayHoldTime -= Time.deltaTime;
@@ -64,17 +84,35 @@ public class TeleportationManager : MonoBehaviour
         {
             rightRayHoldTime = defaultRayTime;
             rightRayInteractor.enabled = false;
+            EnableTeleport(false);
         }
+
+        if (teleportCooldownTime < teleportCooldown) {
+            teleportCooldownTime += Time.deltaTime;
+        }
+        else if (teleportCooldownTime > teleportCooldown) {
+            teleportCooldownTime = teleportCooldown;
+        }
+
 
         if (leftRayHoldTime < 0)
         {
-            leftRayInteractor.enabled = true;
+            ValidateTeleportCooldown(leftRayInteractor, leftLineRenderer);
         }
         
         if (rightRayHoldTime < 0)
         {
-            rightRayInteractor.enabled = true;
+            ValidateTeleportCooldown(rightRayInteractor, rightLineRenderer);
         }
+    }
+
+    private void ValidateTeleportCooldown(XRRayInteractor rayInteractor, LineRenderer lineRenderer) {
+        Debug.Log("Amogus");
+        Debug.Log(lineRenderer.material.color);
+        lineRenderer.material.color = Color.green;
+        Debug.Log(lineRenderer.material.color);
+        rayInteractor.enabled = true;
+        EnableTeleport(true);
     }
 
     private bool IsTriggerPressed(InputAction triggerAction)
@@ -89,6 +127,13 @@ public class TeleportationManager : MonoBehaviour
     private void OnTeleport(BaseInteractionEventArgs arg)
     {
         fadeAnimator.Play("FadeIn");
+    }
+
+    private void EnableTeleport(bool val) {
+        if (val != teleportEnable) {
+            teleportEnable = val;
+            OnTeleportState.Invoke(teleportEnable);
+        }
     }
 
     public void OnRayEnabled() {
