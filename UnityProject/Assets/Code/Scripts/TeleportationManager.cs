@@ -108,7 +108,7 @@ public class TeleportationManager : MonoBehaviour
 
         if (leftRayHoldTime < 0)
         {
-            // ValidateTeleportCooldown(leftRayInteractor, leftLineRenderer);
+            ValidateTeleportCooldown(leftRayInteractor, leftLineVisual, leftLineRenderer);
         }
         
         if (rightRayHoldTime < 0)
@@ -135,7 +135,6 @@ public class TeleportationManager : MonoBehaviour
             EnableTeleport(true);
             // Calculate teleport distance based on linerenderer point
             teleportDistance = Vector3.Distance(lineRenderer.GetPosition(0), lineRenderer.GetPosition(1));
-            Debug.Log("Teleport distance: " + teleportDistance);
         }
         else {
             EnableTeleport(false);
