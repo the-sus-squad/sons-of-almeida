@@ -93,5 +93,6 @@ public class TeleportationManager : MonoBehaviour
 
     public void OnRayEnabled() {
         // TODO: add color fade effect here.
+        Debug.Log("Testus");
     }
 }
