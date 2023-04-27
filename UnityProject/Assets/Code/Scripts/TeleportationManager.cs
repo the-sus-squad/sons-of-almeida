@@ -1,3 +1,4 @@
+using System.Numerics;
 using System;
 using System.Net.Mime;
 using System.Collections;
@@ -7,6 +8,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
 using UnityEngine.Events;
+
+using Vector3 = UnityEngine.Vector3;
 
 
 public class TeleportationManager : MonoBehaviour
@@ -36,9 +39,12 @@ public class TeleportationManager : MonoBehaviour
 
     // Teleportation state
     private bool teleportEnable = false;
+    public float teleportCooldownWeight = 5.0f;
+    private float teleportCooldown = 5.0f; // in seconds
+    private float teleportCooldownTime = 0.0f;
+    private float teleportDistance;
     public UnityEvent<bool> OnTeleportState;
-    public float teleportCooldown = 100.0f; // in seconds
-    private float teleportCooldownTime;
+
 
     // Start is called before the first frame update
     void Start()
@@ -107,18 +113,15 @@ public class TeleportationManager : MonoBehaviour
         
         if (rightRayHoldTime < 0)
         {
-            ValidateTeleportCooldown(rightRayInteractor, rightLineVisual);
+            ValidateTeleportCooldown(rightRayInteractor, rightLineVisual, rightLineRenderer);
         }
     }
 
-    private void ValidateTeleportCooldown(XRRayInteractor rayInteractor, XRInteractorLineVisual lineVisual) {
+    private void ValidateTeleportCooldown(XRRayInteractor rayInteractor, XRInteractorLineVisual lineVisual, LineRenderer lineRenderer) {
 
         var cooldownCalc = teleportCooldownTime / teleportCooldown;
 
         // Based on teleportCooldownTime, change the transparency color of the lineVisual
-        // The gradient should be gray to white, where white is 100% cooldown and gray is 0% cooldown
-
-        // create a color that in 0% is gray and 100% is green
         Color lineColor = Color.Lerp(Color.gray, Color.green, cooldownCalc);
 
         lineVisual.validColorGradient.SetKeys(
@@ -130,10 +133,15 @@ public class TeleportationManager : MonoBehaviour
 
         if (cooldownCalc >= 1.0f) {
             EnableTeleport(true);
+            // Calculate teleport distance based on linerenderer point
+            teleportDistance = Vector3.Distance(lineRenderer.GetPosition(0), lineRenderer.GetPosition(1));
+            Debug.Log("Teleport distance: " + teleportDistance);
         }
         else {
             EnableTeleport(false);
         }
+
+        
     }
 
     private bool IsTriggerPressed(InputAction triggerAction)
@@ -150,6 +158,7 @@ public class TeleportationManager : MonoBehaviour
         if (teleportCooldownTime < teleportCooldown) return;
         fadeAnimator.Play("FadeIn");
         teleportCooldownTime = 0.0f;
+        teleportCooldown = teleportDistance * teleportCooldownWeight;
     }
 
     private void EnableTeleport(bool val) {
@@ -159,8 +168,4 @@ public class TeleportationManager : MonoBehaviour
         }
     }
 
-    public void OnRayEnabled() {
-        // TODO: add color fade effect here.
-        Debug.Log("Testus");
-    }
 }
