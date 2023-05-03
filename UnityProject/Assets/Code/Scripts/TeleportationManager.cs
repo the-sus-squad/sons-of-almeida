@@ -134,6 +134,7 @@ public class TeleportationManager : MonoBehaviour
         if (cooldownCalc >= 1.0f) {
             EnableTeleport(true);
             // Calculate teleport distance based on linerenderer point
+            if (lineRenderer.positionCount < 2) return;
             teleportDistance = Vector3.Distance(lineRenderer.GetPosition(0), lineRenderer.GetPosition(1));
         }
         else {
