@@ -157,6 +157,7 @@ public class TeleportationManager : MonoBehaviour
     {
         if (teleportCooldownTime < teleportCooldown) return;
         fadeAnimator.Play("FadeIn");
+        GetComponent<FootstepsSoundManager>().PlayFootsteps(arg.interactableObject.transform);
         teleportCooldownTime = 0.0f;
         teleportCooldown = teleportDistance * teleportCooldownWeight;
     }

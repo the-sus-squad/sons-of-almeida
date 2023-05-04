@@ -10,6 +10,7 @@ public class XRInteractorOverride : XRRayInteractor {
 
     protected override void OnSelectExiting( SelectExitEventArgs args )
     {
+        base.OnSelectExiting(args);
         if ( !canTeleport ){
             args.isCanceled = true;
         }
@@ -18,5 +19,4 @@ public class XRInteractorOverride : XRRayInteractor {
     public void SetTeleport(bool value) {
         canTeleport = value;
     }
-
 }

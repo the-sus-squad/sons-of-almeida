@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using System;
-using System.Drawing;
 using UnityEditor;
+using System;
 using Unity.VisualScripting;
 
 /*
@@ -40,11 +39,12 @@ public class GrabHandPose : MonoBehaviour
     {
         XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
 
-        HandData startingHand = arg.interactorObject.transform.GetComponentInChildren<HandData>();
+        HandData startingHand = interactor.transform.GetComponentInChildren<HandData>();
         startingHand.animator.enabled = false;
+        PlayGrabSound(startingHand);
 
         GrabPoint grabPoint = GetClosestGrabPoint(startingHand.root.position);
-            
+        
         HandData handPose = grabPoint.leftHandPose;
         if (startingHand.handType == HandData.HandModelType.Right) 
         {
@@ -123,6 +123,8 @@ public class GrabHandPose : MonoBehaviour
             yield return null;
         }
 
+        // If the hand is dropping an object then activate the animator
+        // but if it is grabbing an object then play the grab sound
         if (isUnsetting)
         {
             handData.animator.enabled = true;
@@ -152,6 +154,13 @@ public class GrabHandPose : MonoBehaviour
         HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
 
         StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
+    }
+
+    private void PlayGrabSound(HandData hand)
+    {
+        AudioSource audioSource = hand.transform.GetComponent<AudioSource>();
+        audioSource.pitch = UnityEngine.Random.Range(0.5f, 1.5f);
+        audioSource.Play();
     }
 
     // Function called by the "Add Grab Button" inspector button

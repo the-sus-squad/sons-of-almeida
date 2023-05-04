@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1fe540fec0f5836449bcf5f43b90532b
+guid: b409f3e8dd29bfe4a861c17bc0a440fa
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -8,22 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Black
-    second: {fileID: 2100000, guid: 6b84e2e2f07ec3746a92f260ef3bdd62, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Candle Wax
-    second: {fileID: 2100000, guid: 3352408c42f441243848cbff01ae5c61, type: 2}
+    second: {fileID: 2100000, guid: 17446bcbb0a30ff4ba0caf18c8054651, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Glass
-    second: {fileID: 2100000, guid: 70d86b15ad7bb3c4d985e46e8cc55339, type: 2}
+    second: {fileID: 2100000, guid: ceed7b5abd2767d4cbd88a87f28e30ee, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rust
-    second: {fileID: 2100000, guid: 8f4c2eb162d477e42a22e25930145e9b, type: 2}
+    second: {fileID: 2100000, guid: 630d79de76f5a184d9c99784b3eb6c60, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
