@@ -163,6 +163,7 @@ public class GrabHandPose : MonoBehaviour
         audioSource.Play();
     }
 
+#if UNITY_EDITOR
     // Function called by the "Add Grab Button" inspector button
     public void AddGrabPoint()
     {
@@ -182,4 +183,5 @@ public class GrabHandPose : MonoBehaviour
             Debug.LogError("GrabPoint prefab could not be loaded at: " + path);
         }
     }
+#endif
 }

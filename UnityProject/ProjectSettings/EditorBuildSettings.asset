@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Level/Scenes/ImportModels.unity
+    guid: e580e97b9a9903641955313ff285ea4c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c21433167a16be54694767b05dee613c,
       type: 2}
