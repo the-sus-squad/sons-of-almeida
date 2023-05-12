@@ -23,6 +23,10 @@ public class GrabHandPose : MonoBehaviour
 
     private Quaternion[] startingFingerRotations;
     private Quaternion[] finalFingerRotations;
+    private Quaternion startingHandRotation;
+    private Quaternion finalHandRotation;
+    private Vector3 startingHandPosition;
+    private Vector3 finalHandPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +36,15 @@ public class GrabHandPose : MonoBehaviour
         // Listen to the grab and stop grabbing events
         grabInteractable.selectEntered.AddListener(SetupPose);
         grabInteractable.selectExited.AddListener(UnsetPose);
+
+        grabInteractable.hoverExited.AddListener(ReleaseObject);
     }
 
     // Called when an interactor starts grabbing the object
     private void SetupPose(BaseInteractionEventArgs arg) 
     {
         XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
-
+        
         HandData startingHand = interactor.transform.GetComponentInChildren<HandData>();
         startingHand.animator.enabled = false;
         PlayGrabSound(startingHand);
@@ -161,6 +167,23 @@ public class GrabHandPose : MonoBehaviour
         AudioSource audioSource = hand.transform.GetComponent<AudioSource>();
         audioSource.pitch = UnityEngine.Random.Range(0.5f, 1.5f);
         audioSource.Play();
+    }
+
+    private void ReleaseObject(HoverExitEventArgs arg)
+    {
+        XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
+
+        if (interactor.hasSelection)
+        {
+            StartCoroutine(ReleaseObjectRoutine(interactor));
+        }
+    }
+
+    private IEnumerator ReleaseObjectRoutine(XRDirectInteractor interactor)
+    {
+        interactor.allowSelect = false;
+        yield return new WaitForSeconds(0.2f);
+        interactor.allowSelect = true;
     }
 
 #if UNITY_EDITOR
