@@ -3046,7 +3046,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!59 &423959040
 HingeJoint:
@@ -3096,6 +3096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99447ec189e87f043ad36bcf9df10b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorHandle: {fileID: 1950996083}
 --- !u!1 &426630415
 GameObject:
   m_ObjectHideFlags: 0
@@ -11193,7 +11194,7 @@ HingeJoint:
   m_UseLimits: 1
   m_Limits:
     min: 0
-    max: 41.15543
+    max: 45
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
