@@ -3096,7 +3096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99447ec189e87f043ad36bcf9df10b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorHandle: {fileID: 1950996083}
+  doorHandle: {fileID: 1950996080}
 --- !u!1 &426630415
 GameObject:
   m_ObjectHideFlags: 0
