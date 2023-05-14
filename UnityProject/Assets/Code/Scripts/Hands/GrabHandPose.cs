@@ -159,7 +159,8 @@ public class GrabHandPose : MonoBehaviour
     private void UnsetPose(BaseInteractionEventArgs arg) {
         HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
 
-        StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
     }
 
     private void PlayGrabSound(HandData hand)
