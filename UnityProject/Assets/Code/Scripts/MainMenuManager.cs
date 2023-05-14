@@ -21,22 +21,44 @@ public class MainMenuManager : MonoBehaviour
     {
         if (door.angle > doorExitAngle)
         {
-            StartCoroutine(ExitGame());
+            StartCoroutine(PlayFadeOut());
+            ExitGame();
         }
+
+        // Check for continue game stuff
+        // StartCoroutine(PlayFadeOut());
+        // ContinueGame();
+
+        // Check for new game stuff
+        // StartCoroutine(PlayFadeOut());
+        // NewGame();
     }
 
-    private IEnumerator ExitGame()
+    private IEnumerator PlayFadeOut()
     {
         fadeOut.SetActive(true);
         fadeOutAnimator.Play("FadeOut");
 
         yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+    }
 
-        // the functions for exiting editor play mode and quitting a game build are different
+    private void ExitGame()
+    {
+        // The functions for exiting editor play mode and quitting a game build are different
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+    }
+
+    private void ContinueGame()
+    {
+        // load game scene
+    }
+
+    private void NewGame()
+    {
+        // load game scene
     }
 }
