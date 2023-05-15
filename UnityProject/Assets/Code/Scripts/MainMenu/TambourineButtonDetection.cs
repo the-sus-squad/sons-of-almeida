@@ -12,7 +12,7 @@ public class TambourineButtonDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Right Hand Tambourine Collider")
+        if (other.name == "Right Hand Tambourine Collider" || other.name == "Left Hand Tambourine Collider")
         {
             if (buttonType == ButtonType.Plus)
             {
