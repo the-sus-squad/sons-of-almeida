@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -52,13 +54,23 @@ public class MainMenuManager : MonoBehaviour
 #endif
     }
 
-    private void ContinueGame()
+    public void ContinueGame()
     {
-        // load game scene
+        SceneManager.LoadScene("ImportModels");
     }
 
-    private void NewGame()
+    public void NewGame()
     {
-        // load game scene
+        SceneManager.LoadScene("ImportModels");
+    }
+
+    public void HoverEnteredButton(HoverEnterEventArgs args)
+    {
+        //Debug.Log("HoverEnteredButton");
+    }
+
+    public void HoverExitedButton(HoverExitEventArgs args)
+    {
+        //Debug.Log("HoverExitedButton");
     }
 }
