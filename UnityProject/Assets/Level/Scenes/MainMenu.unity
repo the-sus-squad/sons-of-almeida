@@ -4489,6 +4489,7 @@ GameObject:
   - component: {fileID: 610740029}
   - component: {fileID: 610740028}
   - component: {fileID: 610740027}
+  - component: {fileID: 610740030}
   m_Layer: 0
   m_Name: VolumeDisplay
   m_TagString: Untagged
@@ -4579,6 +4580,29 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &610740030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610740025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baae1fcc4be1f8c46934e1402967ed02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeBars:
+  - {fileID: 1881086254}
+  - {fileID: 1468658002}
+  - {fileID: 261727103}
+  - {fileID: 319357551}
+  - {fileID: 746235268}
+  - {fileID: 1297265477}
+  - {fileID: 712433502}
+  - {fileID: 1522314778}
+  - {fileID: 3948221}
+  - {fileID: 1104462575}
 --- !u!1 &619075493
 GameObject:
   m_ObjectHideFlags: 0
@@ -8394,6 +8418,18 @@ MonoBehaviour:
       - m_Target: {fileID: 226175684}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: IncreaseSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 610740030}
+        m_TargetAssemblyTypeName: TambourineVolumeDisplay, Assembly-CSharp
+        m_MethodName: AddSoundBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12928,6 +12964,18 @@ MonoBehaviour:
       - m_Target: {fileID: 226175684}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: DecreaseSfxVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 610740030}
+        m_TargetAssemblyTypeName: TambourineVolumeDisplay, Assembly-CSharp
+        m_MethodName: RemoveSoundBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
