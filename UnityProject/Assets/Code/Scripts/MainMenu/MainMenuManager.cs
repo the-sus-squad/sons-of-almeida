@@ -81,4 +81,14 @@ public class MainMenuManager : MonoBehaviour
     {
         //Debug.Log("HoverExitedButton");
     }
+
+    public void IncreaseSFXVolume()
+    {
+        Debug.Log("plus");
+    }
+
+    public void DecreaseSfxVolume()
+    {
+        Debug.Log("minus");
+    }
 }
