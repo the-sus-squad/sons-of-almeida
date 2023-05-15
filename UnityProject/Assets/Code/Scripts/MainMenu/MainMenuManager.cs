@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject fadeOut;
+
+    [SerializeField] private AudioMixerGroup musicMixerGroup;
+    [SerializeField] private AudioMixerGroup soundEffectsMixerGroup;
 
     [SerializeField] private HingeJoint door;
     [SerializeField] private float doorExitAngle = 10.0f;
@@ -74,11 +78,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void IncreaseSFXVolume()
     {
+        //soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", Mathf.Log10());
         Debug.Log("plus");
     }
 
     public void DecreaseSfxVolume()
     {
+        //soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", Mathf.Log10());
         Debug.Log("minus");
     }
 }
