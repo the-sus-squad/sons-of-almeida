@@ -72,16 +72,6 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("ImportModels");
     }
 
-    public void HoverEnteredButton(HoverEnterEventArgs args)
-    {
-        //Debug.Log("HoverEnteredButton");
-    }
-
-    public void HoverExitedButton(HoverExitEventArgs args)
-    {
-        //Debug.Log("HoverExitedButton");
-    }
-
     public void IncreaseSFXVolume()
     {
         Debug.Log("plus");
