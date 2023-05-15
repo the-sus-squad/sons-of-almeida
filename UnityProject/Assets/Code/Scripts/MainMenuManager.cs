@@ -23,29 +23,17 @@ public class MainMenuManager : MonoBehaviour
     {
         if (door.angle > doorExitAngle)
         {
-            StartCoroutine(PlayFadeOut());
-            ExitGame();
+            StartCoroutine(ExitGameRoutine());
         }
-
-        // Check for continue game stuff
-        // StartCoroutine(PlayFadeOut());
-        // ContinueGame();
-
-        // Check for new game stuff
-        // StartCoroutine(PlayFadeOut());
-        // NewGame();
     }
 
-    private IEnumerator PlayFadeOut()
+    private IEnumerator ExitGameRoutine()
     {
         fadeOut.SetActive(true);
         fadeOutAnimator.Play("FadeOut");
 
         yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-    }
 
-    private void ExitGame()
-    {
         // The functions for exiting editor play mode and quitting a game build are different
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -54,13 +42,33 @@ public class MainMenuManager : MonoBehaviour
 #endif
     }
 
-    public void ContinueGame()
+    public void ContinueGamePressed()
     {
+        StartCoroutine(ContinueGameRoutine());
+    }
+
+    private IEnumerator ContinueGameRoutine()
+    {
+        fadeOut.SetActive(true);
+        fadeOutAnimator.Play("FadeOut");
+
+        yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+    
         SceneManager.LoadScene("ImportModels");
     }
 
-    public void NewGame()
+    public void NewGamePressed()
     {
+        StartCoroutine(NewGameRoutine());
+    }
+
+    private IEnumerator NewGameRoutine()
+    {
+        fadeOut.SetActive(true);
+        fadeOutAnimator.Play("FadeOut");
+
+        yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
         SceneManager.LoadScene("ImportModels");
     }
 
