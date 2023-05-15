@@ -198,6 +198,11 @@ public class GrabHandPose : MonoBehaviour
         {
             UnityEngine.Object clone = PrefabUtility.InstantiatePrefab(grabPoint, transform);
             Undo.RegisterCreatedObjectUndo(clone, "Instantiated GrabPoint");
+            clone.GetComponent<Transform>().localScale = new Vector3(
+                1.0f / transform.localScale.x, 
+                1.0f / transform.localScale.y, 
+                1.0f / transform.localScale.z
+            );
 
             Undo.RecordObject(this, "Add GrabPoint to the list of GrabPoints");
             grabPoints.Add(clone.GetComponent<GrabPoint>());
