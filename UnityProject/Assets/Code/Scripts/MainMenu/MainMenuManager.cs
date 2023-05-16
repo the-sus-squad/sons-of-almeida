@@ -17,6 +17,10 @@ public class MainMenuManager : MonoBehaviour
 
     private Animator fadeOutAnimator;
 
+    private int maxSFXVolume = 10;
+    private int minSFXVolume = 0;
+    private int currentSFXVolume = 10;
+
     void Start()
     {
         fadeOutAnimator = fadeOut.GetComponent<Animator>();
@@ -78,13 +82,25 @@ public class MainMenuManager : MonoBehaviour
 
     public void IncreaseSFXVolume()
     {
-        //soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", Mathf.Log10());
-        Debug.Log("plus");
+        if (currentSFXVolume < maxSFXVolume)
+        {
+            currentSFXVolume++;
+        }
+        soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", 20.0f * Mathf.Log10(currentSFXVolume / 10.0f));
     }
 
     public void DecreaseSfxVolume()
     {
-        //soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", Mathf.Log10());
-        Debug.Log("minus");
+        if (currentSFXVolume > minSFXVolume)
+        {
+            currentSFXVolume--;
+        }
+
+        float dbVolume = 20.0f * Mathf.Log10(currentSFXVolume / 10.0f);
+        if (currentSFXVolume == 0)  // the value can't be exactly zero couse the decibels will wrap around... yeah idk
+        {
+            dbVolume = 20.0f * Mathf.Log10(0.0001f / 10.0f);
+        }
+        soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", dbVolume);
     }
 }
