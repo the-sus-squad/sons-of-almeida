@@ -4269,7 +4269,7 @@ GameObject:
   - component: {fileID: 589700910}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: ReverbFootsteps
+  m_TagString: WoodFootsteps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7529,6 +7529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   concreteFootsteps: {fileID: 8300000, guid: 03b8c9d79db4dab49ac057dbfba866c8, type: 3}
   reverbFootsteps: {fileID: 8300000, guid: 9499aef48b4c1b544a07aa4d95b3b420, type: 3}
+  woodFootsteps: {fileID: 8300000, guid: 2498a924d0ac86448bc1af5e23141419, type: 3}
 --- !u!1 &991710956
 GameObject:
   m_ObjectHideFlags: 0
