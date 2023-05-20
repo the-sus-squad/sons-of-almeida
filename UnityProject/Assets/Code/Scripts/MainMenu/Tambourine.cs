@@ -6,7 +6,7 @@ public class Tambourine : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Right Hand Tambourine Collider" || other.name == "Left Hand Tambourine Collider")
+        if (other.gameObject.layer == LayerMask.NameToLayer("UI Direct Interactor"))
         {
             GetComponent<AudioSource>().Play();
         }
