@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ReverbFootsteps
   - ConcreteFootsteps
+  - Collectable_1
   layers:
   - Default
   - TransparentFX
