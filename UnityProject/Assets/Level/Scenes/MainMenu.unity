@@ -1707,57 +1707,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 220385998}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &226175682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 226175683}
-  - component: {fileID: 226175684}
-  m_Layer: 0
-  m_Name: MainMenuManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &226175683
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226175682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &226175684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226175682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf9f89c4d2b99341ae751e5a5662b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeOut: {fileID: 1928834731}
-  musicMixerGroup: {fileID: 8479910327610772547, guid: 4bab2e9eeccc7ba49b707659cba53ea7,
-    type: 2}
-  soundEffectsMixerGroup: {fileID: 6092701555885788881, guid: 4bab2e9eeccc7ba49b707659cba53ea7,
-    type: 2}
-  door: {fileID: 423959040}
-  doorExitAngle: 10
 --- !u!1 &239482734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2413,7 @@ GameObject:
   - component: {fileID: 360306904}
   - component: {fileID: 360306907}
   - component: {fileID: 360306908}
+  - component: {fileID: 360306909}
   m_Layer: 11
   m_Name: NewGame
   m_TagString: Untagged
@@ -2561,7 +2511,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 226175684}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: NewGamePressed
         m_Mode: 1
@@ -2670,6 +2620,19 @@ MonoBehaviour:
   poseTransitionDuration: 0.2
   grabPoints:
   - {fileID: 689356842}
+--- !u!114 &360306909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360306902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae1daf102f858743b9b674c162aa262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOut: {fileID: 1928834731}
 --- !u!1 &369249622
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,6 +3636,7 @@ GameObject:
   - component: {fileID: 423959039}
   - component: {fileID: 423959040}
   - component: {fileID: 423959041}
+  - component: {fileID: 423959042}
   m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
@@ -3763,6 +3727,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorHandle: {fileID: 1950996080}
+--- !u!114 &423959042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423959036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a412c5f69ce6c44a8b36f090b40327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOut: {fileID: 1928834731}
+  doorExitAngle: 10
 --- !u!1 &426630415
 GameObject:
   m_ObjectHideFlags: 0
@@ -11633,15 +11611,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990363608}
-  m_LocalRotation: {x: -0, y: -0.7070973, z: -0, w: 0.7071163}
-  m_LocalPosition: {x: -3.566, y: 1.1361, z: 0.808}
+  m_LocalRotation: {x: -0, y: 0.7070634, z: -0, w: 0.7071503}
+  m_LocalPosition: {x: 4.153, y: 1.1361, z: 0.003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2126879843}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: -809.998, z: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: -630.007, z: 0}
 --- !u!114 &990363611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17393,7 +17371,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1723919037
 MonoBehaviour:
@@ -17485,6 +17463,26 @@ Transform:
   m_Father: {fileID: 1521839406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1735814785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4736234851262674504, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
+    type: 3}
+  m_PrefabInstance: {fileID: 4736234851270806434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735814789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735814785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8dced57110ee3408a4b92836f08a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectsMixerGroup: {fileID: 6092701555885788881, guid: 4bab2e9eeccc7ba49b707659cba53ea7,
+    type: 2}
 --- !u!1 &1740426986
 GameObject:
   m_ObjectHideFlags: 0
@@ -18213,6 +18211,7 @@ GameObject:
   - component: {fileID: 1843799193}
   - component: {fileID: 1843799195}
   - component: {fileID: 1843799196}
+  - component: {fileID: 1843799197}
   m_Layer: 11
   m_Name: ContinueGame
   m_TagString: Untagged
@@ -18309,19 +18308,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 226175684}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: ContinueGamePressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -18419,6 +18406,19 @@ MonoBehaviour:
   poseTransitionDuration: 0.2
   grabPoints:
   - {fileID: 946679161}
+--- !u!114 &1843799197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843799187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeceaa28452c724ea1b13f5731521bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOut: {fileID: 1928834731}
 --- !u!1 &1854071564
 GameObject:
   m_ObjectHideFlags: 0
@@ -20794,7 +20794,7 @@ Transform:
   - {fileID: 750466188}
   - {fileID: 2106131771}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010015501
 GameObject:
@@ -22589,7 +22589,7 @@ RectTransform:
   m_Children:
   - {fileID: 1928834732}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -22807,7 +22807,7 @@ PrefabInstance:
         type: 3}
       propertyPath: HitPlusButton.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 226175684}
+      objectReference: {fileID: 1735814789}
     - target: {fileID: 4736234850231863726, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
       propertyPath: HitPlusButton.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -22821,7 +22821,7 @@ PrefabInstance:
     - target: {fileID: 4736234850231863726, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
       propertyPath: HitPlusButton.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MainMenuManager, Assembly-CSharp
+      value: SFXVolume, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4736234850231863726, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
@@ -22842,7 +22842,7 @@ PrefabInstance:
         type: 3}
       propertyPath: HitMinusButton.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 226175684}
+      objectReference: {fileID: 1735814789}
     - target: {fileID: 4736234850465633094, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
       propertyPath: HitMinusButton.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -22856,7 +22856,7 @@ PrefabInstance:
     - target: {fileID: 4736234850465633094, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
       propertyPath: HitMinusButton.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MainMenuManager, Assembly-CSharp
+      value: SFXVolume, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4736234850465633094, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
@@ -22866,7 +22866,7 @@ PrefabInstance:
     - target: {fileID: 4736234851262674504, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
       propertyPath: m_Name
-      value: VolumeBarsDisplay
+      value: VolumeBarsUI
       objectReference: {fileID: 0}
     - target: {fileID: 4736234851262674509, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
         type: 3}
