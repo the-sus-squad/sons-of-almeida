@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ReverbFootsteps
   - ConcreteFootsteps
+  - WoodFootsteps
+  - ScalableUIElement
   layers:
   - Default
   - TransparentFX
@@ -18,9 +20,9 @@ TagManager:
   - Player Body
   - Obstruction
   - Player
-  - 
-  - 
-  - 
+  - Interactable
+  - UI Direct Interactor
+  - UI Direct Interactable
   - 
   - 
   - 
