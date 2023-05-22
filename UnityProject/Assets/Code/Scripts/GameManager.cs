@@ -6,12 +6,19 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private SFXVolume sfxVolume;
     [SerializeField] private UISize uiSize;
-
+    
     private void Start()
     {
-        SettingsData data = SaveSystem.LoadSettings();
-        //sfxVolume.UpdateVolume(data.sfxVolume);
-        //uiSize.UpdateSize(data.uiSize);
+        SettingsData settingsData = SaveSystem.LoadSettings();
+        if (settingsData != null)
+        {
+            sfxVolume.LoadVolume(settingsData.sfxVolume);
+            uiSize.LoadSize(settingsData.uiSize);
+        }
+        else
+        {
+            SaveSettings();
+        }
     }
 
     public void SaveSettings()

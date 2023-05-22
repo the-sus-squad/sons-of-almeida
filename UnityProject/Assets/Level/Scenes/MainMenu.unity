@@ -2072,7 +2072,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxVolume: {fileID: 1735814789}
+  sfxVolumeBarsDisplay: {fileID: 4736234851270806435}
   uiSize: {fileID: 1934151617}
+  uiSizeBarsDisplay: {fileID: 999816551}
 --- !u!1 &247458766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,8 +2681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOut: {fileID: 1928834731}
-  sfxVolume: {fileID: 1735814789}
-  uiSize: {fileID: 1934151617}
 --- !u!1 &369249622
 GameObject:
   m_ObjectHideFlags: 0
@@ -12347,6 +12347,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 999816549}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &999816551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4736234851304852581, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
+    type: 3}
+  m_PrefabInstance: {fileID: 999816549}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baae1fcc4be1f8c46934e1402967ed02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1010588807
 GameObject:
   m_ObjectHideFlags: 0
@@ -17601,6 +17613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectsMixerGroup: {fileID: 6092701555885788881, guid: 4bab2e9eeccc7ba49b707659cba53ea7,
     type: 2}
+  barsDisplay: {fileID: 4736234851270806435}
   currentSFXVolume: 10
 --- !u!1 &1740426986
 GameObject:
@@ -18538,8 +18551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOut: {fileID: 1928834731}
-  sfxVolume: {fileID: 1735814789}
-  uiSize: {fileID: 1934151617}
 --- !u!1 &1854071564
 GameObject:
   m_ObjectHideFlags: 0
@@ -20398,6 +20409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minScale: 0.5
   maxScale: 2
+  barsDisplay: {fileID: 999816551}
   currentUISize: 5
 --- !u!1 &1944121019
 GameObject:
@@ -23112,3 +23124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41, type: 3}
+--- !u!114 &4736234851270806435 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4736234851304852581, guid: 9be289d7bb9d4ba49af8cf3cc9fe5a41,
+    type: 3}
+  m_PrefabInstance: {fileID: 4736234851270806434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baae1fcc4be1f8c46934e1402967ed02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
