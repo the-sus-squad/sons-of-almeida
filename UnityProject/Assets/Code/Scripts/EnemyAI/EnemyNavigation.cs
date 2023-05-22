@@ -15,6 +15,7 @@ public class EnemyNavigation : MonoBehaviour
 
     public NavMeshAgent agent;
     public GameObject target;
+    public GameObject targetCollider;
     
     // When searching, the maximum distance in the mesh to move.
     [Range(0, 4)]
@@ -98,16 +99,14 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider t) {
-        // Debug.Log("Triggered collision with " + t.gameObject.name);
-        if (t.gameObject == target) {
+        if (t.gameObject == targetCollider) {
             CapturePlayer();
         }
     }
 
     private void CapturePlayer() {
         if (isCapturingPlayer) return;
-        
-        Debug.Log("Captured player");
+
         gameOverSound.Play();
         isCapturingPlayer = true;
 
@@ -116,10 +115,8 @@ public class EnemyNavigation : MonoBehaviour
 
         // Change destination to targets's front
         if (isOnCamera) {
-            Debug.Log("Is on camera");
         }
         else {
-            Debug.Log("Is not on camera");
             transform.position = targetCamera.transform.position + targetCamera.transform.forward;
         }
 
@@ -134,15 +131,11 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     void GameOver() {
-        Debug.Log("Game over");
         #if UNITY_EDITOR
-         // Application.Quit() does not work in the editor so
-         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
             UnityEditor.EditorApplication.isPlaying = false;
         #else
             Application.Quit();
         #endif
-
     }
 
 }
