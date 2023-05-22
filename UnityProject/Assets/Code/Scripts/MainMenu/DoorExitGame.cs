@@ -11,11 +11,14 @@ public class DoorExitGame : MonoBehaviour
     private Animator fadeOutAnimator;
     private HingeJoint doorHinge;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         fadeOutAnimator = fadeOut.GetComponent<Animator>();
         doorHinge = GetComponent<HingeJoint>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -23,6 +26,7 @@ public class DoorExitGame : MonoBehaviour
     {
         if (doorHinge.angle > doorExitAngle)
         {
+            gameManager.SaveSettings();
             StartCoroutine(ExitGameRoutine());
         }
     }

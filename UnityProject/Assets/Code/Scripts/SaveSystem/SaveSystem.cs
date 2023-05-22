@@ -7,7 +7,7 @@ public static class SaveSystem
     public static void SaveSettings(SFXVolume sfx, UISize ui)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/settings.data";
+        string path = Application.persistentDataPath + "/settings.data"; // on windows the path is %userprofile%\AppData\LocalLow\<companyname>\<productname>
         FileStream stream = new FileStream(path, FileMode.Create);
 
         SettingsData data = new SettingsData(sfx, ui);
