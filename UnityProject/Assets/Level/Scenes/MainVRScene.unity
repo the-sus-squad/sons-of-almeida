@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 106738545}
   - component: {fileID: 106738544}
   - component: {fileID: 106738543}
+  - component: {fileID: 106738548}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -770,6 +771,32 @@ RectTransform:
   m_AnchoredPosition: {x: 1.94, y: 1.0802307}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &106738548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106738542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc20f2e94bf42d542ace9ef906fd265b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openMenuAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Open Menu
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 4b4d474f-c0da-40a2-91ec-290d2a22e795
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8244220527607819532, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  canvas: {fileID: 106738542}
 --- !u!1 &139668978
 GameObject:
   m_ObjectHideFlags: 0
@@ -14053,7 +14080,6 @@ GameObject:
   - component: {fileID: 7144653169597956969}
   - component: {fileID: 3624409916921478907}
   - component: {fileID: 3624409916921478908}
-  - component: {fileID: 7144653169597956970}
   m_Layer: 7
   m_Name: Right Hand Model
   m_TagString: Untagged
@@ -14961,32 +14987,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7144653169597956970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4507281119632999337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc20f2e94bf42d542ace9ef906fd265b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openMenuAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Open Menu
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 4b4d474f-c0da-40a2-91ec-290d2a22e795
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 8244220527607819532, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
-  canvas: {fileID: 106738542}
 --- !u!1001 &7228592964863295772
 PrefabInstance:
   m_ObjectHideFlags: 0
