@@ -9,7 +9,7 @@ public class SFXVolume : MonoBehaviour
 
     private int maxSFXVolume = 10;
     private int minSFXVolume = 0;
-    private int currentSFXVolume = 10;
+    public int currentSFXVolume = 10;
 
     public void IncreaseSFXVolume()
     {

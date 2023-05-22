@@ -9,7 +9,7 @@ public class UISize : MonoBehaviour
 
     private GameObject[] scalableUI;
 
-    private int currentUISize = 5;
+    public int currentUISize = 5;
     private int maxUISize = 10;
     private int minUISize = 0;
 
