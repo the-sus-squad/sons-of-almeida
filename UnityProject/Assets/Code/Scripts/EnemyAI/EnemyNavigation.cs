@@ -1,9 +1,11 @@
+using System.Net.Mime;
 using System.Text.RegularExpressions;
 using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 
@@ -17,18 +19,32 @@ public class EnemyNavigation : MonoBehaviour
     // When searching, the maximum distance in the mesh to move.
     [Range(0, 4)]
     public float searchRadius;
-    public Vector3 destination;
+    private Vector3 destination;
 
     // public UnityEvent OnTargetCaptured;
 
     private bool seenTarget = false;
     private bool isCapturingPlayer = false;
     private bool isOnCamera = false;
+    public Camera targetCamera;
+
+    public float jumpscareTime = 10.0f;
+    private float jumpscareTimer = 0.0f;
+    public AudioSource gameOverSound;
+
+
+
     
     // Update is called once per frame
     void Update()
     {
         if (isCapturingPlayer) {
+            jumpscareTimer += Time.deltaTime;
+            if (jumpscareTimer >= jumpscareTime) {
+                jumpscareTimer = 0.0f;
+                isCapturingPlayer = false;
+                GameOver();
+            }
         }
         else {
             if (seenTarget) {
@@ -82,48 +98,51 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider t) {
-        Debug.Log("Triggered collision with " + t.gameObject.name);
+        // Debug.Log("Triggered collision with " + t.gameObject.name);
         if (t.gameObject == target) {
             CapturePlayer();
         }
     }
 
     private void CapturePlayer() {
+        if (isCapturingPlayer) return;
+        
         Debug.Log("Captured player");
+        gameOverSound.Play();
         isCapturingPlayer = true;
 
         agent.isStopped = true;
         // OnTargetCaptured.Invoke();
+
         // Change destination to targets's front
         if (isOnCamera) {
-            // agent.SetDestination(target.transform.position + target.transform.forward * 2);
             Debug.Log("Is on camera");
         }
         else {
             Debug.Log("Is not on camera");
-            transform.position = target.transform.position + target.transform.forward * 2;
+            transform.position = targetCamera.transform.position + targetCamera.transform.forward;
         }
 
     }
 
     void OnBecameInvisible() {
-        // #if UNITY_EDITOR
-        // if (Camera.current.name == "SceneCamera") 
-        //     return;
-        // #endif
-
-        Debug.Log("Became invisible");
         isOnCamera = false;
     }
 
     void OnBecameVisible() {
-        // #if UNITY_EDITOR
-        // if (Camera.current.name == "SceneCamera") 
-        //     return;
-        // #endif
-
-        Debug.Log("Became visible");
         isOnCamera = true;
+    }
+
+    void GameOver() {
+        Debug.Log("Game over");
+        #if UNITY_EDITOR
+         // Application.Quit() does not work in the editor so
+         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+
     }
 
 }
