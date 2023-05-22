@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +10,7 @@ public class UIManager : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.transform.Find("Location").gameObject.SetActive(true);
                 transform.GetChild(i).gameObject.transform.Find("Unavailable").gameObject.SetActive(false);
+                break;
             }
         }
     }
