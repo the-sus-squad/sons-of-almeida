@@ -1640,7 +1640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 254267414}
   - component: {fileID: 254267415}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: GameOverSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6384,6 +6384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   concreteFootsteps: {fileID: 8300000, guid: 03b8c9d79db4dab49ac057dbfba866c8, type: 3}
   reverbFootsteps: {fileID: 8300000, guid: 9499aef48b4c1b544a07aa4d95b3b420, type: 3}
+  woodFootsteps: {fileID: 0}
 --- !u!1 &1010588807
 GameObject:
   m_ObjectHideFlags: 0
@@ -7035,7 +7036,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131752082}
   - component: {fileID: 1131752083}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: JumpscareCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8968,7 +8969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269639806}
   - component: {fileID: 1269639807}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: SpawnSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10575,7 +10576,7 @@ GameObject:
   - component: {fileID: 1450804259}
   - component: {fileID: 1450804258}
   - component: {fileID: 1450804265}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
