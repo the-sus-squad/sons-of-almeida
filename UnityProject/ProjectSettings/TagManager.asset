@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ReverbFootsteps
   - ConcreteFootsteps
+  - WoodFootsteps
+  - ScalableUIElement
   - Collectable_1
   layers:
   - Default
@@ -19,9 +21,9 @@ TagManager:
   - Player Body
   - Obstruction
   - Player
-  - 
-  - 
-  - 
+  - Interactable
+  - UI Direct Interactor
+  - UI Direct Interactable
   - 
   - 
   - 
