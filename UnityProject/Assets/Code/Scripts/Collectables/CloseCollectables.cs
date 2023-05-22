@@ -10,7 +10,7 @@ public class CloseCollectables : MonoBehaviour
     void Start()
     {
         XRSimpleInteractable grabbable = GetComponent<XRSimpleInteractable>();
-        grabbable.hoverExited.AddListener(pickCollectable);
+        grabbable.hoverExited.AddListener(closeCollectables);
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class CloseCollectables : MonoBehaviour
 
     }
 
-    public void pickCollectable(BaseInteractionEventArgs arg)
+    public void closeCollectables(BaseInteractionEventArgs arg)
     {
         collectableMenu.gameObject.SetActive(false);
         collectableButton.gameObject.SetActive(true);
