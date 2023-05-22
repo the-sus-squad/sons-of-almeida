@@ -8,6 +8,7 @@ TagManager:
   - ConcreteFootsteps
   - WoodFootsteps
   - ScalableUIElement
+  - Collectable_1
   layers:
   - Default
   - TransparentFX
