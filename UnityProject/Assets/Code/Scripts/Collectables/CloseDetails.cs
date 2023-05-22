@@ -6,13 +6,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class CloseDetails : MonoBehaviour
 {
     public GameObject information;
-    public GameObject canvas;
+    public List<GameObject> collectablesList = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         XRSimpleInteractable grabbable = GetComponent<XRSimpleInteractable>();
-        grabbable.hoverExited.AddListener(pickCollectable);
+        grabbable.hoverExited.AddListener(closeDetails);
     }
 
     // Update is called once per frame
@@ -21,9 +21,12 @@ public class CloseDetails : MonoBehaviour
 
     }
 
-    public void pickCollectable(BaseInteractionEventArgs arg)
+    public void closeDetails(BaseInteractionEventArgs arg)
     {
         information.gameObject.SetActive(false);
-        canvas.gameObject.SetActive(true);
+        for (int i = 0; i < collectablesList.Count; i++)
+        {
+            collectablesList[i].gameObject.SetActive(true);
+        }
     }
 }
