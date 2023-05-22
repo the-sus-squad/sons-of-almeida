@@ -23,6 +23,10 @@ public class GrabHandPose : MonoBehaviour
 
     private Quaternion[] startingFingerRotations;
     private Quaternion[] finalFingerRotations;
+    private Quaternion startingHandRotation;
+    private Quaternion finalHandRotation;
+    private Vector3 startingHandPosition;
+    private Vector3 finalHandPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +36,15 @@ public class GrabHandPose : MonoBehaviour
         // Listen to the grab and stop grabbing events
         grabInteractable.selectEntered.AddListener(SetupPose);
         grabInteractable.selectExited.AddListener(UnsetPose);
+
+        grabInteractable.hoverExited.AddListener(ReleaseObject);
     }
 
     // Called when an interactor starts grabbing the object
     private void SetupPose(BaseInteractionEventArgs arg) 
     {
         XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
-
+        
         HandData startingHand = interactor.transform.GetComponentInChildren<HandData>();
         startingHand.animator.enabled = false;
         PlayGrabSound(startingHand);
@@ -75,8 +81,8 @@ public class GrabHandPose : MonoBehaviour
         // of the parent affects the position of the child
         // Ref: https://docs.unity3d.com/ScriptReference/Transform-localPosition.html
         Vector3 posePosition = new Vector3(
-            pose.root.localPosition.x / Math.Abs(pose.root.localScale.x),
-            pose.root.localPosition.y / Math.Abs(pose.root.localScale.y),
+            pose.root.localPosition.x / Math.Abs(pose.root.localScale.y),
+            pose.root.localPosition.y / Math.Abs(pose.root.localScale.x),
             pose.root.localPosition.z / Math.Abs(pose.root.localScale.z)
         );
         // The attach position will be the inverse of the pose position, 
@@ -153,7 +159,8 @@ public class GrabHandPose : MonoBehaviour
     private void UnsetPose(BaseInteractionEventArgs arg) {
         HandData handData = arg.interactorObject.transform.GetComponentInChildren<HandData>();
 
-        StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(RotateFingers(handData, finalFingerRotations, startingFingerRotations, true));
     }
 
     private void PlayGrabSound(HandData hand)
@@ -163,6 +170,24 @@ public class GrabHandPose : MonoBehaviour
         audioSource.Play();
     }
 
+    private void ReleaseObject(HoverExitEventArgs arg)
+    {
+        XRDirectInteractor interactor = arg.interactorObject.transform.GetComponent<XRDirectInteractor>();
+
+        if (interactor.hasSelection)
+        {
+            StartCoroutine(ReleaseObjectRoutine(interactor));
+        }
+    }
+
+    private IEnumerator ReleaseObjectRoutine(XRDirectInteractor interactor)
+    {
+        interactor.allowSelect = false;
+        yield return new WaitForSeconds(0.2f);
+        interactor.allowSelect = true;
+    }
+
+#if UNITY_EDITOR
     // Function called by the "Add Grab Button" inspector button
     public void AddGrabPoint()
     {
@@ -173,6 +198,11 @@ public class GrabHandPose : MonoBehaviour
         {
             UnityEngine.Object clone = PrefabUtility.InstantiatePrefab(grabPoint, transform);
             Undo.RegisterCreatedObjectUndo(clone, "Instantiated GrabPoint");
+            clone.GetComponent<Transform>().localScale = new Vector3(
+                1.0f / transform.localScale.x, 
+                1.0f / transform.localScale.y, 
+                1.0f / transform.localScale.z
+            );
 
             Undo.RecordObject(this, "Add GrabPoint to the list of GrabPoints");
             grabPoints.Add(clone.GetComponent<GrabPoint>());
@@ -182,4 +212,5 @@ public class GrabHandPose : MonoBehaviour
             Debug.LogError("GrabPoint prefab could not be loaded at: " + path);
         }
     }
+#endif
 }

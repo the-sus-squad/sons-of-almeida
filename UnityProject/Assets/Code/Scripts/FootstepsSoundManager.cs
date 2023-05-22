@@ -7,6 +7,7 @@ public class FootstepsSoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClip concreteFootsteps;
     [SerializeField] private AudioClip reverbFootsteps;
+    [SerializeField] private AudioClip woodFootsteps;
 
     private AudioSource audioSource;
 
@@ -25,6 +26,9 @@ public class FootstepsSoundManager : MonoBehaviour
                 break;
             case "ReverbFootsteps":
                 audioSource.clip = reverbFootsteps;
+                break;
+            case "WoodFootsteps":
+                audioSource.clip = woodFootsteps;
                 break;
             default:
                 audioSource.clip = concreteFootsteps;
