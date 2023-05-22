@@ -1,8 +1,11 @@
+using System.Net.Mime;
+using System.Text.RegularExpressions;
 using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 
@@ -12,28 +15,51 @@ public class EnemyNavigation : MonoBehaviour
 
     public NavMeshAgent agent;
     public GameObject target;
+    public GameObject targetCollider;
     
     // When searching, the maximum distance in the mesh to move.
-    [Range(0, 4)]
+    [Range(0, 10)]
     public float searchRadius;
-    public Vector3 destination;
+    private Vector3 destination;
 
+    // public UnityEvent OnTargetCaptured;
 
     private bool seenTarget = false;
+    private bool isCapturingPlayer = false;
+    private bool isOnCamera = false;
+    public Camera targetCamera;
+
+    public float jumpscareTime = 10.0f;
+    private float jumpscareTimer = 0.0f;
+    public AudioSource gameOverSound;
+
+
+
     
     // Update is called once per frame
     void Update()
     {
-        if (seenTarget) {
-            agent.SetDestination(target.transform.position);
-        }
-        else {
-            // If the agent has reached the destination, or if there is no destination, find a new one.
-            if ((destination == Vector3.zero || transform.position.x == destination.x && transform.position.z == destination.z) 
-            && RandomPoint(transform.position, searchRadius, out destination)) {
-                agent.SetDestination(destination);
+        if (isCapturingPlayer) {
+            jumpscareTimer += Time.deltaTime;
+            if (jumpscareTimer >= jumpscareTime) {
+                jumpscareTimer = 0.0f;
+                isCapturingPlayer = false;
+                GameOver();
             }
         }
+        else {
+            if (seenTarget) {
+                agent.SetDestination(target.transform.position);
+            }
+            else {
+                // If the agent has reached the destination, or if there is no destination, find a new one.
+                if ((destination == Vector3.zero || transform.position.x == destination.x && transform.position.z == destination.z) 
+                && RandomPoint(transform.position, searchRadius, out destination)) {
+                    agent.SetDestination(destination);
+                }
+            }
+        }
+        
     }
 
     public void seeTarget(bool value) {
@@ -64,12 +90,53 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     public void HearTarget(Vector3 position) {
+        if (!gameObject.activeSelf) return;
         // Check if the target is within the search radius.
         if (Vector3.Distance(transform.position, position) < searchRadius) {
             destination = position;
             agent.SetDestination(destination);
             seenTarget = false;
         }
+    }
+
+    private void OnTriggerEnter(Collider t) {
+        if (t.gameObject == targetCollider) {
+            CapturePlayer();
+        }
+    }
+
+    private void CapturePlayer() {
+        if (isCapturingPlayer) return;
+
+        gameOverSound.Play();
+        isCapturingPlayer = true;
+
+        agent.isStopped = true;
+        // OnTargetCaptured.Invoke();
+
+        // Change destination to targets's front
+        if (isOnCamera) {
+        }
+        else {
+            transform.position = targetCamera.transform.position + targetCamera.transform.forward;
+        }
+
+    }
+
+    void OnBecameInvisible() {
+        isOnCamera = false;
+    }
+
+    void OnBecameVisible() {
+        isOnCamera = true;
+    }
+
+    void GameOver() {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
 }
