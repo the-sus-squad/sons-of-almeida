@@ -18,7 +18,7 @@ public class EnemyNavigation : MonoBehaviour
     public GameObject targetCollider;
     
     // When searching, the maximum distance in the mesh to move.
-    [Range(0, 4)]
+    [Range(0, 10)]
     public float searchRadius;
     private Vector3 destination;
 
@@ -90,6 +90,7 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     public void HearTarget(Vector3 position) {
+        if (!gameObject.activeSelf) return;
         // Check if the target is within the search radius.
         if (Vector3.Distance(transform.position, position) < searchRadius) {
             destination = position;
