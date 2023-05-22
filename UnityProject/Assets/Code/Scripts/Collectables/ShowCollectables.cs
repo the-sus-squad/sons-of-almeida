@@ -9,7 +9,7 @@ public class ShowCollectables : MonoBehaviour
     void Start()
     {
         XRSimpleInteractable grabbable = GetComponent<XRSimpleInteractable>();
-        grabbable.hoverExited.AddListener(pickCollectable);
+        grabbable.hoverExited.AddListener(showCollectables);
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class ShowCollectables : MonoBehaviour
 
     }
 
-    public void pickCollectable(BaseInteractionEventArgs arg)
+    public void showCollectables(BaseInteractionEventArgs arg)
     {
         collectableMenu.gameObject.SetActive(true);
         gameObject.SetActive(false);

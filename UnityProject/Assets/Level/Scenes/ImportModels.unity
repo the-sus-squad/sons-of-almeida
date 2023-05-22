@@ -6005,7 +6005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   information: {fileID: 503978717}
-  canvas: {fileID: 2056626684}
+  collectablesList: []
 --- !u!114 &844082563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10663,7 +10663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   information: {fileID: 503978717}
-  canvas: {fileID: 2056626684}
+  collectablesList: []
 --- !u!114 &1240224797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17003,6 +17003,7 @@ GameObject:
   - component: {fileID: 2056626687}
   - component: {fileID: 2056626686}
   - component: {fileID: 2056626685}
+  - component: {fileID: 2056626690}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: ScalableUIElement
@@ -17115,6 +17116,32 @@ RectTransform:
   m_AnchoredPosition: {x: 1.94, y: 1.0802307}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2056626690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056626684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc20f2e94bf42d542ace9ef906fd265b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openMenuAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Open Menu
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 4b4d474f-c0da-40a2-91ec-290d2a22e795
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8244220527607819532, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  canvas: {fileID: 2056626684}
 --- !u!1 &2126879842
 GameObject:
   m_ObjectHideFlags: 0
