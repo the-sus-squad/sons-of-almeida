@@ -10,19 +10,17 @@ public class ContinueGame : MonoBehaviour
     [SerializeField] private GameObject fadeOut;
 
     private Animator fadeOutAnimator;
-    private GameManager gameManager;
 
     void Start()
     {
         fadeOutAnimator = fadeOut.GetComponent<Animator>();
 
         GetComponent<XRGrabInteractable>().selectEntered.AddListener(ContinueGamePressed);
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void ContinueGamePressed(SelectEnterEventArgs args)
     {
-        gameManager.SaveSettings();
+        SaveSystem.SaveSettings(SettingsManager.Instance.sfxVolume, SettingsManager.Instance.uiSize);
         StartCoroutine(ContinueGameRoutine());
     }
 

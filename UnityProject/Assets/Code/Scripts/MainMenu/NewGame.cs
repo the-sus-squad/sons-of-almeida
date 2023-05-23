@@ -9,19 +9,17 @@ public class NewGame : MonoBehaviour
     [SerializeField] private GameObject fadeOut;
 
     private Animator fadeOutAnimator;
-    private GameManager gameManager;
 
     void Start()
     {
         fadeOutAnimator = fadeOut.GetComponent<Animator>();
 
         GetComponent<XRGrabInteractable>().selectEntered.AddListener(NewGamePressed);
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void NewGamePressed(SelectEnterEventArgs args)
     {
-        gameManager.SaveSettings();
+        SaveSystem.SaveSettings(SettingsManager.Instance.sfxVolume, SettingsManager.Instance.uiSize);
         StartCoroutine(NewGameRoutine());
     }
 

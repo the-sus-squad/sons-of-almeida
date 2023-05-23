@@ -11,13 +11,18 @@ public class SFXVolume : MonoBehaviour
 
     private int maxSFXVolume = 10;
     private int minSFXVolume = 0;
-    public int currentSFXVolume = 10;
+
+    private void Start()
+    {
+        barsDisplay.SetBars(SettingsManager.Instance.sfxVolume);
+        UpdateSFXVolume();
+    }
 
     public void IncreaseSFXVolume()
     {
-        if (currentSFXVolume < maxSFXVolume)
+        if (SettingsManager.Instance.sfxVolume < maxSFXVolume)
         {
-            currentSFXVolume++;
+            SettingsManager.Instance.sfxVolume++;
         }
 
         UpdateSFXVolume();
@@ -25,9 +30,9 @@ public class SFXVolume : MonoBehaviour
 
     public void DecreaseSfxVolume()
     {
-        if (currentSFXVolume > minSFXVolume)
+        if (SettingsManager.Instance.sfxVolume > minSFXVolume)
         {
-            currentSFXVolume--;
+            SettingsManager.Instance.sfxVolume--;
         }
 
         UpdateSFXVolume();
@@ -35,18 +40,11 @@ public class SFXVolume : MonoBehaviour
 
     private void UpdateSFXVolume()
     {
-        float dbVolume = 20.0f * Mathf.Log10(currentSFXVolume / 10.0f);
-        if (currentSFXVolume == 0)  // the value can't be exactly zero couse the decibels will wrap around... yeah idk
+        float dbVolume = 20.0f * Mathf.Log10(SettingsManager.Instance.sfxVolume / 10.0f);
+        if (SettingsManager.Instance.sfxVolume == 0)  // the value can't be exactly zero couse the decibels will wrap around... yeah idk
         {
             dbVolume = 20.0f * Mathf.Log10(0.0001f / 10.0f);
         }
         soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", dbVolume);
-    }
-
-    public void LoadVolume(int volume)
-    {
-        currentSFXVolume = volume;
-        barsDisplay.SetBars(currentSFXVolume);
-        UpdateSFXVolume();
     }
 }

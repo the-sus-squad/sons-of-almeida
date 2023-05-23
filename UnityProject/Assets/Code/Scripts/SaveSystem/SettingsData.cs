@@ -6,9 +6,9 @@ public class SettingsData
     public int sfxVolume;
     public int uiSize;
 
-    public SettingsData(SFXVolume sfx, UISize ui)
+    public SettingsData(int sfx, int ui)
     {
-        sfxVolume = sfx.currentSFXVolume;
-        uiSize = ui.currentUISize;
+        sfxVolume = sfx;
+        uiSize = ui;
     }
 }

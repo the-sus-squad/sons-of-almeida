@@ -4,13 +4,13 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    public static void SaveSettings(SFXVolume sfx, UISize ui)
+    public static void SaveSettings(int sfxVolume, int uiSize)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/settings.data"; // on windows the path is %userprofile%\AppData\LocalLow\<companyname>\<productname>
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SettingsData data = new SettingsData(sfx, ui);
+        SettingsData data = new SettingsData(sfxVolume, uiSize);
 
         formatter.Serialize(stream, data);
         stream.Close();

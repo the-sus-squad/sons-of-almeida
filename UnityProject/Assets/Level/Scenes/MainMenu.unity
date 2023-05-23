@@ -2072,9 +2072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxVolume: {fileID: 1735814789}
-  sfxVolumeBarsDisplay: {fileID: 4736234851270806435}
   uiSize: {fileID: 1934151617}
-  uiSizeBarsDisplay: {fileID: 999816551}
 --- !u!1 &247458766
 GameObject:
   m_ObjectHideFlags: 0
@@ -11666,7 +11664,7 @@ Transform:
   m_Children:
   - {fileID: 2126879843}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -810.007, z: 0}
 --- !u!114 &990363611
 MonoBehaviour:
@@ -13946,6 +13944,52 @@ CapsuleCollider:
   m_Height: 0.025
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1114746587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114746588}
+  - component: {fileID: 1114746589}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1114746588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114746587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.94288486, y: 2.3438876, z: -0.8892091}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1114746589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114746587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f32e1fbcb7f3f847ab987b651d87870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxVolume: 0
+  uiSize: 0
 --- !u!1 &1125718321
 GameObject:
   m_ObjectHideFlags: 0
@@ -20943,7 +20987,7 @@ Transform:
   - {fileID: 750466188}
   - {fileID: 2106131771}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010015501
 GameObject:
