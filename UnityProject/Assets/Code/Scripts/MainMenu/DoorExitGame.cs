@@ -23,6 +23,7 @@ public class DoorExitGame : MonoBehaviour
     {
         if (doorHinge.angle > doorExitAngle)
         {
+            SaveSystem.SaveSettings(SettingsManager.Instance.sfxVolume, SettingsManager.Instance.uiSize);
             StartCoroutine(ExitGameRoutine());
         }
     }

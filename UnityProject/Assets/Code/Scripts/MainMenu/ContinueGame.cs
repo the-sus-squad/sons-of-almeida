@@ -20,6 +20,7 @@ public class ContinueGame : MonoBehaviour
 
     private void ContinueGamePressed(SelectEnterEventArgs args)
     {
+        SaveSystem.SaveSettings(SettingsManager.Instance.sfxVolume, SettingsManager.Instance.uiSize);
         StartCoroutine(ContinueGameRoutine());
     }
 
