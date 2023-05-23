@@ -2027,52 +2027,6 @@ CapsuleCollider:
   m_Height: 0.025
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &246278354
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 246278355}
-  - component: {fileID: 246278356}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: GameManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &246278355
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246278354}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &246278356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246278354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf9f89c4d2b99341ae751e5a5662b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfxVolume: {fileID: 1735814789}
-  uiSize: {fileID: 1934151617}
 --- !u!1 &247458766
 GameObject:
   m_ObjectHideFlags: 0
@@ -11664,7 +11618,7 @@ Transform:
   m_Children:
   - {fileID: 2126879843}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -810.007, z: 0}
 --- !u!114 &990363611
 MonoBehaviour:
@@ -13974,7 +13928,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1114746589
 MonoBehaviour:
@@ -17658,7 +17612,6 @@ MonoBehaviour:
   soundEffectsMixerGroup: {fileID: 6092701555885788881, guid: 4bab2e9eeccc7ba49b707659cba53ea7,
     type: 2}
   barsDisplay: {fileID: 4736234851270806435}
-  currentSFXVolume: 10
 --- !u!1 &1740426986
 GameObject:
   m_ObjectHideFlags: 0
@@ -20454,7 +20407,6 @@ MonoBehaviour:
   minScale: 0.5
   maxScale: 2
   barsDisplay: {fileID: 999816551}
-  currentUISize: 5
 --- !u!1 &1944121019
 GameObject:
   m_ObjectHideFlags: 0
@@ -20987,7 +20939,7 @@ Transform:
   - {fileID: 750466188}
   - {fileID: 2106131771}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010015501
 GameObject:
