@@ -116,11 +116,15 @@ public class EnemyNavigation : MonoBehaviour
 
     public void HearTarget(Vector3 position) {
         if (!gameObject.activeSelf) return;
+
         // Check if the target is within the search radius.
         if (Vector3.Distance(transform.position, position) < searchRadius) {
             destination = position;
             agent.SetDestination(destination);
+            animator.Play("Running");
             seenTarget = false;
+            searchTimer = 0.0f;
+            hasSearched = true;
         }
     }
 

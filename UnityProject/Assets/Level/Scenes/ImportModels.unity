@@ -5627,7 +5627,7 @@ MonoBehaviour:
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1750371804}
         m_TargetAssemblyTypeName: EnemyNavigation, Assembly-CSharp
         m_MethodName: HearTarget
         m_Mode: 0
@@ -8297,7 +8297,7 @@ MonoBehaviour:
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1750371804}
         m_TargetAssemblyTypeName: EnemyNavigation, Assembly-CSharp
         m_MethodName: HearTarget
         m_Mode: 0
@@ -13802,7 +13802,7 @@ MonoBehaviour:
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1750371804}
         m_TargetAssemblyTypeName: EnemyNavigation, Assembly-CSharp
         m_MethodName: HearTarget
         m_Mode: 0
@@ -15064,7 +15064,7 @@ MonoBehaviour:
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1750371804}
         m_TargetAssemblyTypeName: EnemyNavigation, Assembly-CSharp
         m_MethodName: HearTarget
         m_Mode: 0
@@ -15925,7 +15925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ed6519296c3d042a99a147e0b4210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3.19
+  radius: 4.45
   angle: 120
   targetObject: {fileID: 990363608}
   targetMask:
