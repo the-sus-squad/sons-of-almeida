@@ -56,7 +56,7 @@ public class EnemyNavigation : MonoBehaviour
     {
 
         // Process song
-        if (seenTarget && !chaseBeginSound.isPlaying) {
+        if (!isCapturingPlayer && seenTarget && !chaseBeginSound.isPlaying) {
             if (startedChaseSound && !chaseLoopSound.isPlaying) {
                 chaseLoopSound.Play();
 
@@ -75,7 +75,6 @@ public class EnemyNavigation : MonoBehaviour
             jumpscareTimer += Time.deltaTime;
             if (jumpscareTimer >= jumpscareTime) {
                 jumpscareTimer = 0.0f;
-                isCapturingPlayer = false;
                 GameOver();
             }
         }
@@ -166,6 +165,9 @@ public class EnemyNavigation : MonoBehaviour
     private void CapturePlayer() {
         if (isCapturingPlayer) return;
 
+        animator.Play("Idle");
+        chaseLoopSound.Stop();
+
         gameOverSound.Play();
         isCapturingPlayer = true;
 
@@ -210,8 +212,6 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     private bool HasDestination() {
-        // print("X difference:" + (transform.position.x - destination.x));
-        // print("Z difference:" + (transform.position.z - destination.z));
         return !(destination == Vector3.zero || (transform.position.x < destination.x + destinationErrorMargin.x && transform.position.x > destination.x - destinationErrorMargin.x
             && transform.position.z < destination.z + destinationErrorMargin.z && transform.position.z > destination.z - destinationErrorMargin.z));
     }
