@@ -25,6 +25,7 @@ public class EnemyNavigation : MonoBehaviour
     private float searchTimer = 0.0f;
     private Vector3 destination;
     private bool hasSearched = false;
+    public Vector3 destinationErrorMargin = new Vector3(0.5f, 0.5f, 0.5f);
 
     // public UnityEvent OnTargetCaptured;
 
@@ -52,37 +53,39 @@ public class EnemyNavigation : MonoBehaviour
         }
         else {
             if (seenTarget) {
+                agent.isStopped = false;
                 agent.SetDestination(target.transform.position);
                 animator.Play("Running");
             }
             else {
-                if (!hasSearched) {
-                   // While searching, stop the agent from moving.
-                   animator.Play("searching");
+                if (!hasSearched && !HasDestination()) {
+                    // While searching, stop the agent from moving.
+                    animator.Play("Searching");
                     if (searchTimer < searchTime) {
-                        Debug.Log("Searching");
                         searchTimer += Time.deltaTime;
-                        agent.isStopped = true;
+                        // agent.isStopped = true;
                     }
                     else {
                         searchTimer = 0.0f;
-                        agent.isStopped = false;
+                        // agent.isStopped = false;
                         hasSearched = true;
                     }
                 }
 
                 else {
+                    // TODO maybe try to go to random point for X time to stop (if random is an obstacle)
                     // If the agent has reached the destination, or if there is no destination, find a new one.
-                    if ((destination == Vector3.zero || transform.position.x == destination.x && transform.position.z == destination.z) 
-                    && RandomPoint(transform.position, searchRadius, out destination)) {
+                    if (!HasDestination() && RandomPoint(transform.position, searchRadius, out destination)) {
                         agent.SetDestination(destination);
                         hasSearched = false;
+                        animator.Play("Running");
                     }
                 }
             }
         }
         
     }
+
 
     public void seeTarget(bool value) {
         seenTarget = value;
@@ -159,6 +162,13 @@ public class EnemyNavigation : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    private bool HasDestination() {
+        // print("X difference:" + (transform.position.x - destination.x));
+        // print("Z difference:" + (transform.position.z - destination.z));
+        return !(destination == Vector3.zero || (transform.position.x < destination.x + destinationErrorMargin.x && transform.position.x > destination.x - destinationErrorMargin.x
+            && transform.position.z < destination.z + destinationErrorMargin.z && transform.position.z > destination.z - destinationErrorMargin.z));
     }
 
 }

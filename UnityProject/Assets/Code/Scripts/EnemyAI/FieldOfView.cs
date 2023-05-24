@@ -45,6 +45,7 @@ public class FieldOfView : MonoBehaviour
 
         void FailCheck() {
             canSeePlayer = false;
+
             OnTargetHidden.Invoke();
         }
 

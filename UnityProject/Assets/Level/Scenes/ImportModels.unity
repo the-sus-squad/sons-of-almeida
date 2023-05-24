@@ -13052,6 +13052,7 @@ MonoBehaviour:
   targetCollider: {fileID: 1017605219}
   searchRadius: 10
   searchTime: 2.5
+  destinationErrorMargin: {x: 0.2, y: 0.2, z: 0.2}
   targetCamera: {fileID: 525980722}
   jumpscareTime: 5
   gameOverSound: {fileID: 2015744917}
@@ -15657,7 +15658,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ce528b762a91d7b4e8914a1f10da5b69,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6300001
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce528b762a91d7b4e8914a1f10da5b69,
         type: 3}
@@ -15667,7 +15668,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ce528b762a91d7b4e8914a1f10da5b69,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.66
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce528b762a91d7b4e8914a1f10da5b69,
         type: 3}
@@ -15924,7 +15925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ed6519296c3d042a99a147e0b4210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 21.67
+  radius: 3.19
   angle: 120
   targetObject: {fileID: 990363608}
   targetMask:
@@ -15981,6 +15982,7 @@ MonoBehaviour:
   targetCollider: {fileID: 1017605219}
   searchRadius: 10
   searchTime: 2.5
+  destinationErrorMargin: {x: 0.5, y: 0.5, z: 0.5}
   targetCamera: {fileID: 525980722}
   jumpscareTime: 5
   gameOverSound: {fileID: 1750371811}
@@ -16016,7 +16018,7 @@ BoxCollider:
   m_GameObject: {fileID: 1750371801}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1.5, z: 0}
