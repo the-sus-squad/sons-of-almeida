@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Animations;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 
@@ -36,8 +37,7 @@ public class EnemyNavigation : MonoBehaviour
     private float jumpscareTimer = 0.0f;
     public AudioSource gameOverSound;
 
-
-
+    public Animator animator;
     
     // Update is called once per frame
     void Update()
@@ -53,10 +53,12 @@ public class EnemyNavigation : MonoBehaviour
         else {
             if (seenTarget) {
                 agent.SetDestination(target.transform.position);
+                animator.Play("Running");
             }
             else {
                 if (!hasSearched) {
                    // While searching, stop the agent from moving.
+                   animator.Play("searching");
                     if (searchTimer < searchTime) {
                         Debug.Log("Searching");
                         searchTimer += Time.deltaTime;
