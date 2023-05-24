@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 
@@ -43,7 +44,12 @@ public class EnemyNavigation : MonoBehaviour
     private bool startedChaseSound = false;
     public AudioSource chaseLoopSound;
 
+    [SerializeField] private GameObject fadeOut;
+    private Animator fadeOutAnimator;
 
+    void Start() {
+        fadeOutAnimator = fadeOut.GetComponent<Animator>();
+    }
     
     // Update is called once per frame
     void Update()
@@ -184,11 +190,23 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     void GameOver() {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
+        // #if UNITY_EDITOR
+        //     UnityEditor.EditorApplication.isPlaying = false;
+        // #else
+        //     Application.Quit();
+        // #endif
+
+        StartCoroutine(GameOverRoutine());
+    }
+
+    private IEnumerator GameOverRoutine()
+    {
+        fadeOut.SetActive(true);
+        fadeOutAnimator.Play("FadeOut");
+
+        yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
+        SceneManager.LoadScene("GameOverScene");
     }
 
     private bool HasDestination() {
