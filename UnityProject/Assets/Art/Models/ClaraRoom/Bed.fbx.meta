@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 78312e375d968674b843deb9ff70f821
+guid: d3ca2a87518dc954a8d9f524b232c838
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,23 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Old Used Wood White Painted
-    second: {fileID: 2100000, guid: 717c561ee6ac39a42a19128cab9bf9fb, type: 2}
+      name: Mattress 02
+    second: {fileID: 2100000, guid: 19802c6bb55b06e448ee7fd0f0e17613, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Painted Plaster
-    second: {fileID: 2100000, guid: 7378d444b4e750041b6d931938dfc3e3, type: 2}
+      name: Teak wood
+    second: {fileID: 2100000, guid: 510bd56fed93cfe4db2b471ec3c487bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Velvet quilt
+    second: {fileID: 2100000, guid: 5d513657ee218574aaa7078c3be060e8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood
     second: {fileID: 2100000, guid: 50765586aca99a546879c7f8fc82e39c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wood planks floor
-    second: {fileID: 2100000, guid: f7ca117eb4d21de4d99a45364d324f71, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
