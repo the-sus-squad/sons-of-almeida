@@ -39,10 +39,32 @@ public class EnemyNavigation : MonoBehaviour
     public AudioSource gameOverSound;
 
     public Animator animator;
+    public AudioSource chaseBeginSound;
+    private bool startedChaseSound = false;
+    public AudioSource chaseLoopSound;
+
+
     
     // Update is called once per frame
     void Update()
     {
+
+        // Process song
+        if (seenTarget && !chaseBeginSound.isPlaying) {
+            if (startedChaseSound && !chaseLoopSound.isPlaying) {
+                chaseLoopSound.Play();
+
+            }
+
+            else if (!startedChaseSound) {
+                chaseBeginSound.Play();
+                startedChaseSound = true;
+            }
+        }
+
+        
+
+
         if (isCapturingPlayer) {
             jumpscareTimer += Time.deltaTime;
             if (jumpscareTimer >= jumpscareTime) {
@@ -89,11 +111,12 @@ public class EnemyNavigation : MonoBehaviour
 
     public void seeTarget(bool value) {
         seenTarget = value;
-
+        
         // If lost sight of target, find a new destination.
         if (!value && RandomPoint(transform.position, searchRadius, out destination)) {
             agent.SetDestination(destination);
         }
+
     }
 
      bool RandomPoint(Vector3 center, float range, out Vector3 result, int nInteractions = 30)
