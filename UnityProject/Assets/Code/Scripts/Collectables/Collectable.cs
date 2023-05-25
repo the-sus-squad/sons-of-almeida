@@ -19,7 +19,9 @@ public class Collectable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0.5f, 0);
+        transform.Rotate(0, 0.5f, 0, Space.World);
+        //GetComponent<Animator>().Play("Cylinder|CylinderAction");
+        //GetComponent<Animator>().Play("Cylinder|SpiralAction");
     }
 
     public void pickCollectable(BaseInteractionEventArgs arg)
