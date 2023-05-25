@@ -9,6 +9,7 @@ TagManager:
   - WoodFootsteps
   - ScalableUIElement
   - Collectable_1
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Interactable
   - UI Direct Interactor
   - UI Direct Interactable
-  - 
-  - 
+  - Jumpscare
+  - Enemy
   - 
   - 
   - 

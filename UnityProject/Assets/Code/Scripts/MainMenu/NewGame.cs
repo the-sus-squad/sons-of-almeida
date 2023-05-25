@@ -19,6 +19,7 @@ public class NewGame : MonoBehaviour
 
     private void NewGamePressed(SelectEnterEventArgs args)
     {
+        SaveSystem.SaveSettings(SettingsManager.Instance.sfxVolume, SettingsManager.Instance.uiSize);
         StartCoroutine(NewGameRoutine());
     }
 

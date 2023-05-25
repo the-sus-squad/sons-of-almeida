@@ -29,4 +29,17 @@ public class BarsDisplay : MonoBehaviour
             }
         }
     }
+
+    public void SetBars(int value)
+    {
+        for (int i = 0; i < value; i++)
+        {
+            bars[i].SetActive(true);
+        }
+
+        for (int i = value; i < bars.Length; i++)
+        {
+            bars[i].SetActive(false);
+        }
+    }
 }

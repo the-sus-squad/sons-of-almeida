@@ -7,28 +7,41 @@ public class SFXVolume : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup soundEffectsMixerGroup;
 
+    [SerializeField] private BarsDisplay barsDisplay;
+
     private int maxSFXVolume = 10;
     private int minSFXVolume = 0;
-    private int currentSFXVolume = 10;
+
+    private void Start()
+    {
+        barsDisplay.SetBars(SettingsManager.Instance.sfxVolume);
+        UpdateSFXVolume();
+    }
 
     public void IncreaseSFXVolume()
     {
-        if (currentSFXVolume < maxSFXVolume)
+        if (SettingsManager.Instance.sfxVolume < maxSFXVolume)
         {
-            currentSFXVolume++;
+            SettingsManager.Instance.sfxVolume++;
         }
-        soundEffectsMixerGroup.audioMixer.SetFloat("Sound Effects Volume", 20.0f * Mathf.Log10(currentSFXVolume / 10.0f));
+
+        UpdateSFXVolume();
     }
 
     public void DecreaseSfxVolume()
     {
-        if (currentSFXVolume > minSFXVolume)
+        if (SettingsManager.Instance.sfxVolume > minSFXVolume)
         {
-            currentSFXVolume--;
+            SettingsManager.Instance.sfxVolume--;
         }
 
-        float dbVolume = 20.0f * Mathf.Log10(currentSFXVolume / 10.0f);
-        if (currentSFXVolume == 0)  // the value can't be exactly zero couse the decibels will wrap around... yeah idk
+        UpdateSFXVolume();
+    }
+
+    private void UpdateSFXVolume()
+    {
+        float dbVolume = 20.0f * Mathf.Log10(SettingsManager.Instance.sfxVolume / 10.0f);
+        if (SettingsManager.Instance.sfxVolume == 0)  // the value can't be exactly zero couse the decibels will wrap around... yeah idk
         {
             dbVolume = 20.0f * Mathf.Log10(0.0001f / 10.0f);
         }
