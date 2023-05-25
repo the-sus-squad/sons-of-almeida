@@ -21,7 +21,7 @@ public class DoorExitGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (doorHinge.angle > doorExitAngle)
+        if (Mathf.Abs(doorHinge.angle) > doorExitAngle)
         {
             SaveSystem.SaveSettings(SettingsManager.Instance.sfxVolume, SettingsManager.Instance.uiSize);
             StartCoroutine(ExitGameRoutine());
