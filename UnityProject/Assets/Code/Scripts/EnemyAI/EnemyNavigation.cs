@@ -1,0 +1,219 @@
+using System.Net.Mime;
+using System.Text.RegularExpressions;
+using System.Numerics;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Events;
+using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
+using Vector3 = UnityEngine.Vector3;
+using Vector2 = UnityEngine.Vector2;
+
+
+public class EnemyNavigation : MonoBehaviour
+{
+
+    public NavMeshAgent agent;
+    public GameObject target;
+    public GameObject targetCollider;
+    
+    // When searching, the maximum distance in the mesh to move.
+    [Range(0, 10)]
+    public float searchRadius;
+    public float searchTime = 2.5f;
+    private float searchTimer = 0.0f;
+    private Vector3 destination;
+    private bool hasSearched = false;
+    public Vector3 destinationErrorMargin = new Vector3(0.5f, 0.5f, 0.5f);
+
+    // public UnityEvent OnTargetCaptured;
+
+    private bool seenTarget = false;
+    private bool isCapturingPlayer = false;
+    private bool isOnCamera = false;
+    public Camera targetCamera;
+
+    public float jumpscareTime = 10.0f;
+    private float jumpscareTimer = 0.0f;
+    public AudioSource gameOverSound;
+
+    public Animator animator;
+    public AudioSource chaseBeginSound;
+    private bool startedChaseSound = false;
+    public AudioSource chaseLoopSound;
+
+    [SerializeField] private GameObject fadeOut;
+    private Animator fadeOutAnimator;
+
+    void Start() {
+        fadeOutAnimator = fadeOut.GetComponent<Animator>();
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+
+        // Process song
+        if (!isCapturingPlayer && seenTarget && !chaseBeginSound.isPlaying) {
+            if (startedChaseSound && !chaseLoopSound.isPlaying) {
+                chaseLoopSound.Play();
+
+            }
+
+            else if (!startedChaseSound) {
+                chaseBeginSound.Play();
+                startedChaseSound = true;
+            }
+        }
+
+        
+
+
+        if (isCapturingPlayer) {
+            jumpscareTimer += Time.deltaTime;
+            if (jumpscareTimer >= jumpscareTime) {
+                jumpscareTimer = 0.0f;
+                GameOver();
+            }
+        }
+        else {
+            if (seenTarget) {
+                agent.isStopped = false;
+                agent.SetDestination(target.transform.position);
+                animator.Play("Running");
+            }
+            else {
+                if (!hasSearched && !HasDestination()) {
+                    // While searching, stop the agent from moving.
+                    animator.Play("Searching");
+                    if (searchTimer < searchTime) {
+                        searchTimer += Time.deltaTime;
+                        // agent.isStopped = true;
+                    }
+                    else {
+                        searchTimer = 0.0f;
+                        // agent.isStopped = false;
+                        hasSearched = true;
+                    }
+                }
+
+                else {
+                    // TODO maybe try to go to random point for X time to stop (if random is an obstacle)
+                    // If the agent has reached the destination, or if there is no destination, find a new one.
+                    if (!HasDestination() && RandomPoint(transform.position, searchRadius, out destination)) {
+                        agent.SetDestination(destination);
+                        hasSearched = false;
+                        animator.Play("Running");
+                    }
+                }
+            }
+        }
+        
+    }
+
+
+    public void seeTarget(bool value) {
+        seenTarget = value;
+        
+        // If lost sight of target, find a new destination.
+        if (!value && RandomPoint(transform.position, searchRadius, out destination)) {
+            agent.SetDestination(destination);
+        }
+
+    }
+
+     bool RandomPoint(Vector3 center, float range, out Vector3 result, int nInteractions = 30)
+    {
+        for (int i = 0; i < nInteractions; i++)
+        {
+            Vector2 randomPoint2D = Random.insideUnitCircle * range;
+            Vector3 randomPoint = new Vector3(center.x + randomPoint2D.x, center.y, center.z + randomPoint2D.y);
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+        }
+        result = Vector3.zero;
+        return false;
+    }
+
+    public void HearTarget(Vector3 position) {
+        if (!gameObject.activeSelf) return;
+
+        // Check if the target is within the search radius.
+        if (Vector3.Distance(transform.position, position) < searchRadius) {
+            destination = position;
+            agent.SetDestination(destination);
+            animator.Play("Running");
+            seenTarget = false;
+            searchTimer = 0.0f;
+            hasSearched = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider t) {
+        if (t.gameObject == targetCollider) {
+            CapturePlayer();
+        }
+    }
+
+    private void CapturePlayer() {
+        if (isCapturingPlayer) return;
+
+        animator.Play("Idle");
+        chaseLoopSound.Stop();
+
+        gameOverSound.Play();
+        isCapturingPlayer = true;
+
+        agent.isStopped = true;
+        // OnTargetCaptured.Invoke();
+
+        // Change destination to targets's front
+        if (isOnCamera) {
+        }
+        else {
+            transform.position = targetCamera.transform.position + targetCamera.transform.forward;
+        }
+
+    }
+
+    void OnBecameInvisible() {
+        isOnCamera = false;
+    }
+
+    void OnBecameVisible() {
+        isOnCamera = true;
+    }
+
+    void GameOver() {
+        // #if UNITY_EDITOR
+        //     UnityEditor.EditorApplication.isPlaying = false;
+        // #else
+        //     Application.Quit();
+        // #endif
+
+        StartCoroutine(GameOverRoutine());
+    }
+
+    private IEnumerator GameOverRoutine()
+    {
+        fadeOut.SetActive(true);
+        fadeOutAnimator.Play("FadeOut");
+
+        yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
+        SceneManager.LoadScene("GameOverScene");
+    }
+
+    private bool HasDestination() {
+        return !(destination == Vector3.zero || (transform.position.x < destination.x + destinationErrorMargin.x && transform.position.x > destination.x - destinationErrorMargin.x
+            && transform.position.z < destination.z + destinationErrorMargin.z && transform.position.z > destination.z - destinationErrorMargin.z));
+    }
+
+}
