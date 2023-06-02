@@ -484,19 +484,19 @@
                 },
                 {
                     "name": "",
-                    "id": "b8aebee7-fa03-43d4-bfb7-77a3f87452cc",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "id": "b52cf2f5-4278-4ee3-a18d-4ecf60385b4d",
+                    "path": "<Joystick>/stick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Generic XR Controller",
+                    "groups": "",
                     "action": "Teleport Mode Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b52cf2f5-4278-4ee3-a18d-4ecf60385b4d",
-                    "path": "<Joystick>/stick/up",
+                    "id": "c05247c5-28e3-4d51-8034-7c0092e5925d",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1511,6 +1511,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "492a3755-4014-44d2-863c-fa4a379ef888",
+            "actions": [
+                {
+                    "name": "Open/Close Menu",
+                    "type": "Button",
+                    "id": "2df6a968-b7e5-47be-b6b8-fadc6d80f735",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0449bdbb-8bb8-4dc3-ac14-c6772a489a39",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open/Close Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
