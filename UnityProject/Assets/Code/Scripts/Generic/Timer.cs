@@ -24,19 +24,11 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void SetTimer(float time, Delegate callback, params object[] args) {
+    public void SetTimer(float time, Action callback, params object[] args) {
         finalTime = time;
         timer = 0.0f;
         this.callback = callback;
         this.args = args;
-        isRunning = true;
-    }
-
-    public void SetTimer(float time, Action callback) {
-        finalTime = time;
-        timer = 0.0f;
-        this.callback = callback;
-        this.args = null;
         isRunning = true;
     }
 
