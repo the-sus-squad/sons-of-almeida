@@ -19264,6 +19264,11 @@ PrefabInstance:
       objectReference: {fileID: 525980722}
     - target: {fileID: 4134899251737949244, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
+      propertyPath: jumpscareTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134899251737949244, guid: 61315eb2eac93b9468db0799df9e7885,
+        type: 3}
       propertyPath: targetCollider
       value: 
       objectReference: {fileID: 1017605219}
@@ -19275,7 +19280,7 @@ PrefabInstance:
     - target: {fileID: 6356756720007030634, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
       propertyPath: radius
-      value: 5
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6356756720007030634, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}

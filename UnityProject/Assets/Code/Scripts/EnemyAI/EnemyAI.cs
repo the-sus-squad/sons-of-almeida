@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
 
     // Timers
     private Timer timer;
-    public float jumpscareTime = 10.0f;
+    public float jumpscareTime = 1.0f;
     
     // Navigation
     public EnemyNavigation navigation;
@@ -50,7 +50,6 @@ public class EnemyAI : MonoBehaviour
         audioPlayer.PlayGameOverTheme();
 
         isCapturingPlayer = true;
-
         timer.SetTimer(jumpscareTime, GameOver);
 
         navigation.Stop();
@@ -78,11 +77,13 @@ public class EnemyAI : MonoBehaviour
     }
 
     void GameOver() {
+        Debug.Log("Game Over");
         StartCoroutine(GameOverRoutine());
     }
 
     private IEnumerator GameOverRoutine()
     {
+        Debug.Log("Game Over Routine");
         fadeOut.SetActive(true);
         fadeOutAnimator.Play("FadeOut");
 
