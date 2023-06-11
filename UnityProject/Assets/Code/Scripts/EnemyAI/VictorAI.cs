@@ -10,7 +10,8 @@ public class VictorAI : EnemyAI
 
     // private bool hasSearched = false; // TODO: maybe it can be removed?
 
-    void Start() {
+    override protected void Start() {
+        base.Start();
         searchTimer = gameObject.AddComponent<Timer>();
         SearchForTargetTime();
     }

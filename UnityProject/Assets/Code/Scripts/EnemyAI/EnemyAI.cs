@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     // Navigation
     public EnemyNavigation navigation;
 
-    void Start() {
+    protected virtual void Start() {
         fadeOutAnimator = fadeOut.GetComponent<Animator>();
         timer = gameObject.AddComponent<Timer>();
     }
