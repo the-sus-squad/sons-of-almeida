@@ -14,6 +14,8 @@ public class VictorAI : EnemyAI
         base.Start();
         searchTimer = gameObject.AddComponent<Timer>();
         SearchForTargetTime();
+        navigation.OnReachedDestination(SearchForTargetTime);
+
     }
 
     public override void seeTarget(bool value) {
@@ -43,14 +45,12 @@ public class VictorAI : EnemyAI
     }
 
     void SearchForTarget() {
-        if (hasTarget) return;
-
+        if (hasTarget) {return;}
         navigation.SetRandomDestination(searchRadius);
-        navigation.OnReachedDestination(SearchForTargetTime);
-
     }
 
     void SearchForTargetTime() {
+        hasTarget = false;
         navigation.PlayAnimation("Searching");
         searchTimer.SetTimer(searchTime, SearchForTarget);
     }
