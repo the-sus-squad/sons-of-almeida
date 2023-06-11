@@ -37,7 +37,7 @@ public class VictorAI : EnemyAI
         if (Vector3.Distance(transform.position, position) < searchRadius) {
             navigation.SetDestination(position);
             navigation.PlayAnimation("Running");
-            hasTarget = false;
+            hasTarget = true;
             // hasSearched = true;
         }
     }

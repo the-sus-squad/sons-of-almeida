@@ -11584,7 +11584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f13e514d6bd829458702d78a176f123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  revealTime: 1
+  revealTime: 0.1
   spawnSound: {fileID: 1750371809}
   enemies:
   - {fileID: 919132147684061321}
@@ -15187,8 +15187,8 @@ MonoBehaviour:
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1750371804}
-        m_TargetAssemblyTypeName: EnemyNavigation, Assembly-CSharp
+      - m_Target: {fileID: 5866666020161466443}
+        m_TargetAssemblyTypeName: VictorAI, Assembly-CSharp
         m_MethodName: HearTarget
         m_Mode: 0
         m_Arguments:
@@ -15426,7 +15426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725360707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.184, y: 9.403, z: 0.31800008}
+  m_LocalPosition: {x: -8.184, y: 4.43, z: 0.31800008}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
