@@ -65,6 +65,12 @@ public class FieldOfView : MonoBehaviour
                     canSeePlayer = true;
                     OnTargetSeen.Invoke();
                 }
+                else {
+                    FailCheck();
+                }
+            }
+            else {
+                FailCheck();
             }
         }
         else if (canSeePlayer) {

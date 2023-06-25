@@ -122,6 +122,7 @@ public class EnemyNavigation : MonoBehaviour
 
     public void RemoveDestination() {
         destination = Vector3.zero;
+        agent.SetDestination(gameObject.transform.position);
     }
 
     public void RemoveOnReachedDestination() {
