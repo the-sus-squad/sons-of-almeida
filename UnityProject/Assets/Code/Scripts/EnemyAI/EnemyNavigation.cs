@@ -45,12 +45,20 @@ public class EnemyNavigation : MonoBehaviour
         // O_O autocomplete deu ideia foda
         // TODO: change to state
         bool isWalking = HasDestination(walkingErrorMargin);
+        // Debug.Log("--------------------");
+        // Debug.Log("isWalking: " + isWalking);
+        // Debug.Log("isRunning: " + animator.GetBool("isRunning"));
+        // Debug.Log("isSearching: " + animator.GetBool("isSearching"));
+        // Debug.Log("Current State (Running): " + animator.GetCurrentAnimatorStateInfo(0).IsName("Running"));
+        // Debug.Log("Current State (Searching): " + animator.GetCurrentAnimatorStateInfo(0).IsName("Searching"));
 
         if (isWalking) {
-            animator.SetBool("isRunning", true);
+            // animator.SetBool("isRunning", true);
+            // animator.SetBool("isSearching", false);
         } else {
+            animator.SetBool("isRunning", false);
+            // If it was walking and it stops, it reached the destination.
             if (OnDestinationReached != null && wasWalking && !isWalking) {
-                animator.SetBool("isRunning", false);
                 OnDestinationReached.DynamicInvoke(args);
             }
         }    
@@ -79,6 +87,9 @@ public class EnemyNavigation : MonoBehaviour
     public void SetDestination(Vector3 destination) {
         this.destination = destination;
         agent.SetDestination(destination);
+        animator.SetBool("isRunning", true);
+        animator.SetBool("isSearching", false);
+
     }
 
     public void SetRandomDestination(float radius) {

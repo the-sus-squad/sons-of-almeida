@@ -19242,6 +19242,16 @@ PrefabInstance:
       propertyPath: chaseBeginSound
       value: 
       objectReference: {fileID: 8300000, guid: 5f9367e99a0926446a6a67519f956e86, type: 3}
+    - target: {fileID: 674740768003857144, guid: 61315eb2eac93b9468db0799df9e7885,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 674740768003857144, guid: 61315eb2eac93b9468db0799df9e7885,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4134899251737949244, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
       propertyPath: target
@@ -19252,6 +19262,11 @@ PrefabInstance:
       propertyPath: fadeOut
       value: 
       objectReference: {fileID: 595533909}
+    - target: {fileID: 4134899251737949244, guid: 61315eb2eac93b9468db0799df9e7885,
+        type: 3}
+      propertyPath: searchTime
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4134899251737949244, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
       propertyPath: searchRadius

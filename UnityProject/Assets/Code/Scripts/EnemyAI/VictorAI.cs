@@ -41,7 +41,6 @@ public class VictorAI : EnemyAI
     }
 
     void SearchForTarget() {
-        navigation.SetAnimationBool("isSearching", false);
         if (hasTarget) {return;}
         navigation.SetRandomDestination(searchRadius);
     }
