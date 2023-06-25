@@ -120,6 +120,10 @@ public class EnemyNavigation : MonoBehaviour
         this.args = null;
     }
 
+    public void RemoveDestination() {
+        destination = Vector3.zero;
+    }
+
     public void RemoveOnReachedDestination() {
         OnDestinationReached = null;
     }
