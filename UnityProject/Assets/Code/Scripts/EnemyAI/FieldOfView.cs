@@ -56,19 +56,28 @@ public class FieldOfView : MonoBehaviour
             Transform target = rangeChecks[0].transform; // Cursed hardcoded index, however it is because there is just one targetObject
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            // If in vision angle
-            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2) {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                // If not obstructed
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+            // If not obstructed
+            if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+
+                if (canSeePlayer) {
+                    OnTargetSeen.Invoke();
+                    return;
+                }
+
+                // If in vision angle
+                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2) {
                     canSeePlayer = true;
                     OnTargetSeen.Invoke();
                 }
+
                 else {
                     FailCheck();
                 }
+                
             }
+            
             else {
                 FailCheck();
             }

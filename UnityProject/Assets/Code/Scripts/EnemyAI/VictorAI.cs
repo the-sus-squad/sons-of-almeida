@@ -18,7 +18,6 @@ public class VictorAI : EnemyAI
 
     public override void seeTarget(bool value) {
         base.seeTarget(value);
-        Debug.Log("VictorAI seeTarget" + value);
         if (value) {
             audioPlayer.PlayChaseTheme();
             navigation.SetDestination(target.transform.position);
