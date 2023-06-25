@@ -8,8 +8,6 @@ public class VictorAI : EnemyAI
     public float searchTime = 2.5f;
     private Timer searchTimer;
 
-    // private bool hasSearched = false; // TODO: maybe it can be removed?
-
     override protected void Start() {
         base.Start();
         searchTimer = gameObject.AddComponent<Timer>();
@@ -38,20 +36,19 @@ public class VictorAI : EnemyAI
         // Check if the target is within the search radius.
         if (Vector3.Distance(transform.position, position) < searchRadius) {
             navigation.SetDestination(position);
-            navigation.PlayAnimation("Running");
             hasTarget = true;
-            // hasSearched = true;
         }
     }
 
     void SearchForTarget() {
+        navigation.SetAnimationBool("isSearching", false);
         if (hasTarget) {return;}
         navigation.SetRandomDestination(searchRadius);
     }
 
     void SearchForTargetTime() {
         hasTarget = false;
-        navigation.PlayAnimation("Searching");
+        navigation.SetAnimationBool("isSearching", true);
         searchTimer.SetTimer(searchTime, SearchForTarget);
     }
 }

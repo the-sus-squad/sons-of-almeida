@@ -33,6 +33,10 @@ public class EnemyNavigation : MonoBehaviour
 
     // private bool isStopped = false;
 
+    void Start() {
+        animator = GetComponent<Animator>();
+    }
+
     
     // Update is called once per frame
     void Update()
@@ -46,6 +50,7 @@ public class EnemyNavigation : MonoBehaviour
             PlayAnimation("Running");
         } else {
             if (OnDestinationReached != null && wasWalking && !isWalking) {
+                animator.setBool("isRunning", false);
                 OnDestinationReached.DynamicInvoke(args);
             }
         }    
@@ -74,6 +79,9 @@ public class EnemyNavigation : MonoBehaviour
     public void SetDestination(Vector3 destination) {
         this.destination = destination;
         agent.SetDestination(destination);
+        // Change animation to running
+        animator.setBool("isRunning", true);
+
     }
 
     public void SetRandomDestination(float radius) {
@@ -99,12 +107,10 @@ public class EnemyNavigation : MonoBehaviour
 
     public void Stop() {
         agent.isStopped = true;
-        // isStopped = true;
     }
 
     public void Resume() {
         agent.isStopped = false;
-        // isStopped = false;
     }
 
     public void OnReachedDestination(Delegate callback, params object[] args) {
@@ -121,8 +127,8 @@ public class EnemyNavigation : MonoBehaviour
         OnDestinationReached = null;
     }
 
-    public void PlayAnimation(string animationName) { // TODO: remove this function and add states to the animator
-        animator.Play(animationName);
+    public void SetAnimationBool(string animationName, bool value) {
+        animator.setBool(animationName, value);
     }
 
 
