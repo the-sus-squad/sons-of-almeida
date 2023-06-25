@@ -47,10 +47,10 @@ public class EnemyNavigation : MonoBehaviour
         bool isWalking = HasDestination(walkingErrorMargin);
 
         if (isWalking) {
-            PlayAnimation("Running");
+            animator.SetBool("isRunning", true);
         } else {
             if (OnDestinationReached != null && wasWalking && !isWalking) {
-                animator.setBool("isRunning", false);
+                animator.SetBool("isRunning", false);
                 OnDestinationReached.DynamicInvoke(args);
             }
         }    
@@ -79,9 +79,6 @@ public class EnemyNavigation : MonoBehaviour
     public void SetDestination(Vector3 destination) {
         this.destination = destination;
         agent.SetDestination(destination);
-        // Change animation to running
-        animator.setBool("isRunning", true);
-
     }
 
     public void SetRandomDestination(float radius) {
@@ -128,7 +125,7 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     public void SetAnimationBool(string animationName, bool value) {
-        animator.setBool(animationName, value);
+        animator.SetBool(animationName, value);
     }
 
 

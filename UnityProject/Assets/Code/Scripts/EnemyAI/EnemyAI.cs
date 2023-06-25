@@ -44,7 +44,8 @@ public class EnemyAI : MonoBehaviour
     private void CapturePlayer() {
         if (isCapturingPlayer) return;
 
-        navigation.PlayAnimation("Idle");
+        // Change to capture clara animation
+        // navigation.PlayAnimation("Idle");
 
         audioPlayer.StopTheme();
         audioPlayer.PlayGameOverTheme();
