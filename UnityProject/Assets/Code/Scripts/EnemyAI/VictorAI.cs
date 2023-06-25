@@ -33,6 +33,7 @@ public class VictorAI : EnemyAI
 
     public override void HearTarget(Vector3 position) {
 
+        if (!gameObject.activeSelf) return;
         // Check if the target is within the search radius.
         if (Vector3.Distance(transform.position, position) < searchRadius) {
             navigation.SetDestination(position);
