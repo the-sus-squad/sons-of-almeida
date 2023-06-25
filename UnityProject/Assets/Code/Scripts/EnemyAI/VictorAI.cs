@@ -40,6 +40,13 @@ public class VictorAI : EnemyAI
         }
     }
 
+    protected override void CapturePlayer() {
+        navigation.SetAnimationBool("isSearching", false);
+        navigation.SetAnimationBool("isRunning", false);
+        base.CapturePlayer();
+        
+    }
+
     void SearchForTarget() {
         if (hasTarget) {return;}
         navigation.SetRandomDestination(searchRadius);

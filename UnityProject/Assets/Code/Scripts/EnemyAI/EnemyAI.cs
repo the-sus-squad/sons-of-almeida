@@ -41,12 +41,15 @@ public class EnemyAI : MonoBehaviour
         timer = gameObject.AddComponent<Timer>();
     }
 
-    private void CapturePlayer() {
+    protected virtual void CapturePlayer() {
         if (isCapturingPlayer) return;
 
+        
         // Change to capture clara animation
         // navigation.PlayAnimation("Idle");
 
+        navigation.SetAnimationBool("isCatching", true);
+        navigation.BlockAnimations();
         audioPlayer.StopTheme();
         audioPlayer.PlayGameOverTheme();
 

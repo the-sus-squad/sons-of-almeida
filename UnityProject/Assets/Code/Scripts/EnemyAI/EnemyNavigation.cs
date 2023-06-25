@@ -25,6 +25,8 @@ public class EnemyNavigation : MonoBehaviour
     private Delegate OnDestinationReached;
     private object[] args;
 
+    private bool blockAnimationChange = false;
+
 
     // public UnityEvent OnTargetCaptured;
     public Animator animator;
@@ -41,22 +43,10 @@ public class EnemyNavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // O_O autocomplete deu ideia foda
-        // TODO: change to state
         bool isWalking = HasDestination(walkingErrorMargin);
-        // Debug.Log("--------------------");
-        // Debug.Log("isWalking: " + isWalking);
-        // Debug.Log("isRunning: " + animator.GetBool("isRunning"));
-        // Debug.Log("isSearching: " + animator.GetBool("isSearching"));
-        // Debug.Log("Current State (Running): " + animator.GetCurrentAnimatorStateInfo(0).IsName("Running"));
-        // Debug.Log("Current State (Searching): " + animator.GetCurrentAnimatorStateInfo(0).IsName("Searching"));
 
-        if (isWalking) {
-            // animator.SetBool("isRunning", true);
-            // animator.SetBool("isSearching", false);
-        } else {
-            animator.SetBool("isRunning", false);
+        if (!isWalking) {
+            SetAnimationBool("isRunning", false);
             // If it was walking and it stops, it reached the destination.
             if (OnDestinationReached != null && wasWalking && !isWalking) {
                 OnDestinationReached.DynamicInvoke(args);
@@ -87,9 +77,8 @@ public class EnemyNavigation : MonoBehaviour
     public void SetDestination(Vector3 destination) {
         this.destination = destination;
         agent.SetDestination(destination);
-        animator.SetBool("isRunning", true);
-        animator.SetBool("isSearching", false);
-
+        SetAnimationBool("isRunning", true);
+        SetAnimationBool("isSearching", false);
     }
 
     public void SetRandomDestination(float radius) {
@@ -135,7 +124,16 @@ public class EnemyNavigation : MonoBehaviour
         OnDestinationReached = null;
     }
 
+    public void BlockAnimations() {
+        blockAnimationChange = true;
+    }
+
+    public void UnblockAnimations() {
+        blockAnimationChange = false;
+    }
+
     public void SetAnimationBool(string animationName, bool value) {
+        if (blockAnimationChange) return;
         animator.SetBool(animationName, value);
     }
 
