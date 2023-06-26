@@ -20,18 +20,20 @@ public class FieldOfView : MonoBehaviour
     public UnityEvent OnTargetSeen;
     public UnityEvent OnTargetHidden;
     
-    
+    private bool first_time = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(FOVRoutine());
+    void Update() {
+        // For some reason on the Start method the coroutine does not work anymore. I surrender and did this, sorry comrades.
+        if (first_time) {
+            StartCoroutine(FOVRoutine());
+            first_time = false;
+        }
     }
 
     // Not call every frame
     private IEnumerator FOVRoutine() {
-        float delay = 0.2f;
-        WaitForSeconds wait = new WaitForSeconds(delay);
+        float delay = 0.0f;
+        var wait = new WaitForSeconds(delay);
 
         while (true) {
             // Pause until the next frame
@@ -42,7 +44,6 @@ public class FieldOfView : MonoBehaviour
     }
 
     private void Check() {
-
         void FailCheck() {
             canSeePlayer = false;
 
@@ -55,17 +56,28 @@ public class FieldOfView : MonoBehaviour
             Transform target = rangeChecks[0].transform; // Cursed hardcoded index, however it is because there is just one targetObject
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2) {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+            // If not obstructed
+            if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+
+                if (canSeePlayer) {
+                    OnTargetSeen.Invoke();
+                    return;
+                }
+
+                // If in vision angle
+                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2) {
                     canSeePlayer = true;
                     OnTargetSeen.Invoke();
                 }
+
                 else {
                     FailCheck();
                 }
+                
             }
+            
             else {
                 FailCheck();
             }
