@@ -10,7 +10,7 @@ public class DistractionObject : MonoBehaviour
 
     public float soundRadius = 5f;
     public Rigidbody rigidBody;
-    public float velocityTrashold = 0.5f;
+    private float velocityTrashold = 0.1f;
 
     public UnityEvent<Vector3> OnSoundEmmitted;
 

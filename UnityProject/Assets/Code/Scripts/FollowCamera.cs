@@ -6,6 +6,8 @@ public class FollowCamera : MonoBehaviour
 {
 
     [SerializeField] private new GameObject camera;
+    [SerializeField] private float distanceDown;
+    [SerializeField] private float distanceForward;
     private float smoothTime = 0.7F;
     private Vector3 velocity = Vector3.zero;
 
@@ -31,6 +33,6 @@ public class FollowCamera : MonoBehaviour
     void Update()
     {
         transform.rotation = camera.transform.rotation;
-        transform.position = Vector3.SmoothDamp(transform.position, camera.transform.position + (camera.transform.forward * 2), ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, camera.transform.position - transform.up*distanceDown + (transform.forward*distanceForward), ref velocity, smoothTime);
     }
 }
