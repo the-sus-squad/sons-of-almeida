@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+
+    public SubtitleInteraction subtitle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void SayHello() {
-        Debug.Log("Hello prologers");
+        Debug.Log("Hello Prologers!");
+        subtitle.ShowMessage("Hello Prologers!");
     }
 }
