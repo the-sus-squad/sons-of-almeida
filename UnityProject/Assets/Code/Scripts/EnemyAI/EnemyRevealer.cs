@@ -25,13 +25,19 @@ public class EnemyRevealer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (revealTime < 0) return;
+
         currentRevealTime -= Time.deltaTime;
         if (currentRevealTime <= 0) {
-            foreach (var enemy in enemies) {
-                enemy.SetActive(true);
-            }
+            ActivateEnemies();
             spawnSound.Play();
             Destroy(this);
+        }
+    }
+
+    public void ActivateEnemies() {
+        foreach (var enemy in enemies) {
+            enemy.SetActive(true);
         }
     }
 }

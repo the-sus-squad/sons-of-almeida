@@ -16,20 +16,24 @@ public class VictorAI : EnemyAI
 
     }
 
+    // void Update() {
+    //     Debug.Log(hasTarget);
+    // }
+
     public override void seeTarget(bool value) {
-        base.seeTarget(value);
         if (value) {
             audioPlayer.PlayChaseTheme();
             navigation.SetDestination(target.transform.position);
             navigation.RemoveOnReachedDestination();
         }
 
-        else {
+        else if (hasTarget) {
             // If lost sight of target, find a new destination.
             navigation.RemoveDestination();
             audioPlayer.StopTheme();
             SearchForTargetTime();
         }  
+        base.seeTarget(value);
     }
 
     public override void HearTarget(Vector3 position) {

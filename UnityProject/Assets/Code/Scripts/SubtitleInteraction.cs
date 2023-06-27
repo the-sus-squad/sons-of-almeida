@@ -19,7 +19,7 @@ public class SubtitleInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Show", 1);
+        // Invoke("Show", 1);
     }
 
     // Update is called once per frame
@@ -40,11 +40,17 @@ public class SubtitleInteraction : MonoBehaviour
     void Hide()
     {
         gameObject.transform.Find("Subtitle").gameObject.SetActive(false);
-        if (current >= exampleTexts.Length)
-        {
-            current = 0;
-            onTime = 1;
-        }
-        Invoke("Show", 1);
+        // if (current >= exampleTexts.Length)
+        // {
+        //     current = 0;
+        //     onTime = 1;
+        // }
+        // Invoke("Show", 1);
     } 
+
+    public void ShowMessage(string text, float time = 5f) {
+        transform.Find("Subtitle").gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = text;
+        gameObject.transform.Find("Subtitle").gameObject.SetActive(true);
+        Invoke("Hide", time);
+    }
 }

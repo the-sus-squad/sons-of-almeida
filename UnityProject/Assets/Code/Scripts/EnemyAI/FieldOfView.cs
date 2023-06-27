@@ -68,6 +68,7 @@ public class FieldOfView : MonoBehaviour
 
                 // If in vision angle
                 if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2) {
+                    Debug.Log("Can see player");
                     canSeePlayer = true;
                     OnTargetSeen.Invoke();
                 }

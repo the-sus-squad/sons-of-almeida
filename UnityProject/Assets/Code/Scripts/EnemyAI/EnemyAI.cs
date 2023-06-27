@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     // Target
     public GameObject targetCollider;
-    public GameObject target;
+    public TeleportationManager target;
 
 
     // Vision
@@ -47,6 +47,8 @@ public class EnemyAI : MonoBehaviour
         
         // Change to capture clara animation
         // navigation.PlayAnimation("Idle");
+
+        target.isBeingCaptured = true;
 
         navigation.SetAnimationBool("isCatching", true);
         navigation.BlockAnimations();
