@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     private Rigidbody doorRB;
     private HingeJoint doorHinge;
 
-    private float threshold = 3;
+    private float threshold = 1;
 
     // Start is called before the first frame update
     void Start()
