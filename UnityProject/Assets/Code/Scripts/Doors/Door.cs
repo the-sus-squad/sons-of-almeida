@@ -5,6 +5,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] private Transform doorHandle;
+    
+    public bool isLocked = false;
 
     private HingeJoint doorHandleHinge;
     private Rigidbody doorRB;

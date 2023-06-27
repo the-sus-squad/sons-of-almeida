@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorHandle: {fileID: 671222610}
+  isLocked: 1
 --- !u!1 &11558464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,8 +1305,8 @@ GameObject:
   m_Component:
   - component: {fileID: 107432239}
   - component: {fileID: 107432240}
-  - component: {fileID: 107432241}
   - component: {fileID: 107432242}
+  - component: {fileID: 107432243}
   m_Layer: 0
   m_Name: Left Hand Controller
   m_TagString: Untagged
@@ -1520,19 +1521,6 @@ MonoBehaviour:
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
---- !u!135 &107432241
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107432238}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &107432242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,6 +1629,20 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 1
+--- !u!136 &107432243
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107432238}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.041432507
+  m_Height: 0.11371795
+  m_Direction: 2
+  m_Center: {x: 0.01315904, y: -0.025023421, z: 0.0013814085}
 --- !u!1 &117721901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,13 +1912,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 161200572}
-  - component: {fileID: 161200573}
   - component: {fileID: 161200575}
   - component: {fileID: 161200574}
   - component: {fileID: 161200576}
+  - component: {fileID: 161200573}
+  - component: {fileID: 161200578}
+  - component: {fileID: 161200577}
   m_Layer: 11
   m_Name: Grabbable Key
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1928,8 +1932,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161200571}
-  m_LocalRotation: {x: -0.000000059604606, y: 1, z: 5.6843412e-14, w: -0.00000035762787}
-  m_LocalPosition: {x: 5.86, y: 0.9887, z: -4.5165}
+  m_LocalRotation: {x: -0.00000005971181, y: 1, z: 5.6945646e-14, w: -0.00000035827108}
+  m_LocalPosition: {x: 5.8033, y: 0.9907, z: -4.6036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1949,8 +1953,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00824213, y: 0.019436419, z: 0.109684825}
-  m_Center: {x: -0.000029003248, y: -0.0038579768, z: 0.029466152}
+  m_Size: {x: 0.002761364, y: 0.001919806, z: 0.0834618}
+  m_Center: {x: -0.00044900947, y: -0.00016999885, z: 0.043300267}
 --- !u!114 &161200574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2108,6 +2112,32 @@ MonoBehaviour:
   detectHoverExit: 0
   grabPoints:
   - {fileID: 1364015548}
+--- !u!65 &161200577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161200571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0065641403, y: 0.030446291, z: 0.025493145}
+  m_Center: {x: -0.000065844506, y: -0.00029508583, z: -0.011097569}
+--- !u!65 &161200578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161200571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0065641403, y: 0.012034655, z: 0.009010345}
+  m_Center: {x: -0.000065844506, y: -0.009541256, z: 0.070717454}
 --- !u!1001 &182807286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9396,7 +9426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990363608}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
-  m_LocalPosition: {x: 6.045, y: 0.33, z: -3.914}
+  m_LocalPosition: {x: 5.8446, y: 0.9967, z: -4.3492}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14608,6 +14638,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrabPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 5577688599527817197, guid: 031861dd607badd489ecc7f60bf3fd59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5642058586767642836, guid: 031861dd607badd489ecc7f60bf3fd59,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -19194,8 +19229,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1925754492}
   - component: {fileID: 1925754493}
-  - component: {fileID: 1925754494}
   - component: {fileID: 1925754495}
+  - component: {fileID: 1925754496}
   m_Layer: 0
   m_Name: Right Hand Controller
   m_TagString: Untagged
@@ -19410,19 +19445,6 @@ MonoBehaviour:
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
---- !u!135 &1925754494
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925754491}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1925754495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19531,6 +19553,20 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 1
+--- !u!136 &1925754496
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925754491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.041432507
+  m_Height: 0.11371795
+  m_Direction: 2
+  m_Center: {x: -0.013159037, y: -0.025023421, z: 0.0013814085}
 --- !u!1 &1934716440
 GameObject:
   m_ObjectHideFlags: 0
@@ -26219,8 +26255,10 @@ GameObject:
   - component: {fileID: 9175442682945120054}
   - component: {fileID: 9175442682945120053}
   - component: {fileID: 9175442682945120052}
+  - component: {fileID: 9175442682945120056}
+  - component: {fileID: 9175442682945120057}
   m_Layer: 11
-  m_Name: Keyhole
+  m_Name: DoorLock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29287,6 +29325,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08167616, y: 0.121200405, z: 0.2308488}
   m_Center: {x: 0.07458513, y: 0.015940387, z: 1.7584086e-17}
+--- !u!65 &9175442682945120056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725052387928702802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23084855, y: 0.07521827, z: 0.17633966}
+  m_Center: {x: -0.0000010721885, y: 0.21944436, z: 0.018283503}
+--- !u!114 &9175442682945120057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725052387928702802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ac9f20c3e5b6341a7bbd3963a7a8cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 202223}
+  key: {fileID: 161200572}
+  keyStartingPosition: {x: 5.8033, y: 0.9907, z: -4.7303}
+  keyStartingRotation: {x: 0, y: 180, z: 0}
 --- !u!33 &9203870080542530963
 MeshFilter:
   m_ObjectHideFlags: 0
