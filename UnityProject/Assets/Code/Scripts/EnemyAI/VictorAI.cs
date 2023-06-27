@@ -24,7 +24,7 @@ public class VictorAI : EnemyAI
             navigation.RemoveOnReachedDestination();
         }
 
-        else {
+        else if (hasTarget) {
             // If lost sight of target, find a new destination.
             navigation.RemoveDestination();
             audioPlayer.StopTheme();
