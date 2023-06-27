@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 <<<<<<<< HEAD:UnityProject/Assets/Art/Models/Church/new-church2.fbx.meta
 <<<<<<<< HEAD:UnityProject/Assets/Art/Models/Church/new-church2.fbx.meta
+<<<<<<<< HEAD:UnityProject/Assets/Art/Models/Church/new-church2.fbx.meta
 guid: e1dbf1cff1d98214894cb506ae33c14c
 ModelImporter:
   serializedVersion: 21300
@@ -86,6 +87,13 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: toul
     second: {fileID: 2800000, guid: fbb3fc0765a9401459d7f2a5db24175c, type: 3}
+========
+guid: 75bf9a2a488ad89429942368278ca1b7
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+>>>>>>>> dev:UnityProject/Assets/Art/Models/Church/Church.fbx.meta
 ========
 guid: 75bf9a2a488ad89429942368278ca1b7
 ModelImporter:
