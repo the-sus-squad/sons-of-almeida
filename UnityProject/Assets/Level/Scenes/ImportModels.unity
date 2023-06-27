@@ -10192,7 +10192,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -12079,7 +12079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f13e514d6bd829458702d78a176f123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  revealTime: 1
+  revealTime: -1
   spawnSound: {fileID: 1750371809}
   enemies:
   - {fileID: 919132147684061321}
@@ -20490,7 +20490,7 @@ PrefabInstance:
     - target: {fileID: 6356756720007030636, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
       propertyPath: m_Speed
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6356756720007030637, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
