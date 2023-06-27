@@ -12276,7 +12276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f13e514d6bd829458702d78a176f123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  revealTime: 1
+  revealTime: -1
   spawnSound: {fileID: 1750371809}
   enemies:
   - {fileID: 919132147684061321}
