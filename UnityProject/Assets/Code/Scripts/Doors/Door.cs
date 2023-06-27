@@ -25,14 +25,17 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (doorHinge.angle <= doorHinge.limits.min + threshold)
+        if (!isLocked)
         {
-            doorRB.freezeRotation = true;
-        }
+            if (doorHinge.angle <= doorHinge.limits.min + threshold)
+            {
+                doorRB.freezeRotation = true;
+            }
 
-        if (doorHandleHinge.angle >= doorHandleHinge.limits.max - threshold)
-        {
-            doorRB.freezeRotation = false;
+            if (doorHandleHinge.angle >= doorHandleHinge.limits.max - threshold)
+            {
+                doorRB.freezeRotation = false;
+            }
         }
     }
 }
