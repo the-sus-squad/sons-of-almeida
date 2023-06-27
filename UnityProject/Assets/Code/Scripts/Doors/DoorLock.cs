@@ -11,8 +11,14 @@ public class DoorLock : MonoBehaviour
     [SerializeField] private Vector3 keyStartingPosition;
     [SerializeField] private Vector3 keyStartingRotation;
 
+    private Rigidbody keyRB;
     private bool keyIsInserted = false;
     private bool isLocked = true;
+
+    private void Start()
+    {
+        keyRB = key.GetComponent<Rigidbody>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,22 +26,23 @@ public class DoorLock : MonoBehaviour
         {
             key.position = keyStartingPosition;
             key.eulerAngles = keyStartingRotation;
-            key.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition 
+            keyRB.constraints = RigidbodyConstraints.FreezePosition 
                 | RigidbodyConstraints.FreezeRotationX 
                 | RigidbodyConstraints.FreezeRotationY;
             keyIsInserted = true;
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isLocked && keyIsInserted && (Vector3.Dot(key.up, new Vector3(1, 0, 0)) > 0.95f || Vector3.Dot(key.up, new Vector3(-1, 0, 0)) > 0.95f))
         {
-            //Debug.Log(key.eulerAngles.z > 90.0f || key.eulerAngles.z < -90.0f);
-            Debug.Log(Vector3.Dot(key.up, new Vector3(1, 0, 0)));
             isLocked = false;
-            key.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             key.GetComponent<XRGrabInteractable>().enabled = false;
+            keyRB.constraints = RigidbodyConstraints.None;
+            keyRB.isKinematic = true;
+            keyRB.detectCollisions = false;
+            key.SetParent(transform);
             door.isLocked = isLocked;
         }
     }
