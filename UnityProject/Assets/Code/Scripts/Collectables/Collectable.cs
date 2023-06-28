@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using System;
 
+// Allows for all necessary actions after picking up a collectable scroll in-game
 public class Collectable : MonoBehaviour
 {
     UIManager uiManager;
@@ -26,6 +27,7 @@ public class Collectable : MonoBehaviour
 
     public void pickCollectable(BaseInteractionEventArgs arg)
     {
+        // Aqui há-de ser hopefully a lógica pra alterar o pergaminho e papel de parede no quarto, guardar no save system e limpar este do ambiente
         uiManager = collectableMenu.GetComponent<UIManager>();
         Destroy(gameObject);
         uiManager.UpdateCollectableMenu(tag);
