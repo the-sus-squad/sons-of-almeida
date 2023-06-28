@@ -2,55 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.UI;
 
 public class SubtitleInteraction : MonoBehaviour
 {
 
-    private string[] exampleTexts = { 
-    "This is a legend",
-    "This is also a legend",
-    "This is a reeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaally long legend",
-    };
-
-    private int current = 0;
-    private int onTime = 1;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Invoke("Show", 1);
+    CanvasGroup canvas_group;
+    void Start() {
+        canvas_group = GetComponent<CanvasGroup>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    // void Hide()
+    // {
+    //     float fadeTime = 1f;
+    //     // gameObject.transform.Find("Subtitle").gameObject.SetActive(false);
+    //     StartCoroutine(FadeOut(fadeTime));
+    // } 
+
+    IEnumerator ProcessMessage(string text, float waitTime=5f, float fadeTime = 1f) {
+
+        transform.Find("Subtitle").gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = text;
+        yield return StartCoroutine(Fade(fadeTime));        
         
+        yield return new WaitForSeconds(waitTime);
+        
+        yield return StartCoroutine(Fade(fadeTime, false));
     }
 
-    void Show()
-    {
-        transform.Find("Subtitle").gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = exampleTexts[current];
-        current++;
-        gameObject.transform.Find("Subtitle").gameObject.SetActive(true);
-        onTime *= 2;
-        Invoke("Hide", onTime);
+    IEnumerator Fade(float fadeTime=1f, bool fadeIn=true) {
+        float fade = 0;
+
+        while (fade < fadeTime) {
+            float newAlpha = (fade/fadeTime);
+            if (!fadeIn) newAlpha = 1 - newAlpha;
+            canvas_group.alpha = newAlpha;
+            fade += Time.deltaTime;
+            yield return null;
+        }
+        canvas_group.alpha = fadeIn ? 1 : 0;
+        yield return null;
     }
 
-    void Hide()
-    {
-        gameObject.transform.Find("Subtitle").gameObject.SetActive(false);
-        // if (current >= exampleTexts.Length)
-        // {
-        //     current = 0;
-        //     onTime = 1;
-        // }
-        // Invoke("Show", 1);
-    } 
 
     public void ShowMessage(string text, float time = 5f) {
-        transform.Find("Subtitle").gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = text;
-        gameObject.transform.Find("Subtitle").gameObject.SetActive(true);
-        Invoke("Hide", time);
+        StartCoroutine(ProcessMessage(text, time-2f));
     }
 }

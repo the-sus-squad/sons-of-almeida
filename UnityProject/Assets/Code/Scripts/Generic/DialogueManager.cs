@@ -10,12 +10,10 @@ public class DialogueManager : MonoBehaviour
 
 
     public void SayHello() {
-        Debug.Log("Hello Prologers!");
         subtitle.ShowMessage("Hello Prologers!");
     }
 
     public void EndOfChurch() {
-        Debug.Log("End of church");
         StartCoroutine(EndOfChurchRoutine());
     }
 
@@ -30,7 +28,7 @@ public class DialogueManager : MonoBehaviour
         subtitle.ShowMessage("What are those noises?");
         yield return new WaitForSeconds(1f);
         enemyRevealer.ActivateEnemies();
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(5f);
         subtitle.ShowMessage("Oh no...");
     }
 }
