@@ -7244,7 +7244,7 @@ MonoBehaviour:
   m_SphereCastRadius: 0.1
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 65279
+    m_Bits: 63231
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0
@@ -9538,6 +9538,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isBeingCaptured: 0
 --- !u!82 &990363617
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11036,7 +11037,7 @@ MonoBehaviour:
   m_SphereCastRadius: 0.1
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 65279
+    m_Bits: 63231
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0
@@ -16990,6 +16991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorHandle: {fileID: 1528935447}
+  isLocked: 0
 --- !u!59 &2023152604
 HingeJoint:
   m_ObjectHideFlags: 0
