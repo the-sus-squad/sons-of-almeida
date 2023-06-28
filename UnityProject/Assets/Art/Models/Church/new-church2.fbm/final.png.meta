@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:UnityProject/Assets/Art/Models/Church/new-church2.fbm/final.png.meta
 guid: 06cb2ff4aa872c6438d8aa6dd23545fa
+========
+guid: 583cc9b45dd44164ebc20a32cf232a6d
+>>>>>>>> dev:UnityProject/Assets/Art/Textures/Key/bronze_albedo.jpg.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -103,18 +107,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
