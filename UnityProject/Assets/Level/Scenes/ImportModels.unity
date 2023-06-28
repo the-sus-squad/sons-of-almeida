@@ -9871,8 +9871,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 525980718}
-  distanceDown: 0.2
-  distanceForward: 0.5
+  distanceDown: 0.04
+  distanceForward: 0.1
 --- !u!114 &998462995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10192,7 +10192,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -11751,7 +11751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Amogus sussy baka
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a1a3acdcca481c54f984b5de2de3c872, type: 2}
   m_sharedMaterial: {fileID: -3232023268101749139, guid: a1a3acdcca481c54f984b5de2de3c872,
@@ -11779,8 +11779,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
