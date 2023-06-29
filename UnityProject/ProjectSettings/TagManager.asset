@@ -13,6 +13,8 @@ TagManager:
   - OpenClose
   - Next
   - Key
+  - Collectable_2
+  - Collectable_3
   layers:
   - Default
   - TransparentFX

@@ -29,6 +29,7 @@ public class EnemyNavigation : MonoBehaviour
 
     public EnemyAudio sfxPlayer;
 
+    // public UnityEvent OnTargetCaptured;
 
     // public UnityEvent OnTargetCaptured;
     public Animator animator;
