@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -17,8 +19,12 @@ public class DialogueManager : MonoBehaviour
 
     private AudioSource audioSource;
 
+    [SerializeField] private GameObject fadeOut;
+    private Animator fadeOutAnimator;
+
     void Start() {
         audioSource = GetComponent<AudioSource>();
+        fadeOutAnimator = fadeOut.GetComponent<Animator>();
     }
 
     void Update() {
@@ -36,8 +42,25 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void SayHello() {
-        subtitle.ShowMessage("Hello Prologers!");
+    public void StartDialogue() {
+        // StartCoroutine(StartDialogueRoutine());
+        subtitle.ShowMessage("I need to find a way out of here...");
+
+    }
+
+    IEnumerator StartDialogueRoutine() {
+        subtitle.ShowMessage("I need to find a way out of here...");
+        return null;
+    }
+
+    public void StartChurch() {
+        StartCoroutine(StartChurchRoutine());
+    }
+
+    IEnumerator StartChurchRoutine() {
+        subtitle.ShowMessage("What is this place? I don't think I should be here longer than I need to...");
+        yield return new WaitForSeconds(5f);
+        subtitle.ShowMessage("That on the floor... Is that blood?");
     }
 
     public void EndOfChurch() {
@@ -51,19 +74,33 @@ public class DialogueManager : MonoBehaviour
     }
 
     IEnumerator EndOfChurchRoutine() {
-        Debug.Log("Routine");
         CloseDoor();
         enemyRevealer.ActivateEnemies();
         yield return new WaitForSeconds(1f);
         subtitle.ShowMessage("What are those noises?");
         yield return new WaitForSeconds(5f);
 
-        subtitle.ShowMessage("Oh no, the exit is locked?");
-        yield return new WaitForSeconds(6f);
-
-        subtitle.ShowMessage("I need to find a way out of here!");
+        subtitle.ShowMessage("Oh no, the exit is locked? I need to find the key to open it somewhere!");
         yield return new WaitForSeconds(6f);
 
         subtitle.ShowMessage("Oh no...");
+    }
+
+    public void FinalCutscene() {
+        StartCoroutine(FinalCutsceneRoutine());
+    }
+
+    IEnumerator FinalCutsceneRoutine() {
+        subtitle.ShowMessage("I managed to escape! I need to get out of here as fast as I can!");
+        yield return new WaitForSeconds(6f);
+
+        fadeOut.SetActive(true);
+        fadeOutAnimator.Play("FadeOut");
+
+        yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
+        SceneManager.LoadScene("MainMenu");
+
+        // TODO: Exit game?
     }
 }

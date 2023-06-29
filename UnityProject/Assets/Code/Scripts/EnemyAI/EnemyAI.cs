@@ -89,7 +89,6 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator GameOverRoutine()
     {
-        Debug.Log("Game Over Routine");
         fadeOut.SetActive(true);
         fadeOutAnimator.Play("FadeOut");
 
