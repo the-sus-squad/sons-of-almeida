@@ -7465,7 +7465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510057202}
   m_LocalRotation: {x: -0.67909056, y: -0, z: -0, w: 0.7340545}
-  m_LocalPosition: {x: 10.622, y: 1.84, z: -4.06}
+  m_LocalPosition: {x: 10.496, y: 1.84, z: -4.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25473,7 +25473,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.35
+      value: 0.337
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
@@ -25488,7 +25488,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.32
+      value: 1.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
@@ -25624,6 +25624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: igrejaext_006
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 03fd90e364c238643ba50ab94ea9f8a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
@@ -32761,7 +32766,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717457821}
   m_LocalRotation: {x: 0.57892585, y: -0, z: -0, w: 0.8153802}
-  m_LocalPosition: {x: 4.22, y: 4.936, z: -4.449}
+  m_LocalPosition: {x: 4.22, y: 4.359, z: -4.449}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32839,7 +32844,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -37221,7 +37226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034768418}
   m_LocalRotation: {x: 0.6123593, y: 0.48092264, z: -0.3739548, w: 0.50387245}
-  m_LocalPosition: {x: 4.197, y: 4.689, z: 1.581}
+  m_LocalPosition: {x: 4.197, y: 4.31, z: 1.581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37567,7 +37572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072177361}
   m_LocalRotation: {x: 0.8318405, y: 0.06994804, z: 0.112769425, w: 0.53891724}
-  m_LocalPosition: {x: -7.52, y: 5.29, z: 4.58}
+  m_LocalPosition: {x: -7.52, y: 5.29, z: 4.518}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
