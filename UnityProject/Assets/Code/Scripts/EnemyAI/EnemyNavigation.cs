@@ -103,6 +103,7 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     public void Stop() {
+        SetDestination(gameObject.transform.position);
         agent.isStopped = true;
     }
 
@@ -135,6 +136,10 @@ public class EnemyNavigation : MonoBehaviour
 
     public void UnblockAnimations() {
         blockAnimationChange = false;
+    }
+
+    public void LookAt(Vector3 target) {
+        transform.LookAt(target);
     }
 
     public void SetAnimationBool(string animationName, bool value) {
