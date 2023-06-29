@@ -79,4 +79,15 @@ public class DialogueManager : MonoBehaviour
 
         subtitle.ShowMessage("Oh no...");
     }
+
+    public void FinalCutscene() {
+        StartCoroutine(FinalCutsceneRoutine());
+    }
+
+    IEnumerator FinalCutsceneRoutine() {
+        subtitle.ShowMessage("I managed to escape! I need to get out of here as fast as I can!");
+        yield return new WaitForSeconds(6f);
+
+        // TODO: Exit game?
+    }
 }
