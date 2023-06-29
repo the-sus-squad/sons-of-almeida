@@ -53,16 +53,17 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EndOfChurchRoutine() {
         Debug.Log("Routine");
         CloseDoor();
+        enemyRevealer.ActivateEnemies();
+        yield return new WaitForSeconds(1f);
+        subtitle.ShowMessage("What are those noises?");
+        yield return new WaitForSeconds(5f);
+
         subtitle.ShowMessage("Oh no, the exit is locked?");
         yield return new WaitForSeconds(6f);
 
         subtitle.ShowMessage("I need to find a way out of here!");
         yield return new WaitForSeconds(6f);
 
-        subtitle.ShowMessage("What are those noises?");
-        yield return new WaitForSeconds(1f);
-        enemyRevealer.ActivateEnemies();
-        yield return new WaitForSeconds(5f);
         subtitle.ShowMessage("Oh no...");
     }
 }
