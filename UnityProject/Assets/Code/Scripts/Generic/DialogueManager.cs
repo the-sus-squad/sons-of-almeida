@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -17,8 +19,12 @@ public class DialogueManager : MonoBehaviour
 
     private AudioSource audioSource;
 
+    [SerializeField] private GameObject fadeOut;
+    private Animator fadeOutAnimator;
+
     void Start() {
         audioSource = GetComponent<AudioSource>();
+        fadeOutAnimator = fadeOut.GetComponent<Animator>();
     }
 
     void Update() {
@@ -87,6 +93,13 @@ public class DialogueManager : MonoBehaviour
     IEnumerator FinalCutsceneRoutine() {
         subtitle.ShowMessage("I managed to escape! I need to get out of here as fast as I can!");
         yield return new WaitForSeconds(6f);
+
+        fadeOut.SetActive(true);
+        fadeOutAnimator.Play("FadeOut");
+
+        yield return new WaitForSeconds(fadeOutAnimator.GetCurrentAnimatorStateInfo(0).length + fadeOutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
+        SceneManager.LoadScene("MainMenu");
 
         // TODO: Exit game?
     }
