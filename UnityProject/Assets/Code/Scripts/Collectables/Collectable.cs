@@ -28,8 +28,13 @@ public class Collectable : MonoBehaviour
     public void pickCollectable(BaseInteractionEventArgs arg)
     {
         // Aqui há-de ser hopefully a lógica pra alterar o pergaminho e papel de parede no quarto, guardar no save system e limpar este do ambiente
-        uiManager = collectableMenu.GetComponent<UIManager>();
+
+        // Save collectable
+        CollectablesManager.Instance.AddCollectable(tag);
+        SaveSystem.SaveCollectables(CollectablesManager.Instance.collectableTags);
+
+        //uiManager = collectableMenu.GetComponent<UIManager>();
         Destroy(gameObject);
-        uiManager.UpdateCollectableMenu(tag);
+        //uiManager.UpdateCollectableMenu(tag);
     }
 }

@@ -4181,7 +4181,12 @@ PrefabInstance:
     - target: {fileID: 874630956537481900, guid: 62fceb2ab94274f4195b41650d212af5,
         type: 3}
       propertyPath: m_Name
-      value: EnvironmentalScroll (1)
+      value: EnvironmentalScroll (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 874630956537481900, guid: 62fceb2ab94274f4195b41650d212af5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collectable_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62fceb2ab94274f4195b41650d212af5, type: 3}
@@ -13426,6 +13431,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnvironmentalScroll
       objectReference: {fileID: 0}
+    - target: {fileID: 874630956537481900, guid: 62fceb2ab94274f4195b41650d212af5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collectable_1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62fceb2ab94274f4195b41650d212af5, type: 3}
 --- !u!1 &699110530
@@ -15770,12 +15780,12 @@ PrefabInstance:
     - target: {fileID: 533817929176338454, guid: 62fceb2ab94274f4195b41650d212af5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.664
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 533817929176338454, guid: 62fceb2ab94274f4195b41650d212af5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.009
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 533817929176338454, guid: 62fceb2ab94274f4195b41650d212af5,
         type: 3}
@@ -15815,7 +15825,12 @@ PrefabInstance:
     - target: {fileID: 874630956537481900, guid: 62fceb2ab94274f4195b41650d212af5,
         type: 3}
       propertyPath: m_Name
-      value: EnvironmentalScroll (2)
+      value: EnvironmentalScroll (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 874630956537481900, guid: 62fceb2ab94274f4195b41650d212af5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collectable_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62fceb2ab94274f4195b41650d212af5, type: 3}
@@ -24140,7 +24155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990363608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.15, y: 1.2, z: -2.17}
+  m_LocalPosition: {x: -0.3, y: 1.2, z: -2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
