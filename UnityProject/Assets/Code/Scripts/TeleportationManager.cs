@@ -44,6 +44,9 @@ public class TeleportationManager : MonoBehaviour
     private float teleportCooldownTime = 0.0f;
     private float teleportDistance;
     public UnityEvent<bool> OnTeleportState;
+    
+
+    public bool isBeingCaptured = false;
 
 
     // Start is called before the first frame update
@@ -76,6 +79,13 @@ public class TeleportationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isBeingCaptured) {
+            leftRayInteractor.enabled = false;
+            rightRayInteractor.enabled = false;
+            EnableTeleport(false);
+            return;
+        }
 
         // Filter cooldowns
         if (IsTriggerPressed(leftHandTriggerAction))
@@ -162,7 +172,7 @@ public class TeleportationManager : MonoBehaviour
         teleportCooldown = teleportDistance * teleportCooldownWeight;
     }
 
-    private void EnableTeleport(bool val) {
+    public void EnableTeleport(bool val) {
         if (val != teleportEnable) {
             teleportEnable = val;
             OnTeleportState.Invoke(teleportEnable);

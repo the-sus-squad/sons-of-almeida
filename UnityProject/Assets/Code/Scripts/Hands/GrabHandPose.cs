@@ -19,6 +19,7 @@ using Unity.VisualScripting;
 public class GrabHandPose : MonoBehaviour
 {
     [SerializeField] private float poseTransitionDuration = 0.2f;
+    [SerializeField] private bool detectHoverExit = false;
     public List<GrabPoint> grabPoints;
 
     private Quaternion[] startingFingerRotations;
@@ -27,6 +28,7 @@ public class GrabHandPose : MonoBehaviour
     private Quaternion finalHandRotation;
     private Vector3 startingHandPosition;
     private Vector3 finalHandPosition;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,8 @@ public class GrabHandPose : MonoBehaviour
         grabInteractable.selectEntered.AddListener(SetupPose);
         grabInteractable.selectExited.AddListener(UnsetPose);
 
-        grabInteractable.hoverExited.AddListener(ReleaseObject);
+        if (detectHoverExit)
+            grabInteractable.hoverExited.AddListener(ReleaseObject);
     }
 
     // Called when an interactor starts grabbing the object
