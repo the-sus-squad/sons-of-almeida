@@ -10,6 +10,9 @@ TagManager:
   - ScalableUIElement
   - Collectable_1
   - GameManager
+  - OpenClose
+  - Next
+  - Key
   layers:
   - Default
   - TransparentFX
