@@ -21,7 +21,7 @@ public class EnemyNavigation : MonoBehaviour
     
     private Vector3 destination;
     public Vector3 destinationErrorMargin = new Vector3(0.5f, 0.5f, 0.5f);
-    private Vector3 walkingErrorMargin = new Vector3(0.1f, 0.1f, 2f);
+    private Vector3 walkingErrorMargin = new Vector3(0.5f, 0.5f, 2.0f);
     private Delegate OnDestinationReached;
     private object[] args;
 
@@ -48,11 +48,15 @@ public class EnemyNavigation : MonoBehaviour
         bool isWalking = HasDestination(walkingErrorMargin);
 
         if (!isWalking) {
+            // Debug.Log("is not walking");
             SetAnimationBool("isRunning", false);
 
             // If it was walking and it stops, it reached the destination.
             if (OnDestinationReached != null && wasWalking && !isWalking) {
                 OnDestinationReached.DynamicInvoke(args);
+                // SetDestination(gameObject.transform.position);
+                Stop();
+
             }
         }    
         wasWalking = isWalking;
@@ -77,17 +81,20 @@ public class EnemyNavigation : MonoBehaviour
         return false;
     }
 
-    public void SetDestination(Vector3 destination) {
+    public void SetDestination(Vector3 destination, bool stop = false) {
+        if (!stop) {
+            Resume();
+            SetAnimationBool("isRunning", true);
+            SetAnimationBool("isSearching", false);
+        }
         this.destination = destination;
         agent.SetDestination(destination);
-        SetAnimationBool("isRunning", true);
-        SetAnimationBool("isSearching", false);
+        wasWalking = true;
     }
 
     public void SetRandomDestination(float radius) {
         if (RandomPoint(transform.position, radius, out destination)) {
             SetDestination(destination);
-
         }
     }
 
@@ -107,7 +114,7 @@ public class EnemyNavigation : MonoBehaviour
     }
 
     public void Stop() {
-        SetDestination(gameObject.transform.position);
+        SetDestination(gameObject.transform.position, true);
         agent.isStopped = true;
     }
 
