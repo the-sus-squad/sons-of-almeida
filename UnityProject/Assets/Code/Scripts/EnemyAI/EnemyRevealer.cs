@@ -38,6 +38,6 @@ public class EnemyRevealer : MonoBehaviour
         foreach (var enemy in enemies) {
             enemy.SetActive(true);
         }
-        spawnSound.Play();
+        // spawnSound.Play();
     }
 }

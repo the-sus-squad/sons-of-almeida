@@ -44,7 +44,6 @@ public class EnemyAI : MonoBehaviour
     protected virtual void CapturePlayer() {
         if (isCapturingPlayer) return;
 
-        
         // Change to capture clara animation
         // navigation.PlayAnimation("Idle");
 
@@ -58,12 +57,13 @@ public class EnemyAI : MonoBehaviour
         isCapturingPlayer = true;
         timer.SetTimer(jumpscareTime, GameOver);
 
-        navigation.Stop();
-
         // Change destination to targets's front if he is not visible
         if (!isOnCamera) {
             navigation.TeleportTo(targetCamera.transform.position + targetCamera.transform.forward);
+            navigation.LookAt(targetCamera.transform.position);
         }
+
+        navigation.Stop();
     }
 
     public virtual void seeTarget(bool value) {
