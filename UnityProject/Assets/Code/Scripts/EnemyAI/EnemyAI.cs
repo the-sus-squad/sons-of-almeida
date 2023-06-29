@@ -44,7 +44,6 @@ public class EnemyAI : MonoBehaviour
     protected virtual void CapturePlayer() {
         if (isCapturingPlayer) return;
 
-        
         // Change to capture clara animation
         // navigation.PlayAnimation("Idle");
 
