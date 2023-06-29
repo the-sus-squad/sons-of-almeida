@@ -467,6 +467,12 @@ CapsuleCollider:
   m_Height: 0.025
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &70527820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 874630956537481900, guid: 59f362c4e190fbf4e878052d7d9eeb2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1923565746}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &76445440
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +989,12 @@ CapsuleCollider:
   m_Height: 0.11371795
   m_Direction: 2
   m_Center: {x: 0.01315904, y: -0.025023421, z: 0.0013814085}
+--- !u!1 &111732620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6378388269986175533, guid: 22f637ca84bfe0b478a142cc7f9b2f06,
+    type: 3}
+  m_PrefabInstance: {fileID: 368961740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &117721901
 GameObject:
   m_ObjectHideFlags: 0
@@ -6138,6 +6150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BentScroll
       objectReference: {fileID: 0}
+    - target: {fileID: 6378388269986175533, guid: 22f637ca84bfe0b478a142cc7f9b2f06,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collectable_3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22f637ca84bfe0b478a142cc7f9b2f06, type: 3}
 --- !u!4 &368961741 stripped
@@ -6146,6 +6163,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 368961740}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &368961742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111732620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c510b3327c96041b85a3d5797c88f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &369249622
 GameObject:
   m_ObjectHideFlags: 0
@@ -20471,6 +20500,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StretchedScroll
       objectReference: {fileID: 0}
+    - target: {fileID: 3194133462219373927, guid: 631a794022c8b1741abbf6640ef07fc1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collectable_2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 631a794022c8b1741abbf6640ef07fc1, type: 3}
 --- !u!4 &1859361020 stripped
@@ -20640,6 +20674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClosedScroll
       objectReference: {fileID: 0}
+    - target: {fileID: 874630956537481900, guid: 59f362c4e190fbf4e878052d7d9eeb2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collectable_1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59f362c4e190fbf4e878052d7d9eeb2f, type: 3}
 --- !u!4 &1923565747 stripped
@@ -20648,6 +20687,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1923565746}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1923565748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70527820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c510b3327c96041b85a3d5797c88f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1924060904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1131774471668849816, guid: fb4ca3be756887f4295c341730e3e7c5,
@@ -21491,6 +21542,24 @@ Transform:
   m_Father: {fileID: 57696226}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2001183955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3194133462219373927, guid: 631a794022c8b1741abbf6640ef07fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1859361019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2001183956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001183955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c510b3327c96041b85a3d5797c88f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2007455549
 GameObject:
   m_ObjectHideFlags: 0
