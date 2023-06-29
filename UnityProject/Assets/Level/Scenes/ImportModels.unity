@@ -48496,7 +48496,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameOverSound
       value: 
-      objectReference: {fileID: 8300000, guid: 130afe1db57fd6d47be7adddf8947e0a, type: 3}
+      objectReference: {fileID: 8300000, guid: be7190de2fa1b8b4980e2cd20312422a, type: 3}
     - target: {fileID: -4712558363862634381, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
       propertyPath: chaseLoopSound
