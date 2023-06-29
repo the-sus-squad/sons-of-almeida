@@ -8,7 +8,7 @@ public class ToggleCollectableMenu : MonoBehaviour
 {
 
     public InputActionProperty openMenuAction;
-    public GameObject canvas;
+    public GameObject collectablesMenu;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +24,6 @@ public class ToggleCollectableMenu : MonoBehaviour
     // Update is called once per frame
     void Toggle(InputAction.CallbackContext context)
     {
-        canvas.gameObject.SetActive(!canvas.gameObject.activeInHierarchy);
+        collectablesMenu.gameObject.SetActive(!collectablesMenu.gameObject.activeInHierarchy);
     }
 }
