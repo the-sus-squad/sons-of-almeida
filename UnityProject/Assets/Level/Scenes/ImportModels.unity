@@ -3128,6 +3128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subtitle: {fileID: 998462993}
   enemyRevealer: {fileID: 1241504342}
+  door: {fileID: 5972630861991839699}
 --- !u!4 &208852224
 Transform:
   m_ObjectHideFlags: 0
@@ -20085,7 +20086,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
