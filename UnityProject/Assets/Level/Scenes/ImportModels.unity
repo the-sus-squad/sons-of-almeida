@@ -26911,7 +26911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f13e514d6bd829458702d78a176f123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  revealTime: -1
+  revealTime: 1
   spawnSound: {fileID: 0}
   enemies:
   - {fileID: 919132147684061321}
@@ -28668,6 +28668,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3137722172632951806, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3137722172632951806, guid: 03fd90e364c238643ba50ab94ea9f8a9,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -28843,6 +28848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -516098083770646512, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 03fd90e364c238643ba50ab94ea9f8a9,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -28930,6 +28940,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083501151425157549, guid: 03fd90e364c238643ba50ab94ea9f8a9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -76.4
       objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: 03fd90e364c238643ba50ab94ea9f8a9,
         type: 3}
@@ -31265,9 +31280,9 @@ GameObject:
   m_Name: FadeOutCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1436021094
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42974,8 +42989,8 @@ GameObject:
   m_Name: Bench.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!33 &937389569862334829
 MeshFilter:
@@ -45075,8 +45090,8 @@ GameObject:
   m_Name: Bench.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!33 &2858101845982595053
 MeshFilter:
@@ -45331,8 +45346,8 @@ GameObject:
   m_Name: Bench.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!23 &3280085604172740405
 MeshRenderer:
@@ -45422,8 +45437,8 @@ GameObject:
   m_Name: Bench.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!33 &3404236367434023474
 MeshFilter:
@@ -46493,8 +46508,8 @@ GameObject:
   m_Name: palco.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!23 &4616435582034732259
 MeshRenderer:
@@ -46938,8 +46953,8 @@ GameObject:
   m_Name: Plane.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 41
   m_IsActive: 1
 --- !u!1 &5238471027994081394
 GameObject:
@@ -48051,8 +48066,8 @@ GameObject:
   m_Name: Bench.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!4 &6126952076578082855
 Transform:
@@ -48237,7 +48252,7 @@ PrefabInstance:
     - target: {fileID: 4134899251737949244, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
       propertyPath: searchTime
-      value: 2.5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4134899251737949244, guid: 61315eb2eac93b9468db0799df9e7885,
         type: 3}
@@ -48778,8 +48793,8 @@ GameObject:
   m_Name: Cube.036
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!4 &6738450967552373689
 Transform:
@@ -49688,7 +49703,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!4 &7269417853320871003
 Transform:
@@ -49824,8 +49839,8 @@ GameObject:
   m_Name: Plane.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 41
   m_IsActive: 1
 --- !u!1 &7366096258335749132
 GameObject:
@@ -50361,8 +50376,8 @@ GameObject:
   m_Name: Bench.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!1 &7623545440572902807
 GameObject:
@@ -52023,8 +52038,8 @@ GameObject:
   m_Name: banco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!65 &8959951736927767753
 BoxCollider:
