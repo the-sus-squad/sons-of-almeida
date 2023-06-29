@@ -8,11 +8,12 @@ TagManager:
   - ConcreteFootsteps
   - WoodFootsteps
   - ScalableUIElement
-  - Collectable_1
   - GameManager
   - OpenClose
   - Next
   - Key
+  - PortasSaoFrancisco
+  - PortasSaoFrancisco2
   layers:
   - Default
   - TransparentFX
