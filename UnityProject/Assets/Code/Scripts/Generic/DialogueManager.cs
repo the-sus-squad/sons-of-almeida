@@ -36,8 +36,25 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void SayHello() {
-        subtitle.ShowMessage("Hello Prologers!");
+    public void StartDialogue() {
+        // StartCoroutine(StartDialogueRoutine());
+        subtitle.ShowMessage("I need to find a way out of here...");
+
+    }
+
+    IEnumerator StartDialogueRoutine() {
+        subtitle.ShowMessage("I need to find a way out of here...");
+        return null;
+    }
+
+    public void StartChurch() {
+        StartCoroutine(StartChurchRoutine());
+    }
+
+    IEnumerator StartChurchRoutine() {
+        subtitle.ShowMessage("What is this place? I don't think I should be here longer than I need to...");
+        yield return new WaitForSeconds(5f);
+        subtitle.ShowMessage("That on the floor... Is that blood?");
     }
 
     public void EndOfChurch() {
@@ -51,17 +68,13 @@ public class DialogueManager : MonoBehaviour
     }
 
     IEnumerator EndOfChurchRoutine() {
-        Debug.Log("Routine");
         CloseDoor();
         enemyRevealer.ActivateEnemies();
         yield return new WaitForSeconds(1f);
         subtitle.ShowMessage("What are those noises?");
         yield return new WaitForSeconds(5f);
 
-        subtitle.ShowMessage("Oh no, the exit is locked?");
-        yield return new WaitForSeconds(6f);
-
-        subtitle.ShowMessage("I need to find a way out of here!");
+        subtitle.ShowMessage("Oh no, the exit is locked? I need to find the key to open it somewhere!");
         yield return new WaitForSeconds(6f);
 
         subtitle.ShowMessage("Oh no...");
