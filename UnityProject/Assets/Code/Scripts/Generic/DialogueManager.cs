@@ -15,6 +15,12 @@ public class DialogueManager : MonoBehaviour
     private float initialRotation = -79.34f;
     private float finalRotation = 0;
 
+    private AudioSource audioSource;
+
+    void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update() {
 
         if (closingDoor) {
@@ -41,11 +47,12 @@ public class DialogueManager : MonoBehaviour
     void CloseDoor(float initialRotation = -79.34f) {
         // door.transform.rotation = Quaternion.Euler(0, initialRotation, 0);
         closingDoor = true;
+        audioSource.Play();
     }
 
     IEnumerator EndOfChurchRoutine() {
         Debug.Log("Routine");
-        closingDoor = true;
+        CloseDoor();
         subtitle.ShowMessage("Oh no, the exit is locked?");
         yield return new WaitForSeconds(6f);
 
