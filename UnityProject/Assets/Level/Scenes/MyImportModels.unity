@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.323676, g: 0.0045810477, b: 0.00044966623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3992,7 +3992,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591362867
 GameObject:
@@ -4254,6 +4254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 525980718}
+  distanceDown: 0
+  distanceForward: 0
 --- !u!114 &630482549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5362,7 +5364,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &754626088
 PrefabInstance:
@@ -5565,6 +5567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  detectHoverExit: 0
   grabPoints:
   - {fileID: 1832032422}
   - {fileID: 1959514441}
@@ -5789,7 +5792,7 @@ Transform:
   - {fileID: 1959514442}
   - {fileID: 1891172747}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &810250006
 MonoBehaviour:
@@ -5805,7 +5808,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundRadius: 5
   rigidBody: {fileID: 810250001}
-  velocityTrashold: 0.5
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
@@ -6201,7 +6203,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &831775459
 PrefabInstance:
@@ -8471,7 +8473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundRadius: 5
   rigidBody: {fileID: 962000481}
-  velocityTrashold: 0.5
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
@@ -8613,7 +8614,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &990363608
 GameObject:
@@ -8671,7 +8672,7 @@ Transform:
   m_Children:
   - {fileID: 2126879843}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &990363611
 MonoBehaviour:
@@ -8827,6 +8828,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isBeingCaptured: 0
 --- !u!82 &990363617
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11800,7 +11802,7 @@ Transform:
   - {fileID: 1750371808}
   - {fileID: 1313176618}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1241504342
 MonoBehaviour:
@@ -13307,18 +13309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1313176619}
-  target: {fileID: 990363608}
-  targetCollider: {fileID: 1017605219}
-  searchRadius: 10
-  searchTime: 2.5
   destinationErrorMargin: {x: 0.2, y: 0.2, z: 0.2}
-  targetCamera: {fileID: 525980722}
-  jumpscareTime: 5
-  gameOverSound: {fileID: 2015744917}
+  sfxPlayer: {fileID: 0}
   animator: {fileID: 0}
-  chaseBeginSound: {fileID: 0}
-  chaseLoopSound: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!4 &1313176618
 Transform:
   m_ObjectHideFlags: 0
@@ -13925,6 +13918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  detectHoverExit: 0
   grabPoints:
   - {fileID: 2144646062}
 --- !u!114 &1438607813
@@ -14145,7 +14139,7 @@ Transform:
   m_Children:
   - {fileID: 2144646063}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1438607819
 MonoBehaviour:
@@ -14161,7 +14155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundRadius: 5
   rigidBody: {fileID: 1438607814}
-  velocityTrashold: 0.5
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
@@ -15423,7 +15416,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundRadius: 10
   rigidBody: {fileID: 1725360711}
-  velocityTrashold: 0.5
   OnSoundEmmitted:
     m_PersistentCalls:
       m_Calls:
@@ -15452,6 +15444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  detectHoverExit: 0
   grabPoints:
   - {fileID: 521143122}
 --- !u!114 &1725360710
@@ -15672,7 +15665,7 @@ Transform:
   m_Children:
   - {fileID: 521143123}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1725663250
 PrefabInstance:
@@ -16425,18 +16418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1750371805}
-  target: {fileID: 990363608}
-  targetCollider: {fileID: 1017605219}
-  searchRadius: 10
-  searchTime: 2.5
   destinationErrorMargin: {x: 0.5, y: 0.5, z: 0.5}
-  targetCamera: {fileID: 525980722}
-  jumpscareTime: 5
-  gameOverSound: {fileID: 1750371811}
+  sfxPlayer: {fileID: 0}
   animator: {fileID: 1750371812}
-  chaseBeginSound: {fileID: 1750371814}
-  chaseLoopSound: {fileID: 1750371813}
-  fadeOut: {fileID: 595533909}
 --- !u!195 &1750371805
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17031,7 +17015,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1791586616
 MonoBehaviour:
@@ -17406,7 +17390,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1877107605
 GameObject:
@@ -17649,7 +17633,7 @@ RectTransform:
   m_Children:
   - {fileID: 503978718}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18220,7 +18204,7 @@ Transform:
   m_Children:
   - {fileID: 630482552}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1959514440
 GameObject:
@@ -19763,7 +19747,7 @@ RectTransform:
   - {fileID: 995440962}
   - {fileID: 998262180}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19795,7 +19779,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 8244220527607819532, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  canvas: {fileID: 2056626684}
+  collectablesMenu: {fileID: 0}
 --- !u!1001 &2093032633
 PrefabInstance:
   m_ObjectHideFlags: 0
