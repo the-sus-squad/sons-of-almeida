@@ -3,7 +3,17 @@ guid: 8338c4ea861b03f44b3ceaaf4582eba4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 2f6588a56a42562409c3ce495beddb90, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Rock_Albedo
+    second: {fileID: 2800000, guid: 51f535ce2838e3544aee312efe8d5cb7, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
