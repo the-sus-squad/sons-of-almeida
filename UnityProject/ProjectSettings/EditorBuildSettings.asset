@@ -17,12 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/GameOverScene.unity
     guid: bd904f9d6871ec0498152a18fd75fcd2
-  - enabled: 1
-    path: Assets/Level/Scenes/LandmarkShowcases/PortasSaoFrancisco.unity
-    guid: 4dc20964431860a4eb06f29284d4af2b
-  - enabled: 1
-    path: Assets/Level/Scenes/LandmarkShowcases/PortasSaoFrancisco2.unity
-    guid: 112ea081d91b0ca408b75ff47fdf6b4a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c21433167a16be54694767b05dee613c,
       type: 2}
