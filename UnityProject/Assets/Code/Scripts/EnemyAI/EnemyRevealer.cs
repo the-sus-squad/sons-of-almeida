@@ -30,7 +30,6 @@ public class EnemyRevealer : MonoBehaviour
         currentRevealTime -= Time.deltaTime;
         if (currentRevealTime <= 0) {
             ActivateEnemies();
-            spawnSound.Play();
             Destroy(this);
         }
     }
@@ -39,5 +38,6 @@ public class EnemyRevealer : MonoBehaviour
         foreach (var enemy in enemies) {
             enemy.SetActive(true);
         }
+        // spawnSound.Play();
     }
 }
